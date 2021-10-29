@@ -2,6 +2,18 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Added packages
+
+[React Router](https://reactrouter.com/web/guides/quick-start)
+
+[Material UI](https://mui.com/)
+
+[SASS](https://sass-lang.com/install)
+
+[prop-types](https://www.npmjs.com/package/prop-types)
+
+[preitter](https://prettier.io/docs/en/install.html)
+
 ## Available Scripts
 
 In the project directory, you can run:
