@@ -1,5 +1,7 @@
 @import "./variables.scss";
 @import "./landingPage.scss";
+@import "./signIn.scss";
+@import "./signUp.scss";
 
 html,
 body {
@@ -13,6 +15,19 @@ body {
   font-family: $WireOne;
   font-weight: 700;
   user-select: none;
+}
+
+.button {
+  height: 40px;
+  width: 300px;
+}
+
+.textBox {
+  width: 300px;
+}
+
+.checkboxContainer {
+  width: 300px;
 }
 
 .test {

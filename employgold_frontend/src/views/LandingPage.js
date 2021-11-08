@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Box } from "@mui/system";
+import { Box, useTheme } from "@mui/system";
 import { Button } from "@mui/material";
-import { useTheme } from "@mui/system";
 
 export default function LandingPage() {
   const theme = useTheme();
@@ -26,7 +25,7 @@ export default function LandingPage() {
         <Box flex={1} />
         <Box display="flex" gap={2} mr={8}>
           <Button
-            sx={{ typography: "body1" }}
+            sx={{ typography: "body1", textTransform: "none" }}
             LinkComponent={Link}
             to="/sign-up"
           >
@@ -36,6 +35,7 @@ export default function LandingPage() {
             variant="outlined"
             sx={{
               typography: "body1",
+              textTransform: "none",
             }}
             LinkComponent={Link}
             to="sign-in"

@@ -13,6 +13,7 @@ const outerTheme = createTheme({
     h4: { fontFamily: "Ubuntu" },
     h5: { fontFamily: "Ubuntu" },
     body1: { fontFamily: "Ubuntu" },
+    body2: { fontFamily: "Ubuntu" },
   },
 });
 
