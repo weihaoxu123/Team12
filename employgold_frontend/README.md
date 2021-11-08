@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Added packages
 
-[React Router](https://reactrouter.com/web/guides/quick-start)
+[React Router](https://reactrouter.com/docs/en/v6/getting-started/installation)
 
 [Material UI](https://mui.com/)
 
