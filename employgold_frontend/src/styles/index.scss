@@ -1,4 +1,5 @@
 @import "./variables.scss";
+@import "./landingPage.scss";
 
 html,
 body {
@@ -6,4 +7,14 @@ body {
   margin: 0;
   padding: 0;
   font-family: $Ubuntu, sans-serif;
+}
+
+.logoText {
+  font-family: $WireOne;
+  font-weight: 700;
+  user-select: none;
+}
+
+.test {
+  border: 1px solid red;
 }

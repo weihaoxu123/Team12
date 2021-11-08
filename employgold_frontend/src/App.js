@@ -1,23 +1,37 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Button from "@mui/material/Button";
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { routes } from "./views/routes";
-import { Box } from "@mui/system";
+
+const outerTheme = createTheme({
+  palette: {
+    primary: {
+      main: "#f77f00",
+    },
+  },
+  typography: {
+    h4: { fontFamily: "Ubuntu" },
+    h5: { fontFamily: "Ubuntu" },
+    body1: { fontFamily: "Ubuntu" },
+  },
+});
+
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        {routes.map((route) => (
-          <Route
-            key={route.name}
-            exact={route.exact}
-            path={route.path}
-            element={route.element}
-          />
-        ))}
-      </Routes>
-    </BrowserRouter>
+    <ThemeProvider theme={outerTheme}>
+      <BrowserRouter>
+        <Routes>
+          {routes.map((route) => (
+            <Route
+              key={route.name}
+              exact={route.exact}
+              path={route.path}
+              element={route.element}
+            />
+          ))}
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
