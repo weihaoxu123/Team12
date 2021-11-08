@@ -1,10 +1,11 @@
-import React, { useState } from "react";
-import { Box, useTheme } from "@mui/system";
-import { Button, Checkbox, TextField } from "@mui/material";
-import { Link, useHistory } from "react-router-dom";
+import React, { useState } from 'react';
+import { Box, useTheme } from '@mui/system';
+import { Button, Checkbox, TextField } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 export default function SignUp() {
   const theme = useTheme();
+  const navigate = useNavigate();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
@@ -18,19 +19,27 @@ export default function SignUp() {
     >
       <Box width="100%" display="flex" alignItems="center" p={2}>
         <Box
-          sx={{ typography: "h3", fontFamily: "Wire One", fontWeight: 700 }}
+          sx={{
+            typography: 'h3',
+            fontFamily: 'Wire One',
+            fontWeight: 700,
+            cursor: 'pointer',
+          }}
           ml={8}
           color={theme.palette.primary.main}
+          onClick={() => navigate('/')}
         >
           EmployGold
         </Box>
       </Box>
       <Box
-        flex={1}
-        width="100%"
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
+        sx={{
+          flex: 1,
+          width: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
       >
         <Box
           display="flex"
@@ -40,7 +49,7 @@ export default function SignUp() {
           gap={2}
           mt={-12}
         >
-          <Box sx={{ typography: "h5", marginBottom: 4 }}>Sign Up</Box>
+          <Box sx={{ typography: 'h5', marginBottom: 4 }}>Sign Up</Box>
           <TextField
             className="textBox"
             required
@@ -63,18 +72,18 @@ export default function SignUp() {
             className="checkboxContainer"
             display="flex"
             sx={{
-              typography: "body1",
+              typography: 'body1',
             }}
           >
             <Box>
-              <Checkbox xs={{ padding: 0, margin: 0 }} size="small" />
+              <Checkbox sx={{ padding: 0, margin: 0 }} size="small" />
             </Box>
             <Box display="flex" alignItems="center">
               I agree to
               <Button
                 sx={{
-                  typography: "body1",
-                  textTransform: "none",
+                  typography: 'body1',
+                  textTransform: 'none',
                   paddingTop: 0,
                   paddingBottom: 0,
                 }}
@@ -84,8 +93,8 @@ export default function SignUp() {
               and
               <Button
                 sx={{
-                  typography: "body1",
-                  textTransform: "none",
+                  typography: 'body1',
+                  textTransform: 'none',
                   paddingTop: 0,
                   paddingBottom: 0,
                 }}
@@ -99,25 +108,24 @@ export default function SignUp() {
             variant="contained"
             className="button"
             sx={{
-              typography: "body1",
-              color: "#fff",
-              textTransform: "none",
+              typography: 'body1',
+              color: '#fff',
+              textTransform: 'none',
               marginTop: 4,
             }}
           >
             Next Step
           </Button>
-          <Box display="flex" alignItems="center" sx={{ typography: "body2" }}>
+          <Box display="flex" alignItems="center" sx={{ typography: 'body2' }}>
             Already on EmployGold?
             <Button
-              LinkComponent={Link}
-              to="/sign-in"
               sx={{
-                typography: "body2",
-                textTransform: "none",
+                typography: 'body2',
+                textTransform: 'none',
                 padding: 0,
                 marginLeft: 2,
               }}
+              onClick={() => navigate('/sign-in')}
             >
               Sign In
             </Button>
