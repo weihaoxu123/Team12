@@ -1,13 +1,35 @@
+@import "./variables.scss";
+@import "./landingPage.scss";
+@import "./signIn.scss";
+@import "./signUp.scss";
+
+html,
 body {
+  min-height: 100vh;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  font-family: $Ubuntu, sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.logoText {
+  font-family: $WireOne;
+  font-weight: 700;
+  user-select: none;
+}
+
+.button {
+  height: 40px;
+  width: 300px;
+}
+
+.textBox {
+  width: 300px;
+}
+
+.checkboxContainer {
+  width: 300px;
+}
+
+.test {
+  border: 1px solid red;
 }
