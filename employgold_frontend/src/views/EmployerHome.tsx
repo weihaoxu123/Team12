@@ -1,6 +1,12 @@
-import React from 'react';
-import { Box } from '@mui/system';
+import React from "react";
+import { Box } from "@mui/system";
 
-export default function EmployerHome() {
-  return <Box>EmployerHome</Box>;
+import Header from "../component/employerNabbar";
+export default function CandidateHome() {
+  return (
+    <Box>
+      <Header></Header>
+      <Box ml={8}>EmployerHome</Box>
+    </Box>
+  );
 }
