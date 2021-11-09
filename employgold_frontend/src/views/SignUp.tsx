@@ -8,7 +8,12 @@ export default function SignUp() {
   const navigate = useNavigate();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [userId, setUserId] = useState<String>('0');
   const [isEmployer, setIsEmployer] = useState(false);
+
+  const nextStepHandler: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+    navigate(`/candidate/${userId}/profile/edit`);
+  };
 
   return (
     <Box
@@ -129,7 +134,9 @@ export default function SignUp() {
               color: '#fff',
               textTransform: 'none',
               marginTop: 2,
-            }}>
+            }}
+            onClick={nextStepHandler}
+          >
             Next Step
           </Button>
           <Box display="flex" alignItems="center" sx={{ typography: 'body2' }}>
