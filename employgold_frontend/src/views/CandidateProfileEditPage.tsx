@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, StepConnector, useTheme } from '@mui/material';
 import CandidateNavBar from '../component/CandidateNavbar';
 import Stepper from '@mui/material/Stepper';
@@ -6,6 +6,8 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import OverrideStepperConnector from '../component/OverrideStepperConnector';
 import OverrideStepperIcon from '../component/OverrideStepperIcon';
+import { CandaidatePersonalInfoSection } from 'src/component/CandidatePersonalInfoSection';
+import { IPersonalInfo } from 'src/types/CandidateProfileTypes';
 
 interface ICandidateProfileEditPageProps {}
 interface IStepItem {
@@ -16,8 +18,30 @@ interface IStepItem {
 export default function CandidateProfileEditPage(
   props: ICandidateProfileEditPageProps
 ) {
+  const theme = useTheme();
+  const [personalInfo, setPersonalInfo] = useState<IPersonalInfo>();
+  const [activeStep, setActiveStep] = useState(0);
+  const [skipped, setSkipped] = useState(new Set());
+
+  const onSavePersonalInfoClick = async (info: IPersonalInfo) => {
+    console.info(info);
+  };
+
+  useEffect(() => {
+    //get personal info for user if needed
+    setPersonalInfo(undefined);
+  }, [personalInfo]);
+
   const steps: IStepItem[] = [
-    { label: 'Personal Infomation', element: <Box></Box> },
+    {
+      label: 'Personal Infomation',
+      element: (
+        <CandaidatePersonalInfoSection
+          personalInfo={personalInfo}
+          hanldeSaveClick={onSavePersonalInfoClick}
+        />
+      ),
+    },
     { label: 'Public Profile', element: <Box></Box> },
     { label: 'Education and Experience', element: <Box></Box> },
     { label: 'Job Preferences', element: <Box></Box> },
@@ -25,10 +49,6 @@ export default function CandidateProfileEditPage(
     { label: 'References', element: <Box></Box> },
   ];
 
-  const theme = useTheme();
-
-  const [activeStep, setActiveStep] = useState(0);
-  const [skipped, setSkipped] = useState(new Set());
   return (
     <Box>
       <Box sx={{ display: 'flex', alignItems: 'center', p: 2 }}>
@@ -61,6 +81,7 @@ export default function CandidateProfileEditPage(
           );
         })}
       </Stepper>
+      {steps[activeStep].element}
     </Box>
   );
 }
