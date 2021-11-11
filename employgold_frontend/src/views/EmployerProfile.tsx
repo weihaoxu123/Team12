@@ -1,8 +1,9 @@
 import React from 'react';
 import { Box } from '@mui/system';
+
 import NavBar from 'src/components/NavBar';
 
-export default function CandidateMatchResults() {
+export default function EmployerProfile() {
   return (
     <Box
       sx={{
@@ -19,7 +20,7 @@ export default function CandidateMatchResults() {
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-        Candidate Match Results
+        Employer Profile
       </Box>
     </Box>
   );

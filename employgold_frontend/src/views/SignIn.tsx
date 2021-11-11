@@ -1,13 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Box, useTheme } from '@mui/system';
 import { Button, TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
+import { UserContext } from 'src/contexts/UserContext';
+
 export default function SignIn() {
   const theme = useTheme();
   const navigate = useNavigate();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const userContext = useContext(UserContext);
+  const [email, setEmail] = useState<String>('');
+  const [password, setPassword] = useState<String>('');
+
+  const onEmailTextFieldChange: React.ChangeEventHandler<HTMLInputElement> = (
+    e,
+  ) => {
+    setEmail(e.currentTarget.value);
+  };
+
+  const onPasswordTextFieldChange: React.ChangeEventHandler<HTMLInputElement> =
+    (e) => {
+      setPassword(e.currentTarget.value);
+    };
+
+  const onSignInButtonClick = () => {
+    if (userContext != null) {
+      navigate(`/${userContext.userGroup}/matches`);
+    }
+  };
 
   return (
     <Box
@@ -17,8 +37,7 @@ export default function SignIn() {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-      }}
-    >
+      }}>
       <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', p: 2 }}>
         <Box
           sx={{
@@ -29,8 +48,7 @@ export default function SignIn() {
             ml: 8,
             color: theme.palette.primary.main,
           }}
-          onClick={() => navigate('/')}
-        >
+          onClick={() => navigate('/')}>
           EmployGold
         </Box>
       </Box>
@@ -41,8 +59,7 @@ export default function SignIn() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-        }}
-      >
+        }}>
         <Box
           sx={{
             display: 'flex',
@@ -52,22 +69,23 @@ export default function SignIn() {
             gap: 2,
             mt: -26,
           }}
-          component="form"
-        >
+          component="form">
           <Box sx={{ typography: 'h5', marginBottom: 4 }}>Sign In</Box>
           <TextField
             className="textBox"
             required
-            id="outlined-required"
             label="Email"
             type="email"
+            value={email}
+            onChange={onEmailTextFieldChange}
           />
           <TextField
             className="textBox"
             required
-            id="outlined-required"
             label="Password"
             type="password"
+            value={password}
+            onChange={onPasswordTextFieldChange}
           />
           <Button
             variant="contained"
@@ -78,8 +96,7 @@ export default function SignIn() {
               textTransform: 'none',
               marginTop: 2,
             }}
-            type="submit"
-          >
+            onClick={onSignInButtonClick}>
             Sign In
           </Button>
           <Box display="flex" alignItems="center" sx={{ typography: 'body2' }}>
@@ -91,8 +108,7 @@ export default function SignIn() {
                 padding: 0,
                 marginLeft: 2,
               }}
-              onClick={() => navigate('/sign-up')}
-            >
+              onClick={() => navigate('/sign-up')}>
               Join now
             </Button>
           </Box>
