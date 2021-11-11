@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { IRoutes, routes } from './routes/routes';
+import UserContextProvider, { UserContext } from './contexts/UserContext';
 
 const outerTheme = createTheme({
   palette: {
@@ -20,13 +21,19 @@ const outerTheme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={outerTheme}>
-      <BrowserRouter>
-        <Routes>
-          {routes.map((route: IRoutes) => (
-            <Route key={route.name} path={route.path} element={route.element} />
-          ))}
-        </Routes>
-      </BrowserRouter>
+      <UserContextProvider>
+        <BrowserRouter>
+          <Routes>
+            {routes.map((route: IRoutes) => (
+              <Route
+                key={route.name}
+                path={route.path}
+                element={route.element}
+              />
+            ))}
+          </Routes>
+        </BrowserRouter>
+      </UserContextProvider>
     </ThemeProvider>
   );
 }
