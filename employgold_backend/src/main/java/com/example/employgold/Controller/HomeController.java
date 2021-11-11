@@ -1,4 +1,4 @@
-package com.example.employgold.controller;
+package com.example.employgold.Controller;
 
 import org.springframework.web.bind.annotation.*;
 
