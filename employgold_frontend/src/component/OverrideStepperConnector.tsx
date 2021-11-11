@@ -1,12 +1,8 @@
-import {
-  StepConnector,
-  stepConnectorClasses,
-  styled,
-  useTheme,
-} from '@mui/material';
 import React from 'react';
 
-export default function OverrideStepperConnector() {
+import { StepConnector, stepConnectorClasses, styled } from '@mui/material';
+
+const OverrideStepperConnector: React.FC = (props) => {
   const OverrideStepConnector = styled(StepConnector)(({ theme }) => ({
     [`&.${stepConnectorClasses.alternativeLabel}`]: {
       top: 10,
@@ -30,4 +26,5 @@ export default function OverrideStepperConnector() {
     },
   }));
   return <OverrideStepConnector></OverrideStepConnector>;
-}
+};
+export default OverrideStepperConnector;

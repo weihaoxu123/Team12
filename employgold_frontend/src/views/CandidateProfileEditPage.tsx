@@ -7,8 +7,9 @@ import StepLabel from '@mui/material/StepLabel';
 
 import OverrideStepperConnector from '../component/OverrideStepperConnector';
 import OverrideStepperIcon from '../component/OverrideStepperIcon';
-import CandaidatePersonalInfoSection from 'src/component/CandidateProfileEditComponents/CandidatePersonalInfoSection';
+import CandidatePersonalInfoSection from 'src/component/CandidateProfileEditComponents/CandidatePersonalInfoSection';
 import CandidatePublicProfileSection from 'src/component/CandidateProfileEditComponents/CandidatePublicProfileSection';
+import CandidateEducationAndExperienceSection from 'src/component/CandidateProfileEditComponents/CandidateEducationAndExperienceSection';
 
 interface ICandidateProfileEditPageProps {}
 interface IStepItem {
@@ -22,7 +23,10 @@ export default function CandidateProfileEditPage(
   const theme = useTheme();
   const [personalInfo, setPersonalInfo] = useState<IPersonalInfo>();
   const [publiProfile, setPublicProfile] = useState<IPublicProfileInfo>();
-  const [activeStep, setActiveStep] = useState(1);
+  const [educationAndExperienceInfo, setEducationAndExperienceInfo] =
+    useState<IEducationAndExperienceInfo>();
+
+  const [activeStep, setActiveStep] = useState(2);
   const [skipped, setSkipped] = useState(new Set());
 
   useEffect(() => {
@@ -30,6 +34,8 @@ export default function CandidateProfileEditPage(
     setPersonalInfo(undefined);
     //TODO: get public profile for user
     setPublicProfile(undefined);
+    //TODO: get education and work experience info
+    setEducationAndExperienceInfo(undefined);
   }, []);
 
   const handleBackClick = () => {
@@ -42,9 +48,18 @@ export default function CandidateProfileEditPage(
     setActiveStep(activeStep + 1);
   };
 
-  const handleSavePublicProfile = async (info: IPublicProfileInfo) => {
+  const handleSavePublicProfileInfo = async (info: IPublicProfileInfo) => {
     //TODO: upload info using api
     setPublicProfile(info);
+    setActiveStep(activeStep + 1);
+  };
+
+  const handleSaveEducationAndExperienceInfo = async (
+    info: IEducationAndExperienceInfo
+  ) => {
+    //TODO: upload education and experience info using api
+    console.info(info);
+    setEducationAndExperienceInfo(info);
     setActiveStep(activeStep + 1);
   };
 
@@ -52,7 +67,7 @@ export default function CandidateProfileEditPage(
     {
       label: 'Personal Infomation',
       element: (
-        <CandaidatePersonalInfoSection
+        <CandidatePersonalInfoSection
           personalInfo={personalInfo}
           handleSaveClick={handleSavePersonalInfo}
         />
@@ -63,12 +78,21 @@ export default function CandidateProfileEditPage(
       element: (
         <CandidatePublicProfileSection
           publicProfile={publiProfile}
-          handleSaveClick={handleSavePublicProfile}
+          handleSaveClick={handleSavePublicProfileInfo}
           handleBackClick={handleBackClick}
         />
       ),
     },
-    { label: 'Education and Experience', element: <Box></Box> },
+    {
+      label: 'Education and Experience',
+      element: (
+        <CandidateEducationAndExperienceSection
+          educationAndExperienceInfo={educationAndExperienceInfo}
+          handleSaveClick={handleSaveEducationAndExperienceInfo}
+          handleBackClick={handleBackClick}
+        />
+      ),
+    },
     { label: 'Job Preferences', element: <Box></Box> },
     { label: 'Career Developement Assessments', element: <Box></Box> },
     { label: 'References', element: <Box></Box> },

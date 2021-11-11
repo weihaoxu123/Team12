@@ -33,8 +33,8 @@ interface IEducationInfo {
   country: string;
   major: string;
   minor?: string;
-  startDate: Date;
-  endDate?: Date;
+  startDate: string;
+  endDate?: string;
   currentlyEnrolled: boolean;
 }
 
@@ -45,10 +45,15 @@ interface IWorkExperienceInfo {
   city: string;
   state: string;
   country: string;
-  startDate: Date;
-  endDate?: Date;
-  currentlyEnrolled: boolean;
+  startDate: string;
+  endDate?: string;
+  currentlyEmployed: boolean;
   jobDescription: string;
+}
+
+interface IEducationAndExperienceInfo {
+  educationInfos: IEducationInfo[];
+  workExperienceInfos: IWorkExperienceInfo[];
 }
 
 interface IJobPreferenceInfo {
@@ -97,7 +102,8 @@ declare type IDegreeOptions =
   | 'Professional'
   | 'Specialist'
   | 'Certificate'
-  | 'License ';
+  | 'License'
+  | '';
 
 declare type INameTitle =
   | 'Mr.'

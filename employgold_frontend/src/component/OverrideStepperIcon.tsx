@@ -3,7 +3,7 @@ import { StepIconProps } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
 
-export default function OverrideStepperIcon(props: StepIconProps) {
+const OverrideStepperIcon: React.FC<StepIconProps> = (props) => {
   const theme = useTheme();
   const { active, completed } = props;
 
@@ -30,4 +30,6 @@ export default function OverrideStepperIcon(props: StepIconProps) {
       }}
     ></Box>
   );
-}
+};
+
+export default OverrideStepperIcon;
