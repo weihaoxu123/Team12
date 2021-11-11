@@ -1,7 +1,7 @@
-import React from "react";
-import { Box } from "@mui/system";
+import React from 'react';
+import { Box } from '@mui/system';
 
-import Header from "../component/candidateNavbar";
+import Header from '../components/candidateNavbar';
 export default function CandidateHome() {
   return (
     <Box>

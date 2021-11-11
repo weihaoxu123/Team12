@@ -1,5 +1,5 @@
-import { AppBar, Toolbar, Box, Grid, Avatar } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { AppBar, Toolbar, Box, Grid, Avatar } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 export default function Header() {
   const navigate = useNavigate();
   const displayDesktop = () => {
@@ -8,25 +8,25 @@ export default function Header() {
         <Toolbar>
           <Box
             sx={{
-              typography: "h3",
-              fontFamily: "Wire One",
+              typography: 'h3',
+              fontFamily: 'Wire One',
               fontWeight: 700,
-              cursor: "pointer",
+              cursor: 'pointer',
             }}
             ml={8}
             color="white"
-            onClick={() => navigate("/")}
+            onClick={() => navigate('/')}
           >
             EmployGold
           </Box>
           <Grid container justifyContent="flex-end">
-            <Box sx={{ color: "white", cursor: "pointer" }} mr={3} pt={1}>
+            <Box sx={{ color: 'white', cursor: 'pointer' }} mr={3} pt={1}>
               Profile
             </Box>
-            <Box sx={{ color: "white", cursor: "pointer" }} mr={3} pt={1}>
+            <Box sx={{ color: 'white', cursor: 'pointer' }} mr={3} pt={1}>
               Jobs
             </Box>
-            <Box sx={{ color: "white", cursor: "pointer" }} mr={3} pt={1}>
+            <Box sx={{ color: 'white', cursor: 'pointer' }} mr={3} pt={1}>
               Matches
             </Box>
             <Box>
