@@ -5,11 +5,11 @@ import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 
-import OverrideStepperConnector from '../component/OverrideStepperConnector';
-import OverrideStepperIcon from '../component/OverrideStepperIcon';
-import CandidatePersonalInfoSection from 'src/component/CandidateProfileEditComponents/CandidatePersonalInfoSection';
-import CandidatePublicProfileSection from 'src/component/CandidateProfileEditComponents/CandidatePublicProfileSection';
-import CandidateEducationAndExperienceSection from 'src/component/CandidateProfileEditComponents/CandidateEducationAndExperienceSection';
+import OverrideStepperConnector from '../components/OverrideStepperConnector';
+import OverrideStepperIcon from '../components/OverrideStepperIcon';
+import CandidatePersonalInfoSection from 'src/components/CandidateProfileEditComponents/CandidatePersonalInfoSection';
+import CandidatePublicProfileSection from 'src/components/CandidateProfileEditComponents/CandidatePublicProfileSection';
+import CandidateEducationAndExperienceSection from 'src/components/CandidateProfileEditComponents/CandidateEducationAndExperienceSection';
 
 interface ICandidateProfileEditPageProps {}
 interface IStepItem {
@@ -18,7 +18,7 @@ interface IStepItem {
 }
 
 export default function CandidateProfileEditPage(
-  props: ICandidateProfileEditPageProps
+  props: ICandidateProfileEditPageProps,
 ) {
   const theme = useTheme();
   const [personalInfo, setPersonalInfo] = useState<IPersonalInfo>();
@@ -55,7 +55,7 @@ export default function CandidateProfileEditPage(
   };
 
   const handleSaveEducationAndExperienceInfo = async (
-    info: IEducationAndExperienceInfo
+    info: IEducationAndExperienceInfo,
   ) => {
     //TODO: upload education and experience info using api
     console.info(info);
@@ -109,8 +109,7 @@ export default function CandidateProfileEditPage(
             cursor: 'pointer',
             ml: 8,
             color: theme.palette.primary.main,
-          }}
-        >
+          }}>
           EmployGold
         </Box>
       </Box>
@@ -118,8 +117,7 @@ export default function CandidateProfileEditPage(
         activeStep={activeStep}
         alternativeLabel
         connector={<OverrideStepperConnector></OverrideStepperConnector>}
-        sx={{ width: '60%', margin: '0 auto', marginTop: '40px' }}
-      >
+        sx={{ width: '60%', margin: '0 auto', marginTop: '40px' }}>
         {steps.map((v: IStepItem) => {
           return (
             <Step key={v.label}>
