@@ -1,5 +1,6 @@
 package com.example.employgold.Controller;
 
+import com.example.employgold.Domain.JobSeeker;
 import com.example.employgold.Service.JobSeekerService;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,9 +15,15 @@ public class JobSeekerController {
     @Autowired
     private JobSeekerService jobSeekerService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/api", method = RequestMethod.GET)
     public String getSeeker(){
         System.out.println("test");
         return "success";
     }
+
+//    @RequestMapping(value = "/api", method = RequestMethod.GET)
+//    public JobSeeker getSeeker(){
+//        System.out.println("test");
+//
+//    }
 }

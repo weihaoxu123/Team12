@@ -13,6 +13,6 @@ public class JobSeekerServiceImpl implements JobSeekerService{
 
     @Override
     public void addJobSeeker(JobSeeker jobSeeker) {
-
+        JobSeekerDao.save(jobSeeker);
     }
 }

@@ -5,18 +5,21 @@ import javax.persistence.*;
 public class JobSeeker {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //auto increase;
-    private String id;
+    private Integer id;
 
     @Column
     private String name;
 
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
+    }
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Id
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 }
