@@ -1,12 +1,30 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { AppBar, Toolbar, Box, Grid, Avatar, Button } from '@mui/material';
+import {
+  IconButton,
+  AppBar,
+  Toolbar,
+  Box,
+  Menu,
+  MenuItem,
+  Avatar,
+  Button,
+} from '@mui/material';
 
 import { UserContext } from 'src/contexts/UserContext';
 
 export default function NavBar() {
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   const userGroup = userContext != null ? userContext.userGroup : '';
 
@@ -48,6 +66,17 @@ export default function NavBar() {
               onClick={() => navigate(`/${userGroup}/matches`)}>
               Matches
             </Button>
+            {userGroup === 'employer' && (
+              <Button
+                sx={{
+                  typography: 'body1',
+                  color: '#fff',
+                  textTransform: 'none',
+                }}
+                onClick={() => navigate(`/${userGroup}/jobs`)}>
+                Jobs
+              </Button>
+            )}
             <Button
               sx={{
                 typography: 'body1',
@@ -58,8 +87,20 @@ export default function NavBar() {
               Profile
             </Button>
             <Box>
-              <Avatar>H</Avatar>
+              <IconButton onClick={handleClick} size="medium">
+                <Avatar sx={{ width: 36, height: 36 }}>M</Avatar>
+              </IconButton>
             </Box>
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{
+                'aria-labelledby': 'basic-button',
+              }}>
+              <MenuItem onClick={() => navigate('/')}>Logout</MenuItem>
+            </Menu>
           </Box>
         </Box>
       </Toolbar>

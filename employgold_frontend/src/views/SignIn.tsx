@@ -25,6 +25,11 @@ export default function SignIn() {
 
   const onSignInButtonClick = () => {
     if (userContext != null) {
+      //Hard code use only
+      if (email === 'employer@employer.com') {
+        userContext.setUserGroup('employer');
+        navigate(`/employer/matches`);
+      }
       navigate(`/${userContext.userGroup}/matches`);
     }
   };

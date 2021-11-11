@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box } from '@mui/system';
+import { Button } from '@mui/material';
 import NavBar from 'src/components/NavBar';
 
 export default function CandidateProfile() {
@@ -19,7 +20,33 @@ export default function CandidateProfile() {
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-        Candidate Profile
+        <Box sx={{ typography: 'h4' }}>Candidate Profile</Box>
+        <Box mt={8}>
+          <Button
+            variant="contained"
+            sx={{
+              typography: 'body1',
+              color: '#fff',
+              width: 300,
+              height: 50,
+              textTransform: 'none',
+            }}>
+            View Profile
+          </Button>
+        </Box>
+        <Box mt={4}>
+          <Button
+            variant="contained"
+            sx={{
+              typography: 'body1',
+              color: '#fff',
+              width: 300,
+              height: 50,
+              textTransform: 'none',
+            }}>
+            Edit Profile
+          </Button>
+        </Box>
       </Box>
     </Box>
   );

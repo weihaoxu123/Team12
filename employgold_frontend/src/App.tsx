@@ -13,6 +13,7 @@ const outerTheme = createTheme({
   typography: {
     h4: { fontFamily: 'Ubuntu' },
     h5: { fontFamily: 'Ubuntu' },
+    h6: { fontFamily: 'Ubuntu' },
     body1: { fontFamily: 'Ubuntu' },
     body2: { fontFamily: 'Ubuntu' },
   },
