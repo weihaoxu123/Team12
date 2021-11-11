@@ -1,5 +1,5 @@
-import React, { ChangeEvent } from 'react';
-import Validator from 'validator';
+import { useState, ChangeEventHandler } from 'react';
+
 import {
   Box,
   Button,
@@ -12,13 +12,9 @@ import {
   useTheme,
 } from '@mui/material';
 
-import { INameTitle, IPersonalInfo } from 'src/types/CandidateProfileTypes';
-import { useState } from 'react';
-import { ChangeEventHandler } from 'react';
-
 declare type ICandidateProfileEditPageProps = {
   personalInfo: IPersonalInfo | undefined;
-  hanldeSaveClick: (info: IPersonalInfo) => void;
+  handleSaveClick: (info: IPersonalInfo) => void;
 };
 
 const defaultPersonalInfo: IPersonalInfo = {
@@ -42,7 +38,7 @@ const defaultPersonalInfo: IPersonalInfo = {
 
 const nameTitles = ['Mr.', 'Mrs.', 'Miss.', 'Ms.', 'Dr.', 'Capt.', 'Prof.'];
 
-export function CandaidatePersonalInfoSection(
+export default function CandaidatePersonalInfoSection(
   props: ICandidateProfileEditPageProps
 ) {
   const theme = useTheme();
@@ -431,10 +427,9 @@ export function CandaidatePersonalInfoSection(
           type="submit"
           onClick={(e) => {
             e.preventDefault();
-            console.info(personalInfo);
             const formEle = e.currentTarget.parentElement as HTMLFormElement;
             if (formEle.reportValidity()) {
-              props.hanldeSaveClick(personalInfo);
+              props.handleSaveClick(personalInfo);
             }
           }}
         >

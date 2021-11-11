@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Box, StepConnector, useTheme } from '@mui/material';
-import CandidateNavBar from '../component/CandidateNavbar';
+
+import { Box, useTheme } from '@mui/material';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
+
 import OverrideStepperConnector from '../component/OverrideStepperConnector';
 import OverrideStepperIcon from '../component/OverrideStepperIcon';
-import { CandaidatePersonalInfoSection } from 'src/component/CandidatePersonalInfoSection';
-import { IPersonalInfo } from 'src/types/CandidateProfileTypes';
+import CandaidatePersonalInfoSection from 'src/component/CandidateProfileEditComponents/CandidatePersonalInfoSection';
+import CandidatePublicProfileSection from 'src/component/CandidateProfileEditComponents/CandidatePublicProfileSection';
 
 interface ICandidateProfileEditPageProps {}
 interface IStepItem {
@@ -20,17 +21,32 @@ export default function CandidateProfileEditPage(
 ) {
   const theme = useTheme();
   const [personalInfo, setPersonalInfo] = useState<IPersonalInfo>();
-  const [activeStep, setActiveStep] = useState(0);
+  const [publiProfile, setPublicProfile] = useState<IPublicProfileInfo>();
+  const [activeStep, setActiveStep] = useState(1);
   const [skipped, setSkipped] = useState(new Set());
 
-  const onSavePersonalInfoClick = async (info: IPersonalInfo) => {
-    console.info(info);
+  useEffect(() => {
+    //TODO: get personal info for user
+    setPersonalInfo(undefined);
+    //TODO: get public profile for user
+    setPublicProfile(undefined);
+  }, []);
+
+  const handleBackClick = () => {
+    setActiveStep(Math.max(activeStep - 1, 0));
   };
 
-  useEffect(() => {
-    //get personal info for user if needed
-    setPersonalInfo(undefined);
-  }, [personalInfo]);
+  const handleSavePersonalInfo = async (info: IPersonalInfo) => {
+    //TODO: upload info using api
+    setPersonalInfo(info);
+    setActiveStep(activeStep + 1);
+  };
+
+  const handleSavePublicProfile = async (info: IPublicProfileInfo) => {
+    //TODO: upload info using api
+    setPublicProfile(info);
+    setActiveStep(activeStep + 1);
+  };
 
   const steps: IStepItem[] = [
     {
@@ -38,11 +54,20 @@ export default function CandidateProfileEditPage(
       element: (
         <CandaidatePersonalInfoSection
           personalInfo={personalInfo}
-          hanldeSaveClick={onSavePersonalInfoClick}
+          handleSaveClick={handleSavePersonalInfo}
         />
       ),
     },
-    { label: 'Public Profile', element: <Box></Box> },
+    {
+      label: 'Public Profile',
+      element: (
+        <CandidatePublicProfileSection
+          publicProfile={publiProfile}
+          handleSaveClick={handleSavePublicProfile}
+          handleBackClick={handleBackClick}
+        />
+      ),
+    },
     { label: 'Education and Experience', element: <Box></Box> },
     { label: 'Job Preferences', element: <Box></Box> },
     { label: 'Career Developement Assessments', element: <Box></Box> },
