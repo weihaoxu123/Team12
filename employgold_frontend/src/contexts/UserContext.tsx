@@ -5,8 +5,8 @@ type UserContextProviderProps = {
 };
 
 type UserContextType = {
-  userGroup: String;
-  setUserGroup: React.Dispatch<React.SetStateAction<String>>;
+  userGroup: String | null;
+  setUserGroup: React.Dispatch<React.SetStateAction<String | null>>;
 };
 
 export const UserContext = createContext<UserContextType | null>(null);
@@ -14,7 +14,7 @@ export const UserContext = createContext<UserContextType | null>(null);
 export default function UserContextProvider({
   children,
 }: UserContextProviderProps) {
-  const [userGroup, setUserGroup] = useState<String>('CANDIDATE');
+  const [userGroup, setUserGroup] = useState<String | null>('candidate');
 
   return (
     <UserContext.Provider value={{ userGroup, setUserGroup }}>
