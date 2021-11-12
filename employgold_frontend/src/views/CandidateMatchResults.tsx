@@ -77,6 +77,12 @@ export default function CandidateMatchResults() {
                   color: '#fff',
                   width: 'fit-content',
                   textTransform: 'none',
+                }}
+                onClick={() => {
+                  window.open(
+                    'https://careers.google.com/jobs/results/81428638450229958-manager-executive-development/?category=DATA_CENTER_OPERATIONS&category=DEVELOPER_RELATIONS&category=HARDWARE_ENGINEERING&category=INFORMATION_TECHNOLOGY&category=MANUFACTURING_SUPPLY_CHAIN&category=NETWORK_ENGINEERING&category=PRODUCT_MANAGEMENT&category=PROGRAM_MANAGEMENT&category=SOFTWARE_ENGINEERING&category=TECHNICAL_INFRASTRUCTURE_ENGINEERING&category=TECHNICAL_SOLUTIONS&category=TECHNICAL_WRITING&company=Google&company=YouTube&q=',
+                    '_blank',
+                  );
                 }}>
                 Apply Now
               </Button>
