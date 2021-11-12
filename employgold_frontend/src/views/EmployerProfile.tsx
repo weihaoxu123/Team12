@@ -1,9 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Box } from '@mui/system';
 import { Button } from '@mui/material';
 import NavBar from 'src/components/NavBar';
 
 export default function EmployerProfile() {
+  const navigate = useNavigate();
+
   return (
     <Box
       sx={{
@@ -28,7 +31,6 @@ export default function EmployerProfile() {
             sx={{
               typography: 'body1',
               color: '#fff',
-
               textTransform: 'none',
             }}>
             Edit Company Profile
@@ -36,12 +38,14 @@ export default function EmployerProfile() {
         </Box>
         <Box mt={2}>
           <Button
+            onClick={() => {
+              navigate('/employer/profile/edit');
+            }}
             className="button"
             variant="contained"
             sx={{
               typography: 'body1',
               color: '#fff',
-
               textTransform: 'none',
             }}>
             Edit Employer Profile
