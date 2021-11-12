@@ -4,11 +4,10 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 
 type InfiniteListProps = {
   data: any[];
+  pageSize: number;
 };
 
-export default function InfiniteList({ data }: InfiniteListProps) {
-  const pageSize: number = 100;
-
+export default function InfiniteList({ data, pageSize }: InfiniteListProps) {
   const [count, setCount] = useState({
     prev: 0,
     next: pageSize,

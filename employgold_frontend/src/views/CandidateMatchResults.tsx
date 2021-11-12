@@ -56,7 +56,7 @@ export default function CandidateMatchResults() {
             Matched Jobs
           </Box>
           <Box>
-            <InfiniteList data={data} />
+            <InfiniteList data={data} pageSize={100} />
           </Box>
         </Box>
         <Box flex={3} sx={{ height: 'calc(100vh - 80px)', overflow: 'auto' }}>

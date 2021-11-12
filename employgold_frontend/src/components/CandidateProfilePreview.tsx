@@ -17,8 +17,6 @@ export default function CandidateProfilePreview({
   jobPreferenceInfo,
   careerDevAssessmentInfo,
 }: ICandidateProfilePreviewProps) {
-  console.log(educationAndExperienceInfo);
-
   const theme = useTheme();
 
   return (
