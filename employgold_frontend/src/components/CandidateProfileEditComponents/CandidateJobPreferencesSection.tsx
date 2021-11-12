@@ -324,7 +324,12 @@ const CandidateJobPreferenceSection: React.FC<ICandidateJobPreferenceSectionProp
 
           <Button
             className="button"
-            sx={{ textTransform: 'none', color: 'white', mt: '60px' }}
+            sx={{
+              typography: 'body1',
+              textTransform: 'none',
+              color: 'white',
+              mt: '60px',
+            }}
             variant="contained"
             type="submit"
             onClick={(e) => {
@@ -340,7 +345,12 @@ const CandidateJobPreferenceSection: React.FC<ICandidateJobPreferenceSectionProp
             className="button"
             onClick={props.handleBackClick}
             variant="outlined"
-            sx={{ textTransform: 'none', mb: '100px', mt: 2 }}>
+            sx={{
+              typography: 'body1',
+              textTransform: 'none',
+              mb: '100px',
+              mt: 2,
+            }}>
             Back
           </Button>
         </form>

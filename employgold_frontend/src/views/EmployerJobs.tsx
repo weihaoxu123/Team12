@@ -52,8 +52,23 @@ export default function EmployerJobs() {
             display: 'flex',
             flexDirection: 'column',
           }}>
-          <Box px={1} sx={{ typography: 'h5' }}>
-            Posted Jobs
+          <Box
+            px={1}
+            sx={{
+              typography: 'h5',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}>
+            <Box>Posted Jobs</Box>
+            <Button
+              sx={{
+                typography: 'body1',
+                width: 'fit-content',
+                textTransform: 'none',
+              }}>
+              Post New Job
+            </Button>
           </Box>
           <Box>
             <InfiniteList data={data} pageSize={100} />
@@ -78,7 +93,7 @@ export default function EmployerJobs() {
                   width: 'fit-content',
                   textTransform: 'none',
                 }}>
-                Apply Now
+                Remove Job
               </Button>
             </Box>
 

@@ -1,4 +1,6 @@
 interface IEmployerInfo {
+  companyName: string;
+  position: string;
   nameTitle: INameTitle;
   legalFirstName: string;
   legalMiddleName?: string;
