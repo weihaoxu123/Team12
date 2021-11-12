@@ -1,9 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { Box } from '@mui/system';
 import { Button } from '@mui/material';
+
 import NavBar from 'src/components/NavBar';
 
 export default function CandidateProfile() {
+  const navigate = useNavigate();
   return (
     <Box
       sx={{
@@ -36,6 +40,9 @@ export default function CandidateProfile() {
         </Box>
         <Box mt={4}>
           <Button
+            onClick={() => {
+              navigate('/candidate/profile/edit');
+            }}
             variant="contained"
             sx={{
               typography: 'body1',

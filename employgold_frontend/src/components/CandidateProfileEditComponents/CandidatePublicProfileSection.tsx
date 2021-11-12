@@ -4,7 +4,7 @@ import { Avatar, Box, Button, TextField } from '@mui/material';
 import { ChangeEventHandler } from 'react';
 
 interface ICandidatePublicProfileSectionProps {
-  publicProfile: IPublicProfileInfo | undefined;
+  publicProfile: IPublicProfileInfo | null;
   handleSaveClick: (info: IPublicProfileInfo) => void;
   handleBackClick: () => void;
 }

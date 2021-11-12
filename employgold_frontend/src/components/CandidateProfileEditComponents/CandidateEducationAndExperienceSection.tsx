@@ -18,7 +18,7 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import * as dfs from 'date-fns';
 
 interface ICandidateEducationAndExperienceSectionProps {
-  educationAndExperienceInfo: IEducationAndExperienceInfo | undefined;
+  educationAndExperienceInfo: IEducationAndExperienceInfo | null;
   handleSaveClick: (info: IEducationAndExperienceInfo) => void;
   handleBackClick: () => void;
 }

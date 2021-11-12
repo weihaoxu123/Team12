@@ -19,7 +19,7 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import HandymanIcon from '@mui/icons-material/Handyman';
 
 interface ICandidateAssessmentSectionProps {
-  careerDevAssessmentInfo: ICareerDevAssessmentsInfo | undefined;
+  careerDevAssessmentInfo: ICareerDevAssessmentsInfo | null;
   handleSaveClick: (info: ICareerDevAssessmentsInfo) => void;
   handleBackClick: () => void;
 }
