@@ -2,6 +2,7 @@ import CandidateMatchResults from '../views/CandidateMatchResults';
 import CandidateProfile from 'src/views/CandidateProfile';
 import EmployerMatchResults from '../views/EmployerMatchResults';
 import EmployerProfile from 'src/views/EmployerProfile';
+import EmployerJobs from 'src/views/EmployerJobs';
 import LandingPage from '../views/LandingPage';
 import SignIn from '../views/SignIn';
 import SignUp from '../views/SignUp';
@@ -34,6 +35,11 @@ export const routes: IRoutes[] = [
     name: 'Employer Profile',
     path: '/employer/profile',
     element: <EmployerProfile />,
+  },
+  {
+    name: 'Employer Jobs',
+    path: '/employer/jobs',
+    element: <EmployerJobs />,
   },
   {
     name: 'Sign In',

@@ -10,11 +10,13 @@ import {
   Avatar,
   Button,
 } from '@mui/material';
+import { useTheme } from '@mui/system';
 
 import { UserContext } from 'src/contexts/UserContext';
 
 export default function NavBar() {
   const navigate = useNavigate();
+  const theme = useTheme();
   const userContext = useContext(UserContext);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -26,7 +28,8 @@ export default function NavBar() {
     setAnchorEl(null);
   };
 
-  const userGroup = userContext != null ? userContext.userGroup : '';
+  // const userGroup = userContext != null ? userContext.userGroup : '';
+  const userGroup = window.localStorage.getItem('userGroup');
 
   const displayDesktop = () => {
     return (
@@ -39,16 +42,35 @@ export default function NavBar() {
             justifyContent: 'space-between',
           }}
           mx={8}>
-          <Box
-            sx={{
-              typography: 'h3',
-              fontFamily: 'Wire One',
-              fontWeight: 700,
-              cursor: 'pointer',
-            }}
-            color="white"
-            onClick={() => navigate(`/${userGroup}/matches`)}>
-            EmployGold
+          <Box sx={{ display: 'flex', gap: 1 }}>
+            <Box
+              sx={{
+                typography: 'h3',
+                fontFamily: 'Wire One',
+                fontWeight: 700,
+                cursor: 'pointer',
+              }}
+              color="white"
+              onClick={() => navigate(`/${userGroup}/matches`)}>
+              EmployGold
+            </Box>
+            {userGroup === 'employer' && (
+              <Box
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  height: 'fit-content',
+                  padding: '0px 4px',
+                  marginTop: 1,
+                  typography: 'caption',
+                  borderRadius: 10,
+                  backgroundColor: '#fff',
+                  color: theme.palette.primary.main,
+                }}>
+                Employer
+              </Box>
+            )}
           </Box>
           <Box
             sx={{
@@ -84,7 +106,7 @@ export default function NavBar() {
                 textTransform: 'none',
               }}
               onClick={() => navigate(`/${userGroup}/profile`)}>
-              Profile
+              {userGroup === 'candidate' ? 'Profile' : 'Company'}
             </Button>
             <Box>
               <IconButton onClick={handleClick} size="medium">
