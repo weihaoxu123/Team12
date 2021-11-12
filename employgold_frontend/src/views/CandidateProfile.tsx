@@ -35,7 +35,7 @@ export default function CandidateProfile() {
               height: 50,
               textTransform: 'none',
             }}>
-            View Profile
+            View Candidate Profile
           </Button>
         </Box>
         <Box mt={4}>
@@ -51,7 +51,7 @@ export default function CandidateProfile() {
               height: 50,
               textTransform: 'none',
             }}>
-            Edit Profile
+            Edit Candidate Profile
           </Button>
         </Box>
       </Box>

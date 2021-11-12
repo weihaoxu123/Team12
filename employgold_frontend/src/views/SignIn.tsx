@@ -9,8 +9,8 @@ export default function SignIn() {
   const theme = useTheme();
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
-  const [email, setEmail] = useState<String>('');
-  const [password, setPassword] = useState<String>('');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
   const handleEmailChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setEmail(e.currentTarget.value);
@@ -26,10 +26,10 @@ export default function SignIn() {
     // const user = await signIn();
     const userInfo = {
       token: '2easdjin87q1',
-      userGroup: 'candidate',
+      userGroup: email,
     };
     window.localStorage.setItem('token', userInfo.token);
-    window.localStorage.setItem('userGroup', userInfo.userGroup);
+    window.localStorage.setItem('userGroup', email);
     navigate(`/${userInfo.userGroup}/matches`);
   };
 

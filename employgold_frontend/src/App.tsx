@@ -16,6 +16,7 @@ const outerTheme = createTheme({
     h6: { fontFamily: 'Ubuntu' },
     body1: { fontFamily: 'Ubuntu' },
     body2: { fontFamily: 'Ubuntu' },
+    caption: { fontFamily: 'Ubuntu' },
   },
 });
 

@@ -20,7 +20,7 @@ export default function EmployerProfile() {
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-        <Box sx={{ typography: 'h4' }}>Employer Profile</Box>
+        <Box sx={{ typography: 'h4' }}>Company Profile</Box>
         <Box mt={8}>
           <Button
             variant="contained"
@@ -31,7 +31,7 @@ export default function EmployerProfile() {
               height: 50,
               textTransform: 'none',
             }}>
-            View Profile
+            View Company Profile
           </Button>
         </Box>
         <Box mt={4}>
@@ -44,7 +44,7 @@ export default function EmployerProfile() {
               height: 50,
               textTransform: 'none',
             }}>
-            Edit Profile
+            Edit Company Profile
           </Button>
         </Box>
       </Box>
