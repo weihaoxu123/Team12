@@ -106,7 +106,7 @@ export default function NavBar() {
                 textTransform: 'none',
               }}
               onClick={() => navigate(`/${userGroup}/profile`)}>
-              {userGroup === 'candidate' ? 'Profile' : 'Company'}
+              Profile
             </Button>
             <Box>
               <IconButton onClick={handleClick} size="medium">
