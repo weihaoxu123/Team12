@@ -16,7 +16,7 @@ import {
 } from '@mui/material';
 
 interface ICandidateJobPreferenceSectionProps {
-  jobPreferenceInfo: IJobPreferenceInfo | undefined;
+  jobPreferenceInfo: IJobPreferenceInfo | null;
   handleSaveClick: (info: IJobPreferenceInfo) => void;
   handleBackClick: () => void;
 }

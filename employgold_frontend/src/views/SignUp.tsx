@@ -12,7 +12,7 @@ export default function SignUp() {
   const [isEmployer, setIsEmployer] = useState(false);
 
   const nextStepHandler: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-    navigate(`/candidate/${userId}/profile/edit`);
+    navigate(`/candidate/profile/edit`);
   };
 
   return (
@@ -135,8 +135,7 @@ export default function SignUp() {
               textTransform: 'none',
               marginTop: 2,
             }}
-            onClick={nextStepHandler}
-          >
+            onClick={nextStepHandler}>
             Next Step
           </Button>
           <Box display="flex" alignItems="center" sx={{ typography: 'body2' }}>

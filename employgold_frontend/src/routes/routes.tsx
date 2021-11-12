@@ -44,7 +44,7 @@ export const routes: IRoutes[] = [
   { name: 'Not Found', path: '*', element: <NotFound /> },
   {
     name: 'Candidate Profile Edit',
-    path: '/candidate/:id/profile/edit',
+    path: '/candidate/profile/edit',
     element: <CandidateProfileEditPage />,
   },
 ];
