@@ -301,15 +301,13 @@ export default function CandidateProfilePreview({
                   <Box sx={{ display: 'flex' }}>
                     <Box sx={{ flex: 1, color: '#9c9c9c' }}>Company Name</Box>
                     <Box sx={{ flex: 1 }}>
-                      {experience.companyName ? experience.companyName : 'N/A'}
+                      {experience.companyName || 'N/A'}
                     </Box>
                   </Box>
                   <Box sx={{ display: 'flex' }}>
                     <Box sx={{ flex: 1, color: '#9c9c9c' }}>Position Name</Box>
                     <Box sx={{ flex: 1 }}>
-                      {experience.positionName
-                        ? experience.positionName
-                        : 'N/A'}
+                      {experience.positionName || 'N/A'}
                     </Box>
                   </Box>
                   <Box sx={{ display: 'flex' }}>
@@ -320,28 +318,20 @@ export default function CandidateProfilePreview({
                   </Box>
                   <Box sx={{ display: 'flex' }}>
                     <Box sx={{ flex: 1, color: '#9c9c9c' }}>City</Box>
-                    <Box sx={{ flex: 1 }}>
-                      {experience.city ? experience.city : 'N/A'}
-                    </Box>
+                    <Box sx={{ flex: 1 }}>{experience.city || 'N/A'}</Box>
                   </Box>
                   <Box sx={{ display: 'flex' }}>
                     <Box sx={{ flex: 1, color: '#9c9c9c' }}>State</Box>
-                    <Box sx={{ flex: 1 }}>
-                      {experience.state ? experience.state : 'N/A'}
-                    </Box>
+                    <Box sx={{ flex: 1 }}>{experience.state || 'N/A'}</Box>
                   </Box>
                   <Box sx={{ display: 'flex' }}>
                     <Box sx={{ flex: 1, color: '#9c9c9c' }}>Country</Box>
-                    <Box sx={{ flex: 1 }}>
-                      {experience.country ? experience.country : 'N/A'}
-                    </Box>
+                    <Box sx={{ flex: 1 }}>{experience.country || 'N/A'}</Box>
                   </Box>
                   <Box sx={{ display: 'flex' }}>
                     <Box sx={{ flex: 1, color: '#9c9c9c' }}>Description</Box>
                     <Box sx={{ flex: 1 }}>
-                      {experience.jobDescription
-                        ? experience.jobDescription
-                        : 'N/A'}
+                      {experience.jobDescription || 'N/A'}
                     </Box>
                   </Box>
                   <Box sx={{ display: 'flex' }}>
