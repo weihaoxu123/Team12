@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Avatar, Box, Button, TextField } from '@mui/material';
 import { ChangeEventHandler } from 'react';
 
-interface ICandidatePublicProfileSectionProps {
+interface IEmployerCompanyPublicProfileSectionProps {
   publicProfile: IPublicProfileInfo | null;
   handleSaveClick: (info: IPublicProfileInfo) => void;
   handleBackClick: () => void;
@@ -15,7 +15,7 @@ const defaultPublicProfile: IPublicProfileInfo = {
   headlineSummary: '',
 };
 
-const CandidatePublicProfileSection: React.FC<ICandidatePublicProfileSectionProps> =
+const EmployerCompanyPublicProfileSection: React.FC<IEmployerCompanyPublicProfileSectionProps> =
   (props) => {
     const [publicProfile, setPublicProfile] = useState(
       props.publicProfile || defaultPublicProfile,
@@ -124,4 +124,4 @@ const CandidatePublicProfileSection: React.FC<ICandidatePublicProfileSectionProp
     );
   };
 
-export default CandidatePublicProfileSection;
+export default EmployerCompanyPublicProfileSection;

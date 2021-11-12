@@ -49,7 +49,7 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
     const [homePhoneNumberError, setHomePhoneNumberError] = useState(false);
 
     useEffect(() => {
-      console.info(props.personalInfo);
+      // console.info(props.personalInfo);
       if (props.personalInfo) {
         setPersonalInfo({ ...props.personalInfo });
       }

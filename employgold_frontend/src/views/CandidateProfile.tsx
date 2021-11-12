@@ -27,28 +27,29 @@ export default function CandidateProfile() {
         <Box sx={{ typography: 'h4' }}>Candidate Profile</Box>
         <Box mt={8}>
           <Button
+            onClick={() => {
+              navigate('/candidate/profile/preview');
+            }}
+            className="button"
             variant="contained"
             sx={{
               typography: 'body1',
               color: '#fff',
-              width: 300,
-              height: 50,
               textTransform: 'none',
             }}>
             View Candidate Profile
           </Button>
         </Box>
-        <Box mt={4}>
+        <Box mt={2}>
           <Button
             onClick={() => {
               navigate('/candidate/profile/edit');
             }}
+            className="button"
             variant="contained"
             sx={{
               typography: 'body1',
               color: '#fff',
-              width: 300,
-              height: 50,
               textTransform: 'none',
             }}>
             Edit Candidate Profile

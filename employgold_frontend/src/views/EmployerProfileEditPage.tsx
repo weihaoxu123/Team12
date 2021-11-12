@@ -15,83 +15,21 @@ export default function EmployerProfileEditPage(
 ) {
   const theme = useTheme();
   const navigate = useNavigate();
-  const [personalInfo, setPersonalInfo] = useState<IPersonalInfo | null>(null);
-  const [publiProfile, setPublicProfile] = useState<IPublicProfileInfo | null>(
-    null,
-  );
-  const [educationAndExperienceInfo, setEducationAndExperienceInfo] =
-    useState<IEducationAndExperienceInfo | null>(null);
-  const [jobPreferenceInfo, setJobPreferenceInfo] =
-    useState<IJobPreferenceInfo | null>(null);
-
-  const [careerDevAssessmentInfo, setCareerDevAssessmentInfo] =
-    useState<ICareerDevAssessmentsInfo | null>(null);
+  const [employerInfo, setemployerInfo] = useState<IEmployerInfo | null>(null);
 
   const [activeStep, setActiveStep] = useState(0);
-  const [skipped, setSkipped] = useState(new Set());
 
   useEffect(() => {
-    //TODO: get personal info for user
-    const pi = JSON.parse(localStorage.getItem('personalInfo') || 'null');
-    setPersonalInfo({ ...pi });
-    //TODO: get public profile for user
-    const pp = JSON.parse(localStorage.getItem('publicProfile') || 'null');
-    setPublicProfile(pp);
-    //TODO: get education and work experience info
-    const eae = JSON.parse(
-      localStorage.getItem('educationAndExperience') || 'null',
-    );
-    setEducationAndExperienceInfo(eae);
-    //TODO: get job preference info
-    const jp = JSON.parse(localStorage.getItem('jobPreference') || 'null');
-    setJobPreferenceInfo(jp);
-    //TODO: get career dev assessment info
-    const cda = JSON.parse(
-      localStorage.getItem('careerDevAssessment') || 'null',
-    );
-    setCareerDevAssessmentInfo(cda);
+    //TODO: get employer info for user
+    const ei = JSON.parse(localStorage.getItem('employerInfo') || 'null');
+    setemployerInfo({ ...ei });
   }, []);
 
-  const handleBackClick = () => {
-    setActiveStep(Math.max(activeStep - 1, 0));
-  };
-
-  const handleSavePersonalInfo = async (info: IPersonalInfo) => {
+  const handleSaveEmployerInfo = async (info: IEmployerInfo) => {
     //TODO: upload info using api
-    setPersonalInfo(info);
-    localStorage.setItem('personalInfo', JSON.stringify(info));
-    setActiveStep(activeStep + 1);
-  };
-
-  const handleSavePublicProfileInfo = async (info: IPublicProfileInfo) => {
-    //TODO: upload info using api
-    setPublicProfile(info);
-    localStorage.setItem('publicProfile', JSON.stringify(info));
-    setActiveStep(activeStep + 1);
-  };
-
-  const handleSaveEducationAndExperienceInfo = async (
-    info: IEducationAndExperienceInfo,
-  ) => {
-    //TODO: upload education and experience info using api
-    setEducationAndExperienceInfo(info);
-    localStorage.setItem('educationAndExperience', JSON.stringify(info));
-    setActiveStep(activeStep + 1);
-  };
-
-  const handleSaveJobPreferenceInfo = async (info: IJobPreferenceInfo) => {
-    //TODO: upload info using api
-    setJobPreferenceInfo(info);
-    localStorage.setItem('jobPreference', JSON.stringify(info));
-    setActiveStep(activeStep + 1);
-  };
-
-  const handleSaveCareerDevAssessmentInfo = async (
-    info: ICareerDevAssessmentsInfo,
-  ) => {
-    localStorage.setItem('careerDevAssessment', JSON.stringify(info));
-    setCareerDevAssessmentInfo(info);
-    navigate('/candidate/profile');
+    setemployerInfo(info);
+    localStorage.setItem('employerInfo', JSON.stringify(info));
+    navigate('/employer/profile');
   };
 
   const steps: IStepItem[] = [
@@ -99,8 +37,8 @@ export default function EmployerProfileEditPage(
       label: 'Employer Infomation',
       element: (
         <EmployerInfoSection
-          personalInfo={personalInfo}
-          handleSaveClick={handleSavePersonalInfo}
+          employerInfo={employerInfo}
+          handleSaveClick={handleSaveEmployerInfo}
         />
       ),
     },

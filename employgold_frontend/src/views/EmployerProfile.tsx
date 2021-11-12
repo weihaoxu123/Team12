@@ -20,31 +20,31 @@ export default function EmployerProfile() {
           alignItems: 'center',
           justifyContent: 'center',
         }}>
-        <Box sx={{ typography: 'h4' }}>Company Profile</Box>
+        <Box sx={{ typography: 'h4' }}>Employer Profile</Box>
         <Box mt={8}>
           <Button
+            className="button"
             variant="contained"
             sx={{
               typography: 'body1',
               color: '#fff',
-              width: 300,
-              height: 50,
-              textTransform: 'none',
-            }}>
-            View Company Profile
-          </Button>
-        </Box>
-        <Box mt={4}>
-          <Button
-            variant="contained"
-            sx={{
-              typography: 'body1',
-              color: '#fff',
-              width: 300,
-              height: 50,
+
               textTransform: 'none',
             }}>
             Edit Company Profile
+          </Button>
+        </Box>
+        <Box mt={2}>
+          <Button
+            className="button"
+            variant="contained"
+            sx={{
+              typography: 'body1',
+              color: '#fff',
+
+              textTransform: 'none',
+            }}>
+            Edit Employer Profile
           </Button>
         </Box>
       </Box>

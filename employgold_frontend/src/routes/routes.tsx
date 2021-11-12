@@ -1,5 +1,7 @@
 import CandidateMatchResults from '../views/CandidateMatchResults';
 import CandidateProfile from 'src/views/CandidateProfile';
+import CandidateProfileEditPage from '../views/CandidateProfileEditPage';
+import CandidateProfilePreviewPage from 'src/views/CandidateProfilePreviewPage';
 import EmployerMatchResults from '../views/EmployerMatchResults';
 import EmployerProfile from 'src/views/EmployerProfile';
 import EmployerJobs from 'src/views/EmployerJobs';
@@ -7,7 +9,7 @@ import LandingPage from '../views/LandingPage';
 import SignIn from '../views/SignIn';
 import SignUp from '../views/SignUp';
 import NotFound from '../views/NotFound';
-import CandidateProfileEditPage from '../views/CandidateProfileEditPage';
+
 import EmployerProfileEditPage from 'src/views/EmployerProfileEditPage';
 export type IRoutes = {
   name: string;
@@ -31,6 +33,11 @@ export const routes: IRoutes[] = [
     name: 'Candidate Profile Edit',
     path: '/candidate/profile/edit',
     element: <CandidateProfileEditPage />,
+  },
+  {
+    name: 'Candidate Profile Preview',
+    path: '/candidate/profile/preview',
+    element: <CandidateProfilePreviewPage />,
   },
   {
     name: 'Matched Candidates',

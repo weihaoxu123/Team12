@@ -12,12 +12,12 @@ import {
   useTheme,
 } from '@mui/material';
 
-declare type ICandidateProfileEditPageProps = {
-  personalInfo: IPersonalInfo | null;
-  handleSaveClick: (info: IPersonalInfo) => void;
+declare type IEmployerProfileEditPageProps = {
+  employerInfo: IEmployerInfo | null;
+  handleSaveClick: (info: IEmployerInfo) => void;
 };
 
-const defaultPersonalInfo: IPersonalInfo = {
+const defaultEmployerInfo: IEmployerInfo = {
   nameTitle: '',
   legalFirstName: '',
   legalMiddleName: '',
@@ -38,23 +38,23 @@ const defaultPersonalInfo: IPersonalInfo = {
 
 const nameTitles = ['Mr.', 'Mrs.', 'Miss.', 'Ms.', 'Dr.', 'Capt.', 'Prof.'];
 
-const EmployerInfoSection: React.FC<ICandidateProfileEditPageProps> = (
+const EmployerInfoSection: React.FC<IEmployerProfileEditPageProps> = (
   props,
 ) => {
   const theme = useTheme();
 
-  const [personalInfo, setPersonalInfo] = useState(defaultPersonalInfo);
+  const [employerInfo, setEmployerInfo] = useState(defaultEmployerInfo);
   const [emailError, setEmailError] = useState(false);
   const [alternativeEmailError, setAlternativeEmailError] = useState(false);
   const [mobilePhoneNumberError, setMobilePhoneNumberError] = useState(false);
   const [homePhoneNumberError, setHomePhoneNumberError] = useState(false);
 
   useEffect(() => {
-    console.info(props.personalInfo);
-    if (props.personalInfo) {
-      setPersonalInfo({ ...props.personalInfo });
+    // console.info(props.employerInfo);
+    if (props.employerInfo) {
+      setEmployerInfo({ ...props.employerInfo });
     }
-  }, [props.personalInfo]);
+  }, [props.employerInfo]);
 
   const handleNameTitleSelect = (event: SelectChangeEvent) => {
     const value = event.target.value;
@@ -62,14 +62,14 @@ const EmployerInfoSection: React.FC<ICandidateProfileEditPageProps> = (
       alert('Error Selection');
       return;
     }
-    setPersonalInfo({ ...personalInfo, nameTitle: value as INameTitle });
+    setEmployerInfo({ ...employerInfo, nameTitle: value as INameTitle });
   };
 
   const handleFirstNameChange: ChangeEventHandler<HTMLInputElement> = (
     event,
   ) => {
-    setPersonalInfo({
-      ...personalInfo,
+    setEmployerInfo({
+      ...employerInfo,
       legalFirstName: event.target.value,
     });
   };
@@ -77,8 +77,8 @@ const EmployerInfoSection: React.FC<ICandidateProfileEditPageProps> = (
   const handleMiddleNameChange: ChangeEventHandler<HTMLInputElement> = (
     event,
   ) => {
-    setPersonalInfo({
-      ...personalInfo,
+    setEmployerInfo({
+      ...employerInfo,
       legalMiddleName: event.target.value,
     });
   };
@@ -86,8 +86,8 @@ const EmployerInfoSection: React.FC<ICandidateProfileEditPageProps> = (
   const handleLastNameChange: ChangeEventHandler<HTMLInputElement> = (
     event,
   ) => {
-    setPersonalInfo({
-      ...personalInfo,
+    setEmployerInfo({
+      ...employerInfo,
       legalLastName: event.target.value,
     });
   };
@@ -95,8 +95,8 @@ const EmployerInfoSection: React.FC<ICandidateProfileEditPageProps> = (
   const handlePostNominalLettersChange: ChangeEventHandler<HTMLInputElement> = (
     event,
   ) => {
-    setPersonalInfo({
-      ...personalInfo,
+    setEmployerInfo({
+      ...employerInfo,
       postNominalLetters: event.target.value,
     });
   };
@@ -104,15 +104,15 @@ const EmployerInfoSection: React.FC<ICandidateProfileEditPageProps> = (
   const handlePronounsChange: ChangeEventHandler<HTMLInputElement> = (
     event,
   ) => {
-    setPersonalInfo({
-      ...personalInfo,
+    setEmployerInfo({
+      ...employerInfo,
       pronouns: event.target.value,
     });
   };
 
   const handleEmailChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-    setPersonalInfo({
-      ...personalInfo,
+    setEmployerInfo({
+      ...employerInfo,
       email: event.target.value,
     });
   };
@@ -120,8 +120,8 @@ const EmployerInfoSection: React.FC<ICandidateProfileEditPageProps> = (
   const handleAlternativeEmailChange: ChangeEventHandler<HTMLInputElement> = (
     event,
   ) => {
-    setPersonalInfo({
-      ...personalInfo,
+    setEmployerInfo({
+      ...employerInfo,
       alternativeEmail: event.target.value,
     });
   };
@@ -129,8 +129,8 @@ const EmployerInfoSection: React.FC<ICandidateProfileEditPageProps> = (
   const handleMobileNumberChange: ChangeEventHandler<HTMLInputElement> = (
     event,
   ) => {
-    setPersonalInfo({
-      ...personalInfo,
+    setEmployerInfo({
+      ...employerInfo,
       mobileNumber: event.target.value,
     });
   };
@@ -138,55 +138,9 @@ const EmployerInfoSection: React.FC<ICandidateProfileEditPageProps> = (
   const handleHomeNumberChange: ChangeEventHandler<HTMLInputElement> = (
     event,
   ) => {
-    setPersonalInfo({
-      ...personalInfo,
+    setEmployerInfo({
+      ...employerInfo,
       homeNumber: event.target.value,
-    });
-  };
-
-  const handleAddressLine1Change: ChangeEventHandler<HTMLInputElement> = (
-    event,
-  ) => {
-    setPersonalInfo({
-      ...personalInfo,
-      addressLine1: event.target.value,
-    });
-  };
-
-  const handleAddressLine2Change: ChangeEventHandler<HTMLInputElement> = (
-    event,
-  ) => {
-    setPersonalInfo({
-      ...personalInfo,
-      addressLine2: event.target.value,
-    });
-  };
-
-  const handleCityChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-    setPersonalInfo({
-      ...personalInfo,
-      city: event.target.value,
-    });
-  };
-
-  const handleStateChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-    setPersonalInfo({
-      ...personalInfo,
-      state: event.target.value,
-    });
-  };
-
-  const handleCountryChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-    setPersonalInfo({
-      ...personalInfo,
-      country: event.target.value,
-    });
-  };
-
-  const handleZipCodeChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-    setPersonalInfo({
-      ...personalInfo,
-      zipCode: event.target.value,
     });
   };
 
@@ -238,58 +192,49 @@ const EmployerInfoSection: React.FC<ICandidateProfileEditPageProps> = (
               Basic Information
             </Box>
 
-            <FormControl sx={{ display: 'block' }}>
-              <InputLabel id="name-title-label">Title</InputLabel>
-              <Select
-                className="select"
-                sx={{ minWidth: '80px' }}
-                id="name-title"
-                labelId="name-title-label"
-                label="Title"
-                value={personalInfo.nameTitle}
-                onChange={handleNameTitleSelect}>
-                {nameTitles.map((v) => (
-                  <MenuItem key={v} value={v}>
-                    {v}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
             <TextField
               className="textBox"
               onChange={handleFirstNameChange}
-              value={personalInfo.legalFirstName}
-              sx={{ mt: '10px' }}
+              value={employerInfo.legalFirstName}
+              required
+              label="Company Name"
+            />
+            <TextField
+              className="textBox"
+              sx={{ mt: 2 }}
+              onChange={handleFirstNameChange}
+              value={employerInfo.legalFirstName}
+              label="Position"
+            />
+            <TextField
+              className="textBox"
+              onChange={handleFirstNameChange}
+              value={employerInfo.legalFirstName}
+              sx={{ mt: 2 }}
               required
               label="Legal First Name"
             />
             <TextField
               className="textBox"
               onChange={handleMiddleNameChange}
-              value={personalInfo.legalMiddleName}
-              sx={{ mt: '10px' }}
+              value={employerInfo.legalMiddleName}
+              sx={{ mt: 2 }}
               label="Legal Middle Name"
             />
             <TextField
               className="textBox"
               onChange={handleLastNameChange}
-              value={personalInfo.legalLastName}
-              sx={{ mt: '10px' }}
+              value={employerInfo.legalLastName}
+              sx={{ mt: 2 }}
               required
               label="Legal Last Name"
             />
-            <TextField
-              className="textBox"
-              onChange={handlePostNominalLettersChange}
-              value={personalInfo.postNominalLetters}
-              sx={{ mt: '10px' }}
-              label="Post Nominal Letters (If any)"
-            />
+
             <TextField
               className="textBox"
               onChange={handlePronounsChange}
-              value={personalInfo.pronouns}
-              sx={{ mt: '10px' }}
+              value={employerInfo.pronouns}
+              sx={{ mt: 2 }}
               label="Pronouns"
             />
           </Box>
@@ -318,58 +263,64 @@ const EmployerInfoSection: React.FC<ICandidateProfileEditPageProps> = (
             <TextField
               className="textBox"
               type={'email'}
-              sx={{ mt: '10px' }}
               required
               label="Email"
               error={emailError}
               onChange={handleEmailChange}
-              value={personalInfo.email}
+              value={employerInfo.email}
             />
             <TextField
               className="textBox"
               type={'email'}
-              sx={{ mt: '10px' }}
+              sx={{ mt: 2 }}
               required
               label="Alternative Email"
               error={alternativeEmailError}
               onChange={handleAlternativeEmailChange}
-              value={personalInfo.alternativeEmail}
+              value={employerInfo.alternativeEmail}
             />
             <TextField
               className="textBox"
               type={'tel'}
-              sx={{ mt: '10px' }}
+              sx={{ mt: 2 }}
               inputProps={{ pattern: '[0-9]{3}[0-9]{3}[0-9]{4}' }}
               placeholder="_ _ _ - _ _ _ - _ _ _ _"
               required
               label="Mobile Number"
               error={mobilePhoneNumberError}
               onChange={handleMobileNumberChange}
-              value={personalInfo.mobileNumber}
+              value={employerInfo.mobileNumber}
             />
             <TextField
               className="textBox"
               type={'tel'}
-              sx={{ mt: '10px' }}
+              sx={{ mt: 2 }}
               placeholder="_ _ _ - _ _ _ - _ _ _ _"
               inputProps={{ pattern: '[0-9]{3}[0-9]{3}[0-9]{4}' }}
               label="Home Number"
               error={homePhoneNumberError}
               onChange={handleHomeNumberChange}
-              value={personalInfo.homeNumber}
+              value={employerInfo.homeNumber}
             />
           </Box>
         </Box>
 
         <Button
-          sx={{ color: 'white', mt: '60px', mb: '100px', width: '300px' }}
+          className="button"
+          sx={{
+            typography: 'body1',
+            textTransform: 'none',
+            color: 'white',
+            mt: '60px',
+            mb: '100px',
+          }}
           variant="contained"
           type="submit"
           onClick={(e) => {
             e.preventDefault();
             const formEle = e.currentTarget.parentElement as HTMLFormElement;
             if (formEle.reportValidity()) {
-              props.handleSaveClick(personalInfo);
+              props.handleSaveClick(employerInfo);
             }
           }}>
           Save

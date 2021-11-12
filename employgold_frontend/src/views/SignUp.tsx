@@ -13,7 +13,27 @@ export default function SignUp() {
   const [agreeTerms, setAgreeTerms] = useState<boolean>(false);
 
   const nextStepHandler: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-    navigate(`/${isEmployer ? 'employer' : 'candidate'}/profile/edit`);
+    // const user = await signIn();
+    const userInfo = {
+      token: '2easdjin87q1',
+      userGroup: email,
+    };
+    window.localStorage.setItem('token', userInfo.token);
+    window.localStorage.setItem('userGroup', email);
+    // TODO: use API response
+    // navigate(`/${userInfo.userGroup}/matches`);
+    (email === 'candidate' || email === 'employer') &&
+      navigate(`/${isEmployer ? 'employer' : 'candidate'}/profile/edit`);
+  };
+
+  const handleEmailChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    setEmail(e.currentTarget.value);
+  };
+
+  const handlePasswordChange: React.ChangeEventHandler<HTMLInputElement> = (
+    e,
+  ) => {
+    setPassword(e.currentTarget.value);
   };
 
   const handleAgreeTerms: React.MouseEventHandler<HTMLButtonElement> = (e) => {
@@ -65,14 +85,18 @@ export default function SignUp() {
           <TextField
             className="textBox"
             required
-            id="outlined-required"
             label="Email"
+            type="email"
+            value={email}
+            onChange={handleEmailChange}
           />
           <TextField
             className="textBox"
             required
-            id="outlined-required"
             label="Password"
+            type="password"
+            value={password}
+            onChange={handlePasswordChange}
           />
           <TextField
             className="textBox"
