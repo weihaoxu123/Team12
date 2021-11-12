@@ -43,7 +43,7 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
     const theme = useTheme();
 
     const [personalInfo, setPersonalInfo] = useState(
-      props.personalInfo || defaultPersonalInfo
+      props.personalInfo || defaultPersonalInfo,
     );
     const [emailError, setEmailError] = useState(false);
     const [alternativeEmailError, setAlternativeEmailError] = useState(false);
@@ -60,7 +60,7 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
     };
 
     const handleFirstNameChange: ChangeEventHandler<HTMLInputElement> = (
-      event
+      event,
     ) => {
       setPersonalInfo({
         ...personalInfo,
@@ -69,7 +69,7 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
     };
 
     const handleMiddleNameChange: ChangeEventHandler<HTMLInputElement> = (
-      event
+      event,
     ) => {
       setPersonalInfo({
         ...personalInfo,
@@ -78,7 +78,7 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
     };
 
     const handleLastNameChange: ChangeEventHandler<HTMLInputElement> = (
-      event
+      event,
     ) => {
       setPersonalInfo({
         ...personalInfo,
@@ -95,7 +95,7 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
       };
 
     const handlePronounsChange: ChangeEventHandler<HTMLInputElement> = (
-      event
+      event,
     ) => {
       setPersonalInfo({
         ...personalInfo,
@@ -111,7 +111,7 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
     };
 
     const handleAlternativeEmailChange: ChangeEventHandler<HTMLInputElement> = (
-      event
+      event,
     ) => {
       setPersonalInfo({
         ...personalInfo,
@@ -120,7 +120,7 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
     };
 
     const handleMobileNumberChange: ChangeEventHandler<HTMLInputElement> = (
-      event
+      event,
     ) => {
       setPersonalInfo({
         ...personalInfo,
@@ -129,7 +129,7 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
     };
 
     const handleHomeNumberChange: ChangeEventHandler<HTMLInputElement> = (
-      event
+      event,
     ) => {
       setPersonalInfo({
         ...personalInfo,
@@ -138,7 +138,7 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
     };
 
     const handleAddressLine1Change: ChangeEventHandler<HTMLInputElement> = (
-      event
+      event,
     ) => {
       setPersonalInfo({
         ...personalInfo,
@@ -147,7 +147,7 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
     };
 
     const handleAddressLine2Change: ChangeEventHandler<HTMLInputElement> = (
-      event
+      event,
     ) => {
       setPersonalInfo({
         ...personalInfo,
@@ -170,7 +170,7 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
     };
 
     const handleCountryChange: ChangeEventHandler<HTMLInputElement> = (
-      event
+      event,
     ) => {
       setPersonalInfo({
         ...personalInfo,
@@ -179,7 +179,7 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
     };
 
     const handleZipCodeChange: ChangeEventHandler<HTMLInputElement> = (
-      event
+      event,
     ) => {
       setPersonalInfo({
         ...personalInfo,
@@ -195,8 +195,7 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
           justifyContent: 'center',
           alignItems: 'center',
           flexDirection: 'column',
-        }}
-      >
+        }}>
         <Box
           sx={{
             width: '80%',
@@ -204,8 +203,7 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
             textAlign: 'center',
             paddingBottom: '60px',
             borderBottom: '1px solid #9C9C9C',
-          }}
-        >
+          }}>
           Personal Information
         </Box>
         <form
@@ -215,8 +213,7 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
             justifyContent: 'center',
             alignItems: 'center',
             flexDirection: 'column',
-          }}
-        >
+          }}>
           <Box
             sx={{
               width: '80%',
@@ -224,8 +221,7 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
               borderBottom: '1px solid #9C9C9C',
               display: 'flex',
               justifyContent: 'center',
-            }}
-          >
+            }}>
             <Box sx={{ width: '320px', mt: '50px', position: 'relative' }}>
               <Box
                 sx={{
@@ -235,12 +231,11 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
                   transform: 'translateX(-100%)',
                   color: theme.palette.primary.main,
                   fontSize: 16,
-                }}
-              >
+                }}>
                 Basic Information
               </Box>
 
-              <FormControl>
+              <FormControl sx={{ display: 'block' }}>
                 <InputLabel id="name-title-label">Title</InputLabel>
                 <Select
                   sx={{ minWidth: '80px' }}
@@ -248,8 +243,7 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
                   labelId="name-title-label"
                   label="Title"
                   defaultValue={personalInfo.nameTitle}
-                  onChange={handleNameTitleSelect}
-                >
+                  onChange={handleNameTitleSelect}>
                   {nameTitles.map((v) => (
                     <MenuItem key={v} value={v}>
                       {v}
@@ -299,8 +293,7 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
               borderBottom: '1px solid #9C9C9C',
               display: 'flex',
               justifyContent: 'center',
-            }}
-          >
+            }}>
             <Box sx={{ width: '320px', mt: '50px', position: 'relative' }}>
               <Box
                 sx={{
@@ -310,8 +303,7 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
                   transform: 'translateX(-100%)',
                   color: theme.palette.primary.main,
                   fontSize: 16,
-                }}
-              >
+                }}>
                 Contact
               </Box>
               <TextField
@@ -363,8 +355,7 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
               borderBottom: '1px solid #9C9C9C',
               display: 'flex',
               justifyContent: 'center',
-            }}
-          >
+            }}>
             <Box sx={{ width: '320px', mt: '50px', position: 'relative' }}>
               <Box
                 sx={{
@@ -374,8 +365,7 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
                   transform: 'translateX(-100%)',
                   color: theme.palette.primary.main,
                   fontSize: 16,
-                }}
-              >
+                }}>
                 Home Address
               </Box>
               <TextField
@@ -433,8 +423,7 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
               if (formEle.reportValidity()) {
                 props.handleSaveClick(personalInfo);
               }
-            }}
-          >
+            }}>
             Save
           </Button>
         </form>
