@@ -6,6 +6,7 @@ import LandingPage from '../views/LandingPage';
 import SignIn from '../views/SignIn';
 import SignUp from '../views/SignUp';
 import NotFound from '../views/NotFound';
+import CandidateProfileEditPage from '../views/CandidateProfileEditPage';
 export type IRoutes = {
   name: string;
   path: string;
@@ -41,4 +42,9 @@ export const routes: IRoutes[] = [
   },
   { name: 'Sign Up', path: '/sign-up', element: <SignUp /> },
   { name: 'Not Found', path: '*', element: <NotFound /> },
+  {
+    name: 'Candidate Profile Edit',
+    path: '/candidate/:id/profile/edit',
+    element: <CandidateProfileEditPage />,
+  },
 ];

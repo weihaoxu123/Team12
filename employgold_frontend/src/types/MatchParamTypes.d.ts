@@ -8,6 +8,18 @@ interface IJobPreferenceInfo {
   femaleDiversity: boolean;
 }
 
+interface ICareerDevAssessmentsInfo {
+  learningStyleVARKResult: ILearningStyleVARKResult;
+  workingGeniusResult: IWorkingGeniusResult;
+}
+
+interface ILearningStyleVARKResult {
+  visual: string;
+  aural: string;
+  readWrite: string;
+  kinesthetic: string;
+}
+
 interface IWorkingGeniusResult {
   genius: IWorkingGeniusTypes[];
   competency: IWorkingGeniusTypes[];
