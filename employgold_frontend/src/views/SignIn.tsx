@@ -12,26 +12,25 @@ export default function SignIn() {
   const [email, setEmail] = useState<String>('');
   const [password, setPassword] = useState<String>('');
 
-  const onEmailTextFieldChange: React.ChangeEventHandler<HTMLInputElement> = (
-    e,
-  ) => {
+  const handleEmailChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setEmail(e.currentTarget.value);
   };
 
-  const onPasswordTextFieldChange: React.ChangeEventHandler<HTMLInputElement> =
-    (e) => {
-      setPassword(e.currentTarget.value);
-    };
+  const handlePasswordChange: React.ChangeEventHandler<HTMLInputElement> = (
+    e,
+  ) => {
+    setPassword(e.currentTarget.value);
+  };
 
-  const onSignInButtonClick = () => {
-    if (userContext != null) {
-      //Hard code use only
-      if (email === 'employer@employer.com') {
-        userContext.setUserGroup('employer');
-        navigate(`/employer/matches`);
-      }
-      navigate(`/${userContext.userGroup}/matches`);
-    }
+  const handleSignIn: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+    // const user = await signIn();
+    const userInfo = {
+      token: '2easdjin87q1',
+      userGroup: 'candidate',
+    };
+    window.localStorage.setItem('token', userInfo.token);
+    window.localStorage.setItem('userGroup', userInfo.userGroup);
+    navigate(`/${userInfo.userGroup}/matches`);
   };
 
   return (
@@ -82,7 +81,7 @@ export default function SignIn() {
             label="Email"
             type="email"
             value={email}
-            onChange={onEmailTextFieldChange}
+            onChange={handleEmailChange}
           />
           <TextField
             className="textBox"
@@ -90,7 +89,7 @@ export default function SignIn() {
             label="Password"
             type="password"
             value={password}
-            onChange={onPasswordTextFieldChange}
+            onChange={handlePasswordChange}
           />
           <Button
             variant="contained"
@@ -101,7 +100,7 @@ export default function SignIn() {
               textTransform: 'none',
               marginTop: 2,
             }}
-            onClick={onSignInButtonClick}>
+            onClick={handleSignIn}>
             Sign In
           </Button>
           <Box display="flex" alignItems="center" sx={{ typography: 'body2' }}>
