@@ -18,6 +18,8 @@ declare type IEmployerProfileEditPageProps = {
 };
 
 const defaultEmployerInfo: IEmployerInfo = {
+  companyName: '',
+  position: '',
   nameTitle: '',
   legalFirstName: '',
   legalMiddleName: '',
@@ -56,13 +58,22 @@ const EmployerInfoSection: React.FC<IEmployerProfileEditPageProps> = (
     }
   }, [props.employerInfo]);
 
-  const handleNameTitleSelect = (event: SelectChangeEvent) => {
-    const value = event.target.value;
-    if (!nameTitles.includes(value)) {
-      alert('Error Selection');
-      return;
-    }
-    setEmployerInfo({ ...employerInfo, nameTitle: value as INameTitle });
+  const handleCompanyNameChange: ChangeEventHandler<HTMLInputElement> = (
+    event,
+  ) => {
+    setEmployerInfo({
+      ...employerInfo,
+      companyName: event.target.value,
+    });
+  };
+
+  const handlePositionChange: ChangeEventHandler<HTMLInputElement> = (
+    event,
+  ) => {
+    setEmployerInfo({
+      ...employerInfo,
+      position: event.target.value,
+    });
   };
 
   const handleFirstNameChange: ChangeEventHandler<HTMLInputElement> = (
@@ -89,15 +100,6 @@ const EmployerInfoSection: React.FC<IEmployerProfileEditPageProps> = (
     setEmployerInfo({
       ...employerInfo,
       legalLastName: event.target.value,
-    });
-  };
-
-  const handlePostNominalLettersChange: ChangeEventHandler<HTMLInputElement> = (
-    event,
-  ) => {
-    setEmployerInfo({
-      ...employerInfo,
-      postNominalLetters: event.target.value,
     });
   };
 
@@ -194,16 +196,16 @@ const EmployerInfoSection: React.FC<IEmployerProfileEditPageProps> = (
 
             <TextField
               className="textBox"
-              onChange={handleFirstNameChange}
-              value={employerInfo.legalFirstName}
+              onChange={handleCompanyNameChange}
+              value={employerInfo.companyName}
               required
               label="Company Name"
             />
             <TextField
               className="textBox"
               sx={{ mt: 2 }}
-              onChange={handleFirstNameChange}
-              value={employerInfo.legalFirstName}
+              onChange={handlePositionChange}
+              value={employerInfo.position}
               label="Position"
             />
             <TextField

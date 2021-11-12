@@ -29,16 +29,18 @@ export default function EmployerMatchResults() {
   useEffect(() => {
     //TODO: get personal info for user
     setPersonalInfo({
-      legalFirstName: 'Yingjie',
-      legalLastName: 'Shen',
-      email: 'yingjies@usc.edu',
-      alternativeEmail: 'yingjies@usc.edu',
-      addressLine1: '123 Jefferson St',
-      city: 'Irvine',
+      legalFirstName: 'John',
+      legalLastName: 'Joe',
+      email: 'john.doe@usc.edu',
+      alternativeEmail: 'john.doe@usc.edu',
+      addressLine1: '123 Jefferson St.',
+      city: 'Los Angeles',
       state: 'CA',
       country: 'United States',
       zipCode: '90007',
-      mobileNumber: '6083207375',
+      mobileNumber: '1234567890',
+      nameTitle: 'Mr.',
+      pronouns: 'He',
     } as IPersonalInfo);
     //TODO: get public profile for user
     const pp = JSON.parse(localStorage.getItem('publicProfile') || 'null');
@@ -58,18 +60,7 @@ export default function EmployerMatchResults() {
           major: 'Computer Science',
           startDate: '1598252400000',
           currentlyEnrolled: true,
-          endDate: '1636617600000',
-        },
-        {
-          schoolName: 'University of Wisconsin - Madison',
-          degree: 'Bachelor',
-          city: 'Madison',
-          state: 'WI',
-          country: 'United States',
-          major: 'Computer Science',
-          startDate: '1516694400000',
-          currentlyEnrolled: false,
-          endDate: '1589871600000',
+          endDate: '1636704000000',
         },
       ],
       workExperienceInfos: [
@@ -79,9 +70,10 @@ export default function EmployerMatchResults() {
           city: 'Los Angeles',
           state: 'CA',
           country: 'United States',
-          startDate: '1636617600000',
+          startDate: '1636704000000',
           currentlyEmployed: true,
-          jobDescription: 'Build software',
+          jobDescription:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
           endDate: '1636704000000',
           type: 'Intern',
         },

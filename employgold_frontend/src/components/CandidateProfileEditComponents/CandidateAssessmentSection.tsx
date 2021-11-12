@@ -120,7 +120,7 @@ const CandidateAssessmentSection: React.FC<ICandidateAssessmentSectionProps> = (
           paddingBottom: '60px',
           borderBottom: '1px solid #9C9C9C',
         }}>
-        Public Profile
+        Career Developement Assessments
       </Box>
       <form
         style={{
