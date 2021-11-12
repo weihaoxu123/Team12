@@ -1,14 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { Box, useTheme } from '@mui/system';
 import { Button, TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-import { UserContext } from 'src/contexts/UserContext';
-
 export default function SignIn() {
   const theme = useTheme();
   const navigate = useNavigate();
-  const userContext = useContext(UserContext);
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
@@ -30,7 +27,8 @@ export default function SignIn() {
     };
     window.localStorage.setItem('token', userInfo.token);
     window.localStorage.setItem('userGroup', email);
-    navigate(`/${userInfo.userGroup}/matches`);
+    (email === 'candidate' || email === 'employer') &&
+      navigate(`/${userInfo.userGroup}/matches`);
   };
 
   return (

@@ -49,7 +49,7 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
     const [homePhoneNumberError, setHomePhoneNumberError] = useState(false);
 
     useEffect(() => {
-      console.info(props.personalInfo);
+      // console.info(props.personalInfo);
       if (props.personalInfo) {
         setPersonalInfo({ ...props.personalInfo });
       }
@@ -203,8 +203,8 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
         }}>
         <Box
           sx={{
+            typography: 'h4',
             width: '80%',
-            fontSize: 36,
             textAlign: 'center',
             paddingBottom: '60px',
             borderBottom: '1px solid #9C9C9C',
@@ -230,12 +230,12 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
             <Box sx={{ width: '320px', mt: '50px', position: 'relative' }}>
               <Box
                 sx={{
+                  typography: 'body1',
                   width: 'fit-content',
                   position: 'absolute',
                   left: '-80px',
                   transform: 'translateX(-100%)',
                   color: theme.palette.primary.main,
-                  fontSize: 16,
                 }}>
                 Basic Information
               </Box>
@@ -243,6 +243,7 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
               <FormControl sx={{ display: 'block' }}>
                 <InputLabel id="name-title-label">Title</InputLabel>
                 <Select
+                  className="select"
                   sx={{ minWidth: '80px' }}
                   id="name-title"
                   labelId="name-title-label"
@@ -257,35 +258,40 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
                 </Select>
               </FormControl>
               <TextField
+                className="textBox"
                 onChange={handleFirstNameChange}
                 value={personalInfo.legalFirstName}
-                sx={{ mt: '10px' }}
+                sx={{ mt: 2 }}
                 required
                 label="Legal First Name"
               />
               <TextField
+                className="textBox"
                 onChange={handleMiddleNameChange}
                 value={personalInfo.legalMiddleName}
-                sx={{ mt: '10px' }}
+                sx={{ mt: 2 }}
                 label="Legal Middle Name"
               />
               <TextField
+                className="textBox"
                 onChange={handleLastNameChange}
                 value={personalInfo.legalLastName}
-                sx={{ mt: '10px' }}
+                sx={{ mt: 2 }}
                 required
                 label="Legal Last Name"
               />
               <TextField
+                className="textBox"
                 onChange={handlePostNominalLettersChange}
                 value={personalInfo.postNominalLetters}
-                sx={{ mt: '10px' }}
+                sx={{ mt: 2 }}
                 label="Post Nominal Letters (If any)"
               />
               <TextField
+                className="textBox"
                 onChange={handlePronounsChange}
                 value={personalInfo.pronouns}
-                sx={{ mt: '10px' }}
+                sx={{ mt: 2 }}
                 label="Pronouns"
               />
             </Box>
@@ -302,18 +308,18 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
             <Box sx={{ width: '320px', mt: '50px', position: 'relative' }}>
               <Box
                 sx={{
+                  typography: 'body1',
                   width: 'fit-content',
                   position: 'absolute',
                   left: '-80px',
                   transform: 'translateX(-100%)',
                   color: theme.palette.primary.main,
-                  fontSize: 16,
                 }}>
                 Contact
               </Box>
               <TextField
+                className="textBox"
                 type={'email'}
-                sx={{ mt: '10px' }}
                 required
                 label="Email"
                 error={emailError}
@@ -321,8 +327,9 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
                 value={personalInfo.email}
               />
               <TextField
+                className="textBox"
                 type={'email'}
-                sx={{ mt: '10px' }}
+                sx={{ mt: 2 }}
                 required
                 label="Alternative Email"
                 error={alternativeEmailError}
@@ -330,8 +337,9 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
                 value={personalInfo.alternativeEmail}
               />
               <TextField
+                className="textBox"
                 type={'tel'}
-                sx={{ mt: '10px' }}
+                sx={{ mt: 2 }}
                 inputProps={{ pattern: '[0-9]{3}[0-9]{3}[0-9]{4}' }}
                 placeholder="_ _ _ - _ _ _ - _ _ _ _"
                 required
@@ -341,8 +349,9 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
                 value={personalInfo.mobileNumber}
               />
               <TextField
+                className="textBox"
                 type={'tel'}
-                sx={{ mt: '10px' }}
+                sx={{ mt: 2 }}
                 placeholder="_ _ _ - _ _ _ - _ _ _ _"
                 inputProps={{ pattern: '[0-9]{3}[0-9]{3}[0-9]{4}' }}
                 label="Home Number"
@@ -364,51 +373,56 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
             <Box sx={{ width: '320px', mt: '50px', position: 'relative' }}>
               <Box
                 sx={{
+                  typography: 'body1',
                   width: 'fit-content',
                   position: 'absolute',
                   left: '-80px',
                   transform: 'translateX(-100%)',
                   color: theme.palette.primary.main,
-                  fontSize: 16,
                 }}>
                 Home Address
               </Box>
               <TextField
-                sx={{ mt: '10px' }}
+                className="textBox"
                 onChange={handleAddressLine1Change}
                 value={personalInfo.addressLine1}
                 label="Address Line 1"
                 required
               />
               <TextField
-                sx={{ mt: '10px' }}
+                className="textBox"
+                sx={{ mt: 2 }}
                 onChange={handleAddressLine2Change}
                 value={personalInfo.addressLine2}
                 label="Address Line 2"
               />
               <TextField
-                sx={{ mt: '10px' }}
+                className="textBox"
+                sx={{ mt: 2 }}
                 onChange={handleCityChange}
                 value={personalInfo.city}
                 label="City"
                 required
               />
               <TextField
-                sx={{ mt: '10px' }}
+                className="textBox"
+                sx={{ mt: 2 }}
                 onChange={handleStateChange}
                 value={personalInfo.state}
                 label="State"
                 required
               />
               <TextField
-                sx={{ mt: '10px' }}
+                className="textBox"
+                sx={{ mt: 2 }}
                 onChange={handleCountryChange}
                 value={personalInfo.country}
                 label="Country"
                 required
               />
               <TextField
-                sx={{ mt: '10px' }}
+                className="textBox"
+                sx={{ mt: 2 }}
                 type={'number'}
                 onChange={handleZipCodeChange}
                 value={personalInfo.zipCode}
@@ -419,7 +433,14 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
           </Box>
 
           <Button
-            sx={{ color: 'white', mt: '60px', mb: '100px', width: '300px' }}
+            className="button"
+            sx={{
+              typography: 'body1',
+              color: 'white',
+              mt: '60px',
+              mb: '100px',
+              textTransform: 'none',
+            }}
             variant="contained"
             type="submit"
             onClick={(e) => {

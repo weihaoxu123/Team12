@@ -2,6 +2,7 @@
 @import './landingPage.scss';
 @import './signIn.scss';
 @import './signUp.scss';
+@import './editPage.scss';
 
 html,
 body {
@@ -18,11 +19,15 @@ body {
 }
 
 .button {
-  height: 40px;
+  height: 50px;
   width: 300px;
 }
 
 .textBox {
+  width: 300px;
+}
+
+.select {
   width: 300px;
 }
 

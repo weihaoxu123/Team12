@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { IRoutes, routes } from './routes/routes';
-import UserContextProvider, { UserContext } from './contexts/UserContext';
+import UserContextProvider from './contexts/UserContext';
 
 const outerTheme = createTheme({
   palette: {

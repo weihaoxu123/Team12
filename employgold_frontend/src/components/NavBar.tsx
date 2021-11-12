@@ -121,7 +121,7 @@ export default function NavBar() {
               MenuListProps={{
                 'aria-labelledby': 'basic-button',
               }}>
-              <MenuItem onClick={() => navigate('/')}>Logout</MenuItem>
+              <MenuItem onClick={() => navigate('/')}>Sign Out</MenuItem>
             </Menu>
           </Box>
         </Box>

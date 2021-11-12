@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { Box, useTheme } from '@mui/material';
 import Stepper from '@mui/material/Stepper';
@@ -11,7 +12,6 @@ import CandidatePersonalInfoSection from 'src/components/CandidateProfileEditCom
 import CandidatePublicProfileSection from 'src/components/CandidateProfileEditComponents/CandidatePublicProfileSection';
 import CandidateEducationAndExperienceSection from 'src/components/CandidateProfileEditComponents/CandidateEducationAndExperienceSection';
 import CandidateJobPreferenceSection from 'src/components/CandidateProfileEditComponents/CandidateJobPreferencesSection';
-import { useNavigate } from 'react-router-dom';
 import CandidateAssessmentSection from 'src/components/CandidateProfileEditComponents/CandidateAssessmentSection';
 
 interface ICandidateProfileEditPageProps {}
@@ -158,9 +158,9 @@ export default function CandidateProfileEditPage(
   ];
 
   return (
-    <Box>
+    <Box className="editPage">
       <Box
-        sx={{ display: 'flex', alignItems: 'center', p: 2 }}
+        sx={{ display: 'flex', alignItems: 'center', py: 2 }}
         onClick={() => {
           navigate('/');
         }}>
@@ -179,7 +179,7 @@ export default function CandidateProfileEditPage(
       <Stepper
         activeStep={activeStep}
         alternativeLabel
-        connector={<OverrideStepperConnector></OverrideStepperConnector>}
+        connector={<OverrideStepperConnector />}
         sx={{ width: '60%', margin: '0 auto', marginTop: '40px' }}>
         {steps.map((v: IStepItem) => {
           return (

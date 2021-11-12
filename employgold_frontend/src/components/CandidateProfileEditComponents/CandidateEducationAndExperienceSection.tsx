@@ -264,8 +264,8 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
         }}>
         <Box
           sx={{
+            typography: 'h4',
             width: '80%',
-            fontSize: 36,
             textAlign: 'center',
             paddingBottom: '60px',
             borderBottom: '1px solid #9C9C9C',
@@ -291,12 +291,12 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
             <Box sx={{ width: '320px', mt: '50px', position: 'relative' }}>
               <Box
                 sx={{
+                  typography: 'body1',
                   width: 'fit-content',
                   position: 'absolute',
                   left: '-80px',
                   transform: 'translateX(-100%)',
                   color: theme.palette.primary.main,
-                  fontSize: 16,
                 }}>
                 Education
               </Box>
@@ -309,15 +309,16 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
                     }}
                     key={`degree-${idx}`}>
                     <TextField
+                      className="textBox"
                       value={education.schoolName}
                       required
-                      sx={{ mt: '10px' }}
                       label="School Name"
                       onChange={handleEudcationSchoolNameChange(idx)}
                     />
-                    <FormControl sx={{ mt: '10px' }}>
+                    <FormControl sx={{ mt: 2 }}>
                       <InputLabel id={`degree-label-${idx}`}>Degree</InputLabel>
                       <Select
+                        className="select"
                         sx={{ minWidth: '150px' }}
                         id={`degree-${idx}`}
                         labelId={`degree-label-${idx}`}
@@ -332,40 +333,46 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
                       </Select>
                     </FormControl>
                     <TextField
+                      className="textBox"
                       value={education.city}
                       required
-                      sx={{ mt: '10px' }}
+                      sx={{ mt: 2 }}
                       label="City"
                       onChange={handleEducationCityChange(idx)}
                     />
                     <TextField
+                      className="textBox"
                       value={education.state}
                       required
-                      sx={{ mt: '10px' }}
+                      sx={{ mt: 2 }}
                       label="State"
                       onChange={handleEducationStateChange(idx)}
                     />
                     <TextField
+                      className="textBox"
                       value={education.country}
                       required
-                      sx={{ mt: '10px' }}
+                      sx={{ mt: 2 }}
                       label="Country"
                       onChange={handleEducationCountryChange(idx)}
                     />
                     <TextField
+                      className="textBox"
                       value={education.major}
                       required
-                      sx={{ mt: '10px' }}
+                      sx={{ mt: 2 }}
                       label="Major"
                       onChange={handleEducationMajorChange(idx)}
                     />
                     <TextField
+                      className="textBox"
                       value={education.minor}
-                      sx={{ mt: '10px' }}
+                      sx={{ mt: 2 }}
                       label="Minor"
                       onChange={handleEducationMinorChange(idx)}
                     />
                     <TextField
+                      className="textBox"
                       value={
                         education.startDate
                           ? dfs.format(
@@ -382,12 +389,13 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
                       inputProps={{
                         max: dfs.format(new Date(), 'yyyy-MM-dd'),
                       }}
-                      sx={{ mt: '10px' }}
+                      sx={{ mt: 2 }}
                       label="Start Date"
                       onChange={handleEducationStartDateChange(idx)}
                     />
                     {!education.currentlyEnrolled && education.startDate && (
                       <TextField
+                        className="textBox"
                         value={
                           education.endDate
                             ? dfs.format(
@@ -408,7 +416,7 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
                         InputLabelProps={{
                           shrink: true,
                         }}
-                        sx={{ mt: '10px' }}
+                        sx={{ mt: 2 }}
                         label="End Date"
                         onChange={handleEducationEndDateChange(idx)}
                       />
@@ -434,7 +442,10 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
                           onClick={() => {
                             handleRemoveEducationInfoClick(idx);
                           }}
-                          sx={{ color: theme.palette.primary.main }}>
+                          sx={{
+                            typography: 'body1',
+                            color: theme.palette.primary.main,
+                          }}>
                           <u>Remove</u>
                         </Box>
                       )}
@@ -450,7 +461,9 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
                         }}
                         onClick={handleNewEducationInfoClick}>
                         <AddCircleOutlineIcon />
-                        &nbsp;Add New Education Experience
+                        <Box sx={{ typography: 'body1', ml: 1 }}>
+                          Add New Education Experience
+                        </Box>
                       </Box>
                     )}
                   </Box>
@@ -472,12 +485,12 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
             <Box sx={{ width: '320px', mt: '50px', position: 'relative' }}>
               <Box
                 sx={{
+                  typography: 'body1',
                   width: 'fit-content',
                   position: 'absolute',
                   left: '-80px',
                   transform: 'translateX(-100%)',
                   color: theme.palette.primary.main,
-                  fontSize: 16,
                 }}>
                 Work Experience
               </Box>
@@ -490,49 +503,55 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
                     }}
                     key={`degree-${idx}`}>
                     <TextField
+                      className="textBox"
                       value={workExperience.companyName}
                       required
-                      sx={{ mt: '10px' }}
                       label="Company"
                       onChange={handleWorkExperienceCompanyNameChange(idx)}
                     />
                     <TextField
+                      className="textBox"
                       value={workExperience.positionName}
                       required
-                      sx={{ mt: '10px' }}
+                      sx={{ mt: 2 }}
                       label="Posistion"
                       onChange={handleWorkExperiencePositionChange(idx)}
                     />
                     <TextField
+                      className="textBox"
                       value={workExperience.type}
-                      sx={{ mt: '10px' }}
+                      sx={{ mt: 2 }}
                       label="Type"
                       onChange={handleWorkExperienceTypeChange(idx)}
                     />
                     <TextField
+                      className="textBox"
                       value={workExperience.city}
                       required
-                      sx={{ mt: '10px' }}
+                      sx={{ mt: 2 }}
                       label="City"
                       onChange={handleWorkExperienceCityChange(idx)}
                     />
                     <TextField
+                      className="textBox"
                       value={workExperience.state}
                       required
-                      sx={{ mt: '10px' }}
+                      sx={{ mt: 2 }}
                       label="State"
                       onChange={handleWorkExperienceStateChange(idx)}
                     />
                     <TextField
+                      className="textBox"
                       value={workExperience.country}
                       required
-                      sx={{ mt: '10px' }}
+                      sx={{ mt: 2 }}
                       label="Country"
                       onChange={handleWorkExperienceCountryChange(idx)}
                     />
 
                     <TextField
-                      sx={{ mt: '10px', width: '100%' }}
+                      className="textBox"
+                      sx={{ mt: '10px' }}
                       InputLabelProps={{
                         shrink: Boolean(workExperience.jobDescription),
                       }}
@@ -543,6 +562,7 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
                       onChange={handleWorkExperienceJobDescriptionChange(idx)}
                     />
                     <TextField
+                      className="textBox"
                       value={
                         workExperience.startDate
                           ? dfs.format(
@@ -559,13 +579,14 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
                       inputProps={{
                         max: dfs.format(new Date(), 'yyyy-MM-dd'),
                       }}
-                      sx={{ mt: '10px' }}
+                      sx={{ mt: 2 }}
                       label="Start Date"
                       onChange={handleWorkExperienceStartDateChange(idx)}
                     />
                     {!workExperience.currentlyEmployed &&
                       workExperience.startDate && (
                         <TextField
+                          className="textBox"
                           value={
                             workExperience.endDate
                               ? dfs.format(
@@ -586,7 +607,7 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
                           InputLabelProps={{
                             shrink: true,
                           }}
-                          sx={{ mt: '10px' }}
+                          sx={{ mt: 2 }}
                           label="End Date"
                           onChange={handleWorkExperienceEndDateChange(idx)}
                         />
@@ -612,7 +633,10 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
                           onClick={() => {
                             handleRemoveWorkExperienceInfoClick(idx);
                           }}
-                          sx={{ color: theme.palette.primary.main }}>
+                          sx={{
+                            typography: 'body1',
+                            color: theme.palette.primary.main,
+                          }}>
                           <u>Remove</u>
                         </Box>
                       )}
@@ -628,7 +652,9 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
                         }}
                         onClick={handleNewWorkExperienceInfoClick}>
                         <AddCircleOutlineIcon />
-                        &nbsp;Add New Work Experience
+                        <Box sx={{ typography: 'body1', ml: 1 }}>
+                          Add New Work Experience
+                        </Box>
                       </Box>
                     )}
                   </Box>
@@ -637,7 +663,13 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
             </Box>
           </Box>
           <Button
-            sx={{ color: 'white', mt: '60px', width: '300px' }}
+            className="button"
+            sx={{
+              color: 'white',
+              mt: '60px',
+              typography: 'body1',
+              textTransform: 'none',
+            }}
             variant="contained"
             type="submit"
             onClick={(e) => {
@@ -653,9 +685,15 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
             Save
           </Button>
           <Button
+            className="button"
             onClick={props.handleBackClick}
             variant="outlined"
-            sx={{ width: '300px', mb: '100px', mt: '10px' }}>
+            sx={{
+              typography: 'body1',
+              textTransform: 'none',
+              mb: '100px',
+              mt: 2,
+            }}>
             Back
           </Button>
         </form>

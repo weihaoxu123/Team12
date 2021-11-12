@@ -6,13 +6,38 @@ import { useNavigate } from 'react-router-dom';
 export default function SignUp() {
   const theme = useTheme();
   const navigate = useNavigate();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [userId, setUserId] = useState<String>('0');
-  const [isEmployer, setIsEmployer] = useState(false);
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  // const [userId, setUserId] = useState<string>('0');
+  const [isEmployer, setIsEmployer] = useState<boolean>(false);
+  const [agreeTerms, setAgreeTerms] = useState<boolean>(false);
 
   const nextStepHandler: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-    navigate(`/candidate/profile/edit`);
+    // const user = await signIn();
+    const userInfo = {
+      token: '2easdjin87q1',
+      userGroup: email,
+    };
+    window.localStorage.setItem('token', userInfo.token);
+    window.localStorage.setItem('userGroup', email);
+    // TODO: use API response
+    // navigate(`/${userInfo.userGroup}/matches`);
+    (email === 'candidate' || email === 'employer') &&
+      navigate(`/${isEmployer ? 'employer' : 'candidate'}/profile/edit`);
+  };
+
+  const handleEmailChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    setEmail(e.currentTarget.value);
+  };
+
+  const handlePasswordChange: React.ChangeEventHandler<HTMLInputElement> = (
+    e,
+  ) => {
+    setPassword(e.currentTarget.value);
+  };
+
+  const handleAgreeTerms: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+    setAgreeTerms((agreeTerms) => !agreeTerms);
   };
 
   return (
@@ -60,14 +85,18 @@ export default function SignUp() {
           <TextField
             className="textBox"
             required
-            id="outlined-required"
             label="Email"
+            type="email"
+            value={email}
+            onChange={handleEmailChange}
           />
           <TextField
             className="textBox"
             required
-            id="outlined-required"
             label="Password"
+            type="password"
+            value={password}
+            onChange={handlePasswordChange}
           />
           <TextField
             className="textBox"
@@ -100,7 +129,12 @@ export default function SignUp() {
               typography: 'body1',
             }}>
             <Box mr={1}>
-              <Checkbox sx={{ padding: 0, margin: 0 }} size="small" />
+              <Checkbox
+                sx={{ padding: 0, margin: 0 }}
+                size="small"
+                value={agreeTerms}
+                onClick={handleAgreeTerms}
+              />
             </Box>
             <Box display="flex" alignItems="center">
               I agree to
@@ -129,6 +163,7 @@ export default function SignUp() {
           <Button
             variant="contained"
             className="button"
+            disabled={!agreeTerms}
             sx={{
               typography: 'body1',
               color: '#fff',
