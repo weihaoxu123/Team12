@@ -10,6 +10,9 @@ import OverrideStepperIcon from '../components/OverrideStepperIcon';
 import CandidatePersonalInfoSection from 'src/components/CandidateProfileEditComponents/CandidatePersonalInfoSection';
 import CandidatePublicProfileSection from 'src/components/CandidateProfileEditComponents/CandidatePublicProfileSection';
 import CandidateEducationAndExperienceSection from 'src/components/CandidateProfileEditComponents/CandidateEducationAndExperienceSection';
+import CandidateJobPreferenceSection from 'src/components/CandidateProfileEditComponents/CandidateJobPreferencesSection';
+import { useNavigate } from 'react-router-dom';
+import CandidateAssessmentSection from 'src/components/CandidateProfileEditComponents/CandidateAssessmentSection';
 
 interface ICandidateProfileEditPageProps {}
 interface IStepItem {
@@ -21,12 +24,18 @@ export default function CandidateProfileEditPage(
   props: ICandidateProfileEditPageProps,
 ) {
   const theme = useTheme();
+  const navigate = useNavigate();
   const [personalInfo, setPersonalInfo] = useState<IPersonalInfo>();
   const [publiProfile, setPublicProfile] = useState<IPublicProfileInfo>();
   const [educationAndExperienceInfo, setEducationAndExperienceInfo] =
     useState<IEducationAndExperienceInfo>();
+  const [jobPreferenceInfo, setJobPreferenceInfo] =
+    useState<IJobPreferenceInfo>();
 
-  const [activeStep, setActiveStep] = useState(2);
+  const [careerDevAssessmentInfo, setCareerDevAssessmentInfo] =
+    useState<ICareerDevAssessmentsInfo>();
+
+  const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set());
 
   useEffect(() => {
@@ -36,6 +45,10 @@ export default function CandidateProfileEditPage(
     setPublicProfile(undefined);
     //TODO: get education and work experience info
     setEducationAndExperienceInfo(undefined);
+    //TODO: get job preference info
+    setJobPreferenceInfo(undefined);
+    //TODO: get career dev assessment info
+    setCareerDevAssessmentInfo(undefined);
   }, []);
 
   const handleBackClick = () => {
@@ -54,6 +67,12 @@ export default function CandidateProfileEditPage(
     setActiveStep(activeStep + 1);
   };
 
+  const handleSaveJobPreferenceInfo = async (info: IJobPreferenceInfo) => {
+    //TODO: upload info using api
+    setJobPreferenceInfo(info);
+    setActiveStep(activeStep + 1);
+  };
+
   const handleSaveEducationAndExperienceInfo = async (
     info: IEducationAndExperienceInfo,
   ) => {
@@ -61,6 +80,14 @@ export default function CandidateProfileEditPage(
     console.info(info);
     setEducationAndExperienceInfo(info);
     setActiveStep(activeStep + 1);
+  };
+
+  const handleSaveCareerDevAssessmentInfo = async (
+    info: ICareerDevAssessmentsInfo,
+  ) => {
+    console.info(info);
+    setCareerDevAssessmentInfo(info);
+    // navigate('/candidate/profile');
   };
 
   const steps: IStepItem[] = [
@@ -93,9 +120,27 @@ export default function CandidateProfileEditPage(
         />
       ),
     },
-    { label: 'Job Preferences', element: <Box></Box> },
-    { label: 'Career Developement Assessments', element: <Box></Box> },
-    { label: 'References', element: <Box></Box> },
+    {
+      label: 'Job Preferences',
+      element: (
+        <CandidateJobPreferenceSection
+          jobPreferenceInfo={jobPreferenceInfo}
+          handleSaveClick={handleSaveJobPreferenceInfo}
+          handleBackClick={handleBackClick}
+        />
+      ),
+    },
+    {
+      label: 'Career Developement Assessments',
+      element: (
+        <CandidateAssessmentSection
+          careerDevAssessmentInfo={careerDevAssessmentInfo}
+          handleBackClick={handleBackClick}
+          handleSaveClick={handleSaveCareerDevAssessmentInfo}
+        />
+      ),
+    },
+    // { label: 'References', element: <Box></Box> },
   ];
 
   return (

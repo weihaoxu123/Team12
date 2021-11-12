@@ -65,12 +65,12 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
     const theme = useTheme();
     const [educationInfos, setEducationInfos] = useState(
       props.educationAndExperienceInfo?.educationInfos ||
-        defaultEducationAndExperienceInfo.educationInfos
+        defaultEducationAndExperienceInfo.educationInfos,
     );
 
     const [workExperienceInfos, setWorkExperienceInfos] = useState(
       props.educationAndExperienceInfo?.workExperienceInfos ||
-        defaultEducationAndExperienceInfo.workExperienceInfos
+        defaultEducationAndExperienceInfo.workExperienceInfos,
     );
 
     const handleNewEducationInfoClick = () => {
@@ -156,7 +156,7 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
       };
 
     const handleCurrentlyEnrolledChange: (
-      idx: number
+      idx: number,
     ) => (event: React.ChangeEvent<HTMLInputElement>) => void =
       (idx) => (event) => {
         educationInfos[idx].currentlyEnrolled = event.target.checked;
@@ -246,7 +246,7 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
       };
 
     const handleCurrentlyEmployedChange: (
-      idx: number
+      idx: number,
     ) => (event: React.ChangeEvent<HTMLInputElement>) => void =
       (idx) => (event) => {
         workExperienceInfos[idx].currentlyEmployed = event.target.checked;
@@ -261,8 +261,7 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
           justifyContent: 'center',
           alignItems: 'center',
           flexDirection: 'column',
-        }}
-      >
+        }}>
         <Box
           sx={{
             width: '80%',
@@ -270,8 +269,7 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
             textAlign: 'center',
             paddingBottom: '60px',
             borderBottom: '1px solid #9C9C9C',
-          }}
-        >
+          }}>
           Education and Experience
         </Box>
         <form
@@ -281,8 +279,7 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
             justifyContent: 'center',
             alignItems: 'center',
             flexDirection: 'column',
-          }}
-        >
+          }}>
           <Box
             sx={{
               width: '80%',
@@ -290,8 +287,7 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
               borderBottom: '1px solid #9C9C9C',
               display: 'flex',
               justifyContent: 'center',
-            }}
-          >
+            }}>
             <Box sx={{ width: '320px', mt: '50px', position: 'relative' }}>
               <Box
                 sx={{
@@ -301,8 +297,7 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
                   transform: 'translateX(-100%)',
                   color: theme.palette.primary.main,
                   fontSize: 16,
-                }}
-              >
+                }}>
                 Education
               </Box>
 
@@ -312,8 +307,7 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
                     sx={{
                       mt: idx === 0 ? 0 : '30px',
                     }}
-                    key={`degree-${idx}`}
-                  >
+                    key={`degree-${idx}`}>
                     <TextField
                       value={education.schoolName}
                       required
@@ -329,8 +323,7 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
                         labelId={`degree-label-${idx}`}
                         label="Degree"
                         value={education.degree}
-                        onChange={handleEducationDegreeChange(idx)}
-                      >
+                        onChange={handleEducationDegreeChange(idx)}>
                         {degreeOptions.map((v) => (
                           <MenuItem key={`degree-${idx}-${v}`} value={v}>
                             {v}
@@ -377,7 +370,7 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
                         education.startDate
                           ? dfs.format(
                               Number(education.startDate),
-                              'yyyy-MM-dd'
+                              'yyyy-MM-dd',
                             )
                           : ''
                       }
@@ -399,7 +392,7 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
                           education.endDate
                             ? dfs.format(
                                 Number(education.endDate),
-                                'yyyy-MM-dd'
+                                'yyyy-MM-dd',
                               )
                             : ''
                         }
@@ -409,7 +402,7 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
                           max: dfs.format(new Date(), 'yyy-MM-dd'),
                           min: dfs.format(
                             Number(education.startDate),
-                            'yyyy-MM-dd'
+                            'yyyy-MM-dd',
                           ),
                         }}
                         InputLabelProps={{
@@ -426,8 +419,7 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
                         justifyContent: 'space-between',
                         alignItems: 'center',
                         cursor: 'pointer',
-                      }}
-                    >
+                      }}>
                       <FormControlLabel
                         control={
                           <Checkbox
@@ -442,8 +434,7 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
                           onClick={() => {
                             handleRemoveEducationInfoClick(idx);
                           }}
-                          sx={{ color: theme.palette.primary.main }}
-                        >
+                          sx={{ color: theme.palette.primary.main }}>
                           <u>Remove</u>
                         </Box>
                       )}
@@ -457,8 +448,7 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
                           color: theme.palette.primary.main,
                           cursor: 'pointer',
                         }}
-                        onClick={handleNewEducationInfoClick}
-                      >
+                        onClick={handleNewEducationInfoClick}>
                         <AddCircleOutlineIcon />
                         &nbsp;Add New Education Experience
                       </Box>
@@ -478,8 +468,7 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
               borderBottom: '1px solid #9C9C9C',
               display: 'flex',
               justifyContent: 'center',
-            }}
-          >
+            }}>
             <Box sx={{ width: '320px', mt: '50px', position: 'relative' }}>
               <Box
                 sx={{
@@ -489,8 +478,7 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
                   transform: 'translateX(-100%)',
                   color: theme.palette.primary.main,
                   fontSize: 16,
-                }}
-              >
+                }}>
                 Work Experience
               </Box>
 
@@ -500,8 +488,7 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
                     sx={{
                       mt: idx === 0 ? 0 : '30px',
                     }}
-                    key={`degree-${idx}`}
-                  >
+                    key={`degree-${idx}`}>
                     <TextField
                       value={workExperience.companyName}
                       required
@@ -560,7 +547,7 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
                         workExperience.startDate
                           ? dfs.format(
                               Number(workExperience.startDate),
-                              'yyyy-MM-dd'
+                              'yyyy-MM-dd',
                             )
                           : ''
                       }
@@ -583,7 +570,7 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
                             workExperience.endDate
                               ? dfs.format(
                                   Number(workExperience.endDate),
-                                  'yyyy-MM-dd'
+                                  'yyyy-MM-dd',
                                 )
                               : ''
                           }
@@ -593,7 +580,7 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
                             max: dfs.format(new Date(), 'yyy-MM-dd'),
                             min: dfs.format(
                               Number(workExperience.startDate),
-                              'yyyy-MM-dd'
+                              'yyyy-MM-dd',
                             ),
                           }}
                           InputLabelProps={{
@@ -610,8 +597,7 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
                         justifyContent: 'space-between',
                         alignItems: 'center',
                         cursor: 'pointer',
-                      }}
-                    >
+                      }}>
                       <FormControlLabel
                         control={
                           <Checkbox
@@ -626,8 +612,7 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
                           onClick={() => {
                             handleRemoveWorkExperienceInfoClick(idx);
                           }}
-                          sx={{ color: theme.palette.primary.main }}
-                        >
+                          sx={{ color: theme.palette.primary.main }}>
                           <u>Remove</u>
                         </Box>
                       )}
@@ -641,8 +626,7 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
                           color: theme.palette.primary.main,
                           cursor: 'pointer',
                         }}
-                        onClick={handleNewWorkExperienceInfoClick}
-                      >
+                        onClick={handleNewWorkExperienceInfoClick}>
                         <AddCircleOutlineIcon />
                         &nbsp;Add New Work Experience
                       </Box>
@@ -665,14 +649,13 @@ const CandidateEducationAndExperienceSection: React.FC<ICandidateEducationAndExp
                   workExperienceInfos: workExperienceInfos,
                 });
               }
-            }}
-          >
+            }}>
             Save
           </Button>
           <Button
             onClick={props.handleBackClick}
-            sx={{ mb: '100px', mt: '10px' }}
-          >
+            variant="outlined"
+            sx={{ width: '300px', mb: '100px', mt: '10px' }}>
             Back
           </Button>
         </form>

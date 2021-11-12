@@ -18,11 +18,11 @@ const defaultPublicProfile: IPublicProfileInfo = {
 const CandidatePublicProfileSection: React.FC<ICandidatePublicProfileSectionProps> =
   (props) => {
     const [publicProfile, setPublicProfile] = useState(
-      props.publicProfile || defaultPublicProfile
+      props.publicProfile || defaultPublicProfile,
     );
 
     const handleHeadlineChange: ChangeEventHandler<HTMLInputElement> = (
-      event
+      event,
     ) => {
       setPublicProfile({
         ...publicProfile,
@@ -31,7 +31,7 @@ const CandidatePublicProfileSection: React.FC<ICandidatePublicProfileSectionProp
     };
 
     const handleHeadlineSummaryChange: ChangeEventHandler<HTMLInputElement> = (
-      event
+      event,
     ) => {
       setPublicProfile({
         ...publicProfile,
@@ -47,8 +47,7 @@ const CandidatePublicProfileSection: React.FC<ICandidatePublicProfileSectionProp
           justifyContent: 'center',
           alignItems: 'center',
           flexDirection: 'column',
-        }}
-      >
+        }}>
         <Box
           sx={{
             width: '80%',
@@ -56,8 +55,7 @@ const CandidatePublicProfileSection: React.FC<ICandidatePublicProfileSectionProp
             textAlign: 'center',
             paddingBottom: '60px',
             borderBottom: '1px solid #9C9C9C',
-          }}
-        >
+          }}>
           Public Profile
         </Box>
         <form
@@ -67,8 +65,7 @@ const CandidatePublicProfileSection: React.FC<ICandidatePublicProfileSectionProp
             justifyContent: 'center',
             alignItems: 'center',
             flexDirection: 'column',
-          }}
-        >
+          }}>
           <Box
             sx={{
               mt: '50px',
@@ -77,8 +74,7 @@ const CandidatePublicProfileSection: React.FC<ICandidatePublicProfileSectionProp
               flexDirection: 'column',
               justifyContent: 'center',
               alignItems: 'center',
-            }}
-          >
+            }}>
             <Avatar sx={{ width: '320px', height: '320px' }}>
               PlaceHolder
             </Avatar>
@@ -114,14 +110,13 @@ const CandidatePublicProfileSection: React.FC<ICandidatePublicProfileSectionProp
               if (formEle.reportValidity()) {
                 props.handleSaveClick(publicProfile);
               }
-            }}
-          >
+            }}>
             Save
           </Button>
           <Button
             onClick={props.handleBackClick}
-            sx={{ mb: '100px', mt: '10px' }}
-          >
+            variant="outlined"
+            sx={{ width: '300px', mb: '100px', mt: '10px' }}>
             Back
           </Button>
         </form>
