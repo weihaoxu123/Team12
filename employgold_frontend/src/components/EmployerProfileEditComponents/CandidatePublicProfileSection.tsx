@@ -50,8 +50,8 @@ const CandidatePublicProfileSection: React.FC<ICandidatePublicProfileSectionProp
         }}>
         <Box
           sx={{
-            typography: 'h4',
             width: '80%',
+            fontSize: 36,
             textAlign: 'center',
             paddingBottom: '60px',
             borderBottom: '1px solid #9C9C9C',
@@ -75,18 +75,11 @@ const CandidatePublicProfileSection: React.FC<ICandidatePublicProfileSectionProp
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            <Avatar
-              sx={{
-                width: '300px',
-                height: '300px',
-                textDecoration: 'underline',
-                cursor: 'pointer',
-              }}>
-              Upload Avatar
+            <Avatar sx={{ width: '320px', height: '320px' }}>
+              PlaceHolder
             </Avatar>
             <TextField
-              className="textBox"
-              sx={{ mt: '50px' }}
+              sx={{ mt: '50px', width: '100%' }}
               defaultValue={publicProfile.headline}
               required
               label="Headline"
@@ -94,8 +87,7 @@ const CandidatePublicProfileSection: React.FC<ICandidatePublicProfileSectionProp
             />
 
             <TextField
-              className="textBox"
-              sx={{ mt: '30px' }}
+              sx={{ mt: '30px', width: '100%' }}
               InputLabelProps={{
                 shrink: Boolean(publicProfile.headlineSummary),
               }}
@@ -109,13 +101,7 @@ const CandidatePublicProfileSection: React.FC<ICandidatePublicProfileSectionProp
           </Box>
 
           <Button
-            className="button"
-            sx={{
-              typography: 'body1',
-              color: 'white',
-              mt: '60px',
-              textTransform: 'none',
-            }}
+            sx={{ color: 'white', mt: '60px', width: '300px' }}
             variant="contained"
             type="submit"
             onClick={(e) => {
@@ -128,15 +114,9 @@ const CandidatePublicProfileSection: React.FC<ICandidatePublicProfileSectionProp
             Save
           </Button>
           <Button
-            className="button"
             onClick={props.handleBackClick}
             variant="outlined"
-            sx={{
-              typography: 'body1',
-              mb: '100px',
-              mt: 2,
-              textTransform: 'none',
-            }}>
+            sx={{ width: '300px', mb: '100px', mt: '10px' }}>
             Back
           </Button>
         </form>

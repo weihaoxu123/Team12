@@ -114,8 +114,8 @@ const CandidateAssessmentSection: React.FC<ICandidateAssessmentSectionProps> = (
       }}>
       <Box
         sx={{
-          typography: 'h4',
           width: '80%',
+          fontSize: 36,
           textAlign: 'center',
           paddingBottom: '60px',
           borderBottom: '1px solid #9C9C9C',
@@ -138,7 +138,7 @@ const CandidateAssessmentSection: React.FC<ICandidateAssessmentSectionProps> = (
             display: 'flex',
             justifyContent: 'center',
           }}>
-          <Box sx={{ width: '300px', mt: '50px', position: 'relative' }}>
+          <Box sx={{ width: '320px', mt: '50px', position: 'relative' }}>
             <Box
               sx={{
                 width: 'fit-content',
@@ -146,7 +146,7 @@ const CandidateAssessmentSection: React.FC<ICandidateAssessmentSectionProps> = (
                 left: '-80px',
                 transform: 'translateX(-100%)',
                 color: theme.palette.primary.main,
-                typography: 'body1',
+                fontSize: 16,
               }}>
               Learning Style (VARK)
             </Box>
@@ -168,39 +168,32 @@ const CandidateAssessmentSection: React.FC<ICandidateAssessmentSectionProps> = (
                 color: theme.palette.primary.main,
                 cursor: 'pointer',
               }}>
-              <AddCircleOutlineIcon />
-              <Box sx={{ typography: 'body1', ml: 1 }}>
-                Take learning style test
-              </Box>
+              <AddCircleOutlineIcon /> &nbsp;Take learning style test
             </Box>
             <TextField
-              className="textBox"
               value={careerDevAssessmentInfo.learningStyleVARKResult.visual}
               onChange={handleVARKVisualChange}
-              sx={{ mt: 2 }}
+              sx={{ width: '320px', mt: '10px' }}
               label="Visual"
             />
             <TextField
-              className="textBox"
               value={careerDevAssessmentInfo.learningStyleVARKResult.aural}
-              sx={{ mt: 2 }}
+              sx={{ width: '320px', mt: '10px' }}
               onChange={handleVARKAuralChange}
               label="Aural"
             />
             <TextField
-              className="textBox"
               value={careerDevAssessmentInfo.learningStyleVARKResult.readWrite}
-              sx={{ mt: 2 }}
+              sx={{ width: '320px', mt: '10px' }}
               onChange={handleVARKReadWriteChange}
               label="Read/Write"
             />
             <TextField
-              className="textBox"
               value={
                 careerDevAssessmentInfo.learningStyleVARKResult.kinesthetic
               }
               onChange={handleVARKKinestheticChange}
-              sx={{ mt: 2 }}
+              sx={{ width: '320px', mt: '10px' }}
               label="Kinesthetic"
             />
           </Box>
@@ -216,7 +209,7 @@ const CandidateAssessmentSection: React.FC<ICandidateAssessmentSectionProps> = (
           }}>
           <Box
             sx={{
-              width: '300px',
+              width: '320px',
               mt: '50px',
               position: 'relative',
               display: 'flex',
@@ -229,10 +222,9 @@ const CandidateAssessmentSection: React.FC<ICandidateAssessmentSectionProps> = (
                 width: 'fit-content',
                 position: 'absolute',
                 left: '-80px',
-                top: 0,
                 transform: 'translateX(-100%)',
                 color: theme.palette.primary.main,
-                typography: 'body1',
+                fontSize: 16,
               }}>
               Job Matching Assessments
             </Box>
@@ -251,7 +243,7 @@ const CandidateAssessmentSection: React.FC<ICandidateAssessmentSectionProps> = (
             display: 'flex',
             justifyContent: 'center',
           }}>
-          <Box sx={{ width: '300px', mt: '50px', position: 'relative' }}>
+          <Box sx={{ width: '320px', mt: '50px', position: 'relative' }}>
             <Box
               sx={{
                 width: 'fit-content',
@@ -259,7 +251,7 @@ const CandidateAssessmentSection: React.FC<ICandidateAssessmentSectionProps> = (
                 left: '-80px',
                 transform: 'translateX(-100%)',
                 color: theme.palette.primary.main,
-                typography: 'body1',
+                fontSize: 16,
               }}>
               Working Genius
             </Box>
@@ -279,12 +271,9 @@ const CandidateAssessmentSection: React.FC<ICandidateAssessmentSectionProps> = (
                 color: theme.palette.primary.main,
                 cursor: 'pointer',
               }}>
-              <AddCircleOutlineIcon />
-              <Box sx={{ typography: 'body1', ml: 1 }}>
-                Take Working Genius test
-              </Box>
+              <AddCircleOutlineIcon /> &nbsp;Take Working Genius test
             </Box>
-            <FormControl sx={{ mt: 2, width: '300px' }}>
+            <FormControl sx={{ mt: '30px', width: '320px' }}>
               <InputLabel id="working-genius-checkbox-label">
                 Working Genius
               </InputLabel>
@@ -310,7 +299,7 @@ const CandidateAssessmentSection: React.FC<ICandidateAssessmentSectionProps> = (
                 ))}
               </Select>
             </FormControl>
-            <FormControl sx={{ mt: 2, width: '300px' }}>
+            <FormControl sx={{ mt: '30px', width: '320px' }}>
               <InputLabel id="working-competency-checkbox-label">
                 Working Competency
               </InputLabel>
@@ -336,7 +325,7 @@ const CandidateAssessmentSection: React.FC<ICandidateAssessmentSectionProps> = (
                 ))}
               </Select>
             </FormControl>
-            <FormControl sx={{ mt: 2, width: '300px' }}>
+            <FormControl sx={{ mt: '30px', width: '320px' }}>
               <InputLabel id="working-frustration-checkbox-label">
                 Working Frustration
               </InputLabel>
@@ -366,14 +355,7 @@ const CandidateAssessmentSection: React.FC<ICandidateAssessmentSectionProps> = (
         </Box>
 
         <Button
-          className="button"
-          sx={{
-            typography: 'body1',
-            textTransform: 'none',
-            color: 'white',
-            mt: '60px',
-            width: '300px',
-          }}
+          sx={{ color: 'white', mt: '60px', width: '300px' }}
           variant="contained"
           type="submit"
           onClick={(e) => {
@@ -386,16 +368,9 @@ const CandidateAssessmentSection: React.FC<ICandidateAssessmentSectionProps> = (
           Save
         </Button>
         <Button
-          className="button"
           onClick={props.handleBackClick}
           variant="outlined"
-          sx={{
-            typography: 'body1',
-            textTransform: 'none',
-            mt: 2,
-            width: '300px',
-            mb: '100px',
-          }}>
+          sx={{ width: '300px', mb: '100px', mt: '10px' }}>
           Back
         </Button>
       </form>

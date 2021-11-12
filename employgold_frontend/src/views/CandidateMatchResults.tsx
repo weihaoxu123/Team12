@@ -14,9 +14,9 @@ export default function CandidateMatchResults() {
         onClick={() => setTargetJobIndex(i)}
         p={1}
         sx={{
-          borderTop: i == 0 ? '1px solid silver' : 'none',
+          borderTop: i === 0 ? '1px solid silver' : 'none',
           borderBottom: '1px solid silver',
-          background: i == targetJobIndex ? 'rgba(247, 127, 0, 0.25)' : 'none',
+          background: i === targetJobIndex ? 'rgba(247, 127, 0, 0.25)' : 'none',
           userSelect: 'none',
           cursor: 'pointer',
         }}>

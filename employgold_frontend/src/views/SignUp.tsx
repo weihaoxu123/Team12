@@ -6,13 +6,18 @@ import { useNavigate } from 'react-router-dom';
 export default function SignUp() {
   const theme = useTheme();
   const navigate = useNavigate();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [userId, setUserId] = useState<String>('0');
-  const [isEmployer, setIsEmployer] = useState(false);
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  // const [userId, setUserId] = useState<string>('0');
+  const [isEmployer, setIsEmployer] = useState<boolean>(false);
+  const [agreeTerms, setAgreeTerms] = useState<boolean>(false);
 
   const nextStepHandler: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-    navigate(`/candidate/profile/edit`);
+    navigate(`/${isEmployer ? 'employer' : 'candidate'}/profile/edit`);
+  };
+
+  const handleAgreeTerms: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+    setAgreeTerms((agreeTerms) => !agreeTerms);
   };
 
   return (
@@ -100,7 +105,12 @@ export default function SignUp() {
               typography: 'body1',
             }}>
             <Box mr={1}>
-              <Checkbox sx={{ padding: 0, margin: 0 }} size="small" />
+              <Checkbox
+                sx={{ padding: 0, margin: 0 }}
+                size="small"
+                value={agreeTerms}
+                onClick={handleAgreeTerms}
+              />
             </Box>
             <Box display="flex" alignItems="center">
               I agree to
@@ -129,6 +139,7 @@ export default function SignUp() {
           <Button
             variant="contained"
             className="button"
+            disabled={!agreeTerms}
             sx={{
               typography: 'body1',
               color: '#fff',

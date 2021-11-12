@@ -121,9 +121,8 @@ const CandidateJobPreferenceSection: React.FC<ICandidateJobPreferenceSectionProp
         }}>
         <Box
           sx={{
-            typography: 'h4',
             width: '80%',
-
+            fontSize: 36,
             textAlign: 'center',
             paddingBottom: '60px',
             borderBottom: '1px solid #9C9C9C',
@@ -146,36 +145,30 @@ const CandidateJobPreferenceSection: React.FC<ICandidateJobPreferenceSectionProp
           <Box
             sx={{
               mt: '50px',
-              width: '300px',
+              width: '320px',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
             }}>
             <TextField
-              className="textBox"
+              sx={{ mt: '10px', width: '320px' }}
               type={'number'}
               onChange={handleAnnualSalaryChange}
               value={jobPreferenceInfo.annualSalary}
               label="Desired Annual Salary (in K)"
             />
 
-            <Box
-              sx={{
-                width: '300px',
-                mt: 4,
-                typography: 'body1',
-              }}>
+            <Box sx={{ width: '320px', mt: '30px' }}>
               Enter Your Desired Job Locations
               <TextField
-                className="textBox"
-                sx={{ mt: 1 }}
-                label={`Press 'Enter' for next location `}
+                sx={{ mt: '15px', width: '320px' }}
+                label={`Press 'Enter' For Next Location `}
                 onKeyDown={hanldeJobLocationEnter}
               />
               <Paper
                 variant="outlined"
                 sx={{
-                  mt: 2,
+                  mt: '15px',
                   minHeight: '50px',
                   display: 'flex',
                   flexWrap: 'wrap',
@@ -196,33 +189,23 @@ const CandidateJobPreferenceSection: React.FC<ICandidateJobPreferenceSectionProp
               </Paper>
             </Box>
 
-            <FormControl
-              sx={{
-                width: '100%',
-                mt: 4,
-                typography: 'body1',
-              }}>
+            <FormControl sx={{ width: '100%', mt: '30px' }}>
               <FormLabel>Want Job Reports To CEO?</FormLabel>
               <RadioGroup onChange={handleReportToCEOChange} row>
                 <FormControlLabel
                   control={<Radio checked={jobPreferenceInfo.jobReportToCEO} />}
-                  label="Yes"
+                  label="YES"
                 />
                 <FormControlLabel
                   control={
                     <Radio checked={!jobPreferenceInfo.jobReportToCEO} />
                   }
-                  label="No"
+                  label="NO"
                 />
               </RadioGroup>
             </FormControl>
 
-            <FormControl
-              sx={{
-                width: '100%',
-                mt: 4,
-                typography: 'body1',
-              }}>
+            <FormControl sx={{ width: '100%', mt: '30px' }}>
               <FormLabel>
                 Want Company Has a Continuous Improvement Culture?
               </FormLabel>
@@ -235,7 +218,7 @@ const CandidateJobPreferenceSection: React.FC<ICandidateJobPreferenceSectionProp
                       checked={jobPreferenceInfo.continuousImprovementCulture}
                     />
                   }
-                  label="Yes"
+                  label="YES"
                 />
                 <FormControlLabel
                   control={
@@ -243,17 +226,12 @@ const CandidateJobPreferenceSection: React.FC<ICandidateJobPreferenceSectionProp
                       checked={!jobPreferenceInfo.continuousImprovementCulture}
                     />
                   }
-                  label="No"
+                  label="NO"
                 />
               </RadioGroup>
             </FormControl>
 
-            <FormControl
-              sx={{
-                width: '100%',
-                mt: 4,
-                typography: 'body1',
-              }}>
+            <FormControl sx={{ width: '100%', mt: '30px' }}>
               <FormLabel>
                 Do You Have a Valid Authorization to Work in U.S?
               </FormLabel>
@@ -262,23 +240,18 @@ const CandidateJobPreferenceSection: React.FC<ICandidateJobPreferenceSectionProp
                   control={
                     <Radio checked={jobPreferenceInfo.authorizationToWorkUS} />
                   }
-                  label="Yes"
+                  label="YES"
                 />
                 <FormControlLabel
                   control={
                     <Radio checked={!jobPreferenceInfo.authorizationToWorkUS} />
                   }
-                  label="No"
+                  label="NO"
                 />
               </RadioGroup>
             </FormControl>
 
-            <FormControl
-              sx={{
-                width: '100%',
-                mt: 4,
-                typography: 'body1',
-              }}>
+            <FormControl sx={{ width: '100%', mt: '30px' }}>
               <FormLabel>
                 Do You Require a Visa Sponsorship in The Future?
               </FormLabel>
@@ -287,44 +260,38 @@ const CandidateJobPreferenceSection: React.FC<ICandidateJobPreferenceSectionProp
                   control={
                     <Radio checked={jobPreferenceInfo.visaSponsorship} />
                   }
-                  label="Yes"
+                  label="YES"
                 />
                 <FormControlLabel
                   control={
                     <Radio checked={!jobPreferenceInfo.visaSponsorship} />
                   }
-                  label="No"
+                  label="NO"
                 />
               </RadioGroup>
             </FormControl>
 
-            <FormControl
-              sx={{
-                width: '100%',
-                mt: 4,
-                typography: 'body1',
-              }}>
+            <FormControl sx={{ width: '100%', mt: '30px' }}>
               <FormLabel>Do You Want a Female Diversity?</FormLabel>
               <RadioGroup onChange={handleFemaleDiversityChange} row>
                 <FormControlLabel
                   control={
                     <Radio checked={jobPreferenceInfo.femaleDiversity} />
                   }
-                  label="Yes"
+                  label="YES"
                 />
                 <FormControlLabel
                   control={
                     <Radio checked={!jobPreferenceInfo.femaleDiversity} />
                   }
-                  label="No"
+                  label="NO"
                 />
               </RadioGroup>
             </FormControl>
           </Box>
 
           <Button
-            className="button"
-            sx={{ textTransform: 'none', color: 'white', mt: '60px' }}
+            sx={{ color: 'white', mt: '60px', width: '300px' }}
             variant="contained"
             type="submit"
             onClick={(e) => {
@@ -337,10 +304,9 @@ const CandidateJobPreferenceSection: React.FC<ICandidateJobPreferenceSectionProp
             Save
           </Button>
           <Button
-            className="button"
             onClick={props.handleBackClick}
             variant="outlined"
-            sx={{ textTransform: 'none', mb: '100px', mt: 2 }}>
+            sx={{ width: '300px', mb: '100px', mt: '10px' }}>
             Back
           </Button>
         </form>

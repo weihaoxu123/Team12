@@ -1,27 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import { Box, useTheme } from '@mui/material';
-import Stepper from '@mui/material/Stepper';
-import Step from '@mui/material/Step';
-import StepLabel from '@mui/material/StepLabel';
 
-import OverrideStepperConnector from '../components/OverrideStepperConnector';
-import OverrideStepperIcon from '../components/OverrideStepperIcon';
-import CandidatePersonalInfoSection from 'src/components/CandidateProfileEditComponents/CandidatePersonalInfoSection';
-import CandidatePublicProfileSection from 'src/components/CandidateProfileEditComponents/CandidatePublicProfileSection';
-import CandidateEducationAndExperienceSection from 'src/components/CandidateProfileEditComponents/CandidateEducationAndExperienceSection';
-import CandidateJobPreferenceSection from 'src/components/CandidateProfileEditComponents/CandidateJobPreferencesSection';
-import CandidateAssessmentSection from 'src/components/CandidateProfileEditComponents/CandidateAssessmentSection';
+import EmployerInfoSection from 'src/components/EmployerProfileEditComponents/EmployerInfoSection';
 
-interface ICandidateProfileEditPageProps {}
+interface IEmployerProfileEditPageProps {}
 interface IStepItem {
   label: string;
   element: JSX.Element;
 }
 
-export default function CandidateProfileEditPage(
-  props: ICandidateProfileEditPageProps,
+export default function EmployerProfileEditPage(
+  props: IEmployerProfileEditPageProps,
 ) {
   const theme = useTheme();
   const navigate = useNavigate();
@@ -106,51 +96,11 @@ export default function CandidateProfileEditPage(
 
   const steps: IStepItem[] = [
     {
-      label: 'Personal Infomation',
+      label: 'Employer Infomation',
       element: (
-        <CandidatePersonalInfoSection
+        <EmployerInfoSection
           personalInfo={personalInfo}
           handleSaveClick={handleSavePersonalInfo}
-        />
-      ),
-    },
-    {
-      label: 'Public Profile',
-      element: (
-        <CandidatePublicProfileSection
-          publicProfile={publiProfile}
-          handleSaveClick={handleSavePublicProfileInfo}
-          handleBackClick={handleBackClick}
-        />
-      ),
-    },
-    {
-      label: 'Education and Experience',
-      element: (
-        <CandidateEducationAndExperienceSection
-          educationAndExperienceInfo={educationAndExperienceInfo}
-          handleSaveClick={handleSaveEducationAndExperienceInfo}
-          handleBackClick={handleBackClick}
-        />
-      ),
-    },
-    {
-      label: 'Job Preferences',
-      element: (
-        <CandidateJobPreferenceSection
-          jobPreferenceInfo={jobPreferenceInfo}
-          handleSaveClick={handleSaveJobPreferenceInfo}
-          handleBackClick={handleBackClick}
-        />
-      ),
-    },
-    {
-      label: 'Career Developement Assessments',
-      element: (
-        <CandidateAssessmentSection
-          careerDevAssessmentInfo={careerDevAssessmentInfo}
-          handleBackClick={handleBackClick}
-          handleSaveClick={handleSaveCareerDevAssessmentInfo}
         />
       ),
     },
@@ -160,9 +110,11 @@ export default function CandidateProfileEditPage(
   return (
     <Box className="editPage">
       <Box
-        sx={{ display: 'flex', alignItems: 'center', py: 2 }}
-        onClick={() => {
-          navigate('/');
+        sx={{
+          width: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          py: 2,
         }}>
         <Box
           sx={{
@@ -172,25 +124,11 @@ export default function CandidateProfileEditPage(
             cursor: 'pointer',
             ml: 8,
             color: theme.palette.primary.main,
-          }}>
+          }}
+          onClick={() => navigate('/')}>
           EmployGold
         </Box>
       </Box>
-      <Stepper
-        activeStep={activeStep}
-        alternativeLabel
-        connector={<OverrideStepperConnector />}
-        sx={{ width: '60%', margin: '0 auto', marginTop: '40px' }}>
-        {steps.map((v: IStepItem) => {
-          return (
-            <Step key={v.label}>
-              <StepLabel StepIconComponent={OverrideStepperIcon}>
-                {v.label}
-              </StepLabel>
-            </Step>
-          );
-        })}
-      </Stepper>
       {steps[activeStep].element}
     </Box>
   );
