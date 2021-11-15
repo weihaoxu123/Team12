@@ -15,4 +15,9 @@ public class AccountServiceImpl implements AccountService{
     public void addAccount(Account account) {
         accountDao.save(account);
     }
+
+    @Override
+    public Account getAccountByEmail(String email) {
+        return accountDao.getAccountByAccountEmail(email);
+    }
 }

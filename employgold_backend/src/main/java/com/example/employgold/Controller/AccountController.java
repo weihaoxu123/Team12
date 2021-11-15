@@ -18,22 +18,28 @@ public class AccountController {
     @Autowired
     private AccountService accountService;
 
-    @RequestMapping(value = "/sign-up", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/sign-up", method = RequestMethod.POST)
     @ResponseBody
     public String createAccount(@RequestParam Map<String,Object> params){
         Account account = new Account();
-        account.setUserType((String) params.get("userType"));
+        account.setUserType((String) params.get("userGroup"));
         account.setAccountEmail((String) params.get("email"));
         account.setAccountPassword ((String) params.get("password"));
         accountService.addAccount(account);
         JobSeeker jobSeeker = new JobSeeker();
-        jobSeeker.setName("xiaoming");
         jobSeeker.setId(2);
         jobSeekerService.addJobSeeker(jobSeeker);
         return "success";
     }
-    @PostMapping("/sign-in")
-    public String SignIn(@RequestParam Map<String,Object> params) {
-        return "name：" + params.get("name") + "\nage：" + params.get("age");
+    @RequestMapping(value = "/api/sign-in", method = RequestMethod.GET)
+    @ResponseBody
+    public String signIn(@RequestParam Map<String,String> params) {
+        System.out.println(params);
+        Account account = accountService.getAccountByEmail(params.get("email"));
+
+        if (account.getAccountPassword().equals(params.get("password"))){
+            return "success";
+        }
+        else return "fail";
     }
 }
