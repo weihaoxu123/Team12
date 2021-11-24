@@ -24,7 +24,7 @@ export default function MatchedJobsCard({
           content?.id === targetId ? 'rgba(247, 127, 0, 0.25)' : 'none',
         userSelect: 'none',
         cursor: 'pointer',
-        px: 1,
+        p: 1,
       }}
       onClick={() => {
         setTargetId(content.id);
