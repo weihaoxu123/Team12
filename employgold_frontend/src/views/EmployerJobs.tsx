@@ -21,7 +21,7 @@ export default function EmployerJobs() {
           cursor: 'pointer',
         }}>
         <Box sx={{ typography: 'h6' }}>Company name {i}</Box>
-        <Box sx={{ typography: 'body1' }}>Job title</Box>
+        <Box sx={{ typography: 'body1', color: 'silver' }}>Job title</Box>
         <Box sx={{ typography: 'body1' }}>Job location</Box>
       </Box>,
     );
@@ -70,9 +70,7 @@ export default function EmployerJobs() {
               Post New Job
             </Button>
           </Box>
-          <Box>
-            <InfiniteList data={data} pageSize={100} />
-          </Box>
+          <Box>{/* <InfiniteList /> */}</Box>
         </Box>
         <Box flex={3} sx={{ height: 'calc(100vh - 80px)', overflow: 'auto' }}>
           <Box

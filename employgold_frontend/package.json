@@ -15,6 +15,7 @@
     "@types/validator": "^13.6.6",
     "date-fns": "^2.25.0",
     "history": "^5.1.0",
+    "lodash": "^4.17.21",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -50,6 +51,7 @@
     ]
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.177",
     "@types/react-dom": "^17.0.11",
     "eslint-config-prettier": "^8.3.0",
     "prettier": "2.4.1",

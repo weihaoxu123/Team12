@@ -141,9 +141,7 @@ export default function EmployerMatchResults() {
           <Box px={1} sx={{ typography: 'h5' }}>
             Matched Candidates
           </Box>
-          <Box>
-            <InfiniteList data={data} pageSize={100} />
-          </Box>
+          <Box>{/* <InfiniteList /> */}</Box>
         </Box>
         <Box flex={3} sx={{ height: 'calc(100vh - 80px)', overflow: 'auto' }}>
           <Box
