@@ -5,7 +5,7 @@ import NavBar from 'src/components/NavBar';
 import InfiniteList from 'src/components/InfiniteList';
 
 export default function CandidateMatchResults() {
-  const [targetId, setTargetId] = useState<string>('');
+  const [targetJob, setTargetJob] = useState<any>();
 
   return (
     <Box
@@ -37,15 +37,15 @@ export default function CandidateMatchResults() {
           </Box>
           <Box>
             <InfiniteList
-              query="matchedJobs"
-              targetId={targetId}
-              setTargetId={setTargetId}
+              query={['matchedJobs']}
+              target={targetJob}
+              setTarget={setTargetJob}
             />
           </Box>
         </Box>
         <Box flex={3} sx={{ height: 'calc(100vh - 80px)', overflow: 'auto' }}>
           <Box
-            px={12}
+            px={6}
             py={2}
             sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
             <Box sx={{ typography: 'h4' }}>Job title</Box>

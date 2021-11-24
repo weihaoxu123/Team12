@@ -1,33 +1,32 @@
 import React from 'react';
-import { Box, useTheme } from '@mui/material';
+import { Box } from '@mui/material';
 //TODO: define response type
-type MatchedJobsCardProps = {
+type MatchedJobCardProps = {
   content: any;
   index: number;
-  targetId: string;
-  setTargetId: React.Dispatch<React.SetStateAction<string>>;
+  target: any;
+  setTarget: React.Dispatch<React.SetStateAction<any>>;
 };
 
-export default function MatchedJobsCard({
+export default function MatchedJobCard({
   content,
   index,
-  targetId,
-  setTargetId,
-}: MatchedJobsCardProps) {
-  const theme = useTheme();
+  target,
+  setTarget,
+}: MatchedJobCardProps) {
   return (
     <Box
       sx={{
         borderTop: index === 0 ? '1px solid silver' : 'none',
         borderBottom: '1px solid silver',
         background:
-          content?.id === targetId ? 'rgba(247, 127, 0, 0.25)' : 'none',
+          content?.id === target?.id ? 'rgba(247, 127, 0, 0.25)' : 'none',
         userSelect: 'none',
         cursor: 'pointer',
         p: 1,
       }}
       onClick={() => {
-        setTargetId(content.id);
+        setTarget(content);
       }}>
       <Box sx={{ typography: 'h6' }}>{content?.title}</Box>
       <Box sx={{ typography: 'body2', opacity: 0.5 }}>

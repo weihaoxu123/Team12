@@ -35,6 +35,7 @@ export default function CandidateProfilePreview({
           borderRadius: 2,
           my: 1,
           p: 2,
+          boxSizing: 'border-box',
         }}>
         <Box sx={{ typography: 'h6' }}>Personal Information</Box>
         <Box
@@ -196,6 +197,7 @@ export default function CandidateProfilePreview({
           border: '1px solid silver',
           borderRadius: 2,
           p: 2,
+          boxSizing: 'border-box',
           my: 1,
         }}>
         <Box sx={{ typography: 'h6' }}>Education and Experience</Box>

@@ -65,18 +65,46 @@ const locations = [
   'Eldridge, CA',
   'Reedley, CA',
 ];
-export const generateRandomMatchedJobs = (n: number) => {
+
+export const generateRandomMatchedJobs = (numJobs: number) => {
   let matchedJobs: any[] = [];
   const id: number = parseInt((jobNames.length * Math.random()).toFixed(0), 10);
-  for (let i = 0; i < n; i++) {
+  for (let i = 0; i < numJobs; i++) {
     matchedJobs.push({
-      id: `${i}`,
+      id: `j${i}`,
       title: jobNames[id],
       company: `Company Name`,
       location: locations[i % locations.length],
       score: (100 - 20 * Math.random()).toFixed(0),
       industry: [],
-      date: '',
+      date: new Date(),
+    });
+  }
+  return matchedJobs;
+};
+
+export const generateRandomMatchedCandidates = (numJobs: number) => {
+  let matchedJobs: any[] = [];
+  const id: number = parseInt((jobNames.length * Math.random()).toFixed(0), 10);
+  for (let i = 0; i < numJobs; i++) {
+    const numCandidates: number = parseInt((10 * Math.random()).toFixed(0), 10);
+    let matchedCandidates: any[] = [];
+    for (let i = 0; i < numCandidates; i++) {
+      matchedCandidates.push({
+        id: `c${i}`,
+        name: `Candidate${i}`,
+      });
+    }
+
+    matchedJobs.push({
+      id: `j${i}`,
+      title: jobNames[id],
+      company: `Company Name`,
+      location: locations[i % locations.length],
+      score: (100 - 20 * Math.random()).toFixed(0),
+      industry: [],
+      date: new Date(),
+      candidates: matchedCandidates,
     });
   }
   return matchedJobs;

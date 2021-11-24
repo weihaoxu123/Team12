@@ -1,20 +1,22 @@
 import { CircularProgress } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { generateRandomMatchedJobs } from 'src/util';
+import { generateRandomMatchedCandidates } from 'src/util';
 
-import MatchedJobsCard from './MatchedJobsCard';
+import MatchedJobCard from './MatchedJobCard';
+import EmployerJobCard from './EmployerJobCard';
 
 type InfiniteListProps = {
-  query?: string;
-  targetId: string;
-  setTargetId: React.Dispatch<React.SetStateAction<string>>;
+  // [queryType, requestBody]
+  query: string[];
+  target: any;
+  setTarget: React.Dispatch<React.SetStateAction<any>>;
 };
 
 export default function InfiniteList({
   query,
-  targetId,
-  setTargetId,
+  target,
+  setTarget,
 }: InfiniteListProps) {
   const pageSize = 10;
   const [pageNumber, setPageNumber] = useState(0);
@@ -26,7 +28,7 @@ export default function InfiniteList({
   useEffect(() => {
     //TODO: use API call
     setTimeout(() => {
-      let resp: any[] = generateRandomMatchedJobs(30);
+      let resp: any[] = generateRandomMatchedCandidates(30);
       resp.sort((res1, res2) => res2.score - res1.score);
       setResults(resp);
       setLoading(false);
@@ -60,14 +62,23 @@ export default function InfiniteList({
   }, [loading, results, pageNumber, pageSize]);
 
   const getCard = (i: number, content: any) => {
-    switch (query) {
+    switch (query[0]) {
       case 'matchedJobs':
         return (
-          <MatchedJobsCard
+          <MatchedJobCard
             index={i}
             content={content}
-            targetId={targetId}
-            setTargetId={setTargetId}
+            target={target}
+            setTarget={setTarget}
+          />
+        );
+      case 'employerJobs':
+        return (
+          <EmployerJobCard
+            index={i}
+            content={content}
+            target={target}
+            setTarget={setTarget}
           />
         );
       default:
