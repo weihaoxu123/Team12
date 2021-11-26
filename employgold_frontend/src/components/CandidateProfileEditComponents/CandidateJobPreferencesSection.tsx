@@ -21,7 +21,7 @@ interface ICandidateJobPreferenceSectionProps {
   handleBackClick: () => void;
 }
 
-const defaultGeneralMatchingPreference: IGeneralMatchingPreference = {
+const defaultCompanyPreference: IGeneralMatchingPreference = {
   type: [],
   size: [],
   revenue: [],
@@ -62,8 +62,8 @@ const defaultJobPreferenceInfo: IJobPreferenceInfo = {
     hasVehicleAllowance: false,
   },
   otherBenefitsAndPerks: '',
-  nonNegotiableGeneralPreference: { ...defaultGeneralMatchingPreference },
-  negotiableGeneralPreference: { ...defaultGeneralMatchingPreference },
+  nonNegotiableGeneralPreference: { ...defaultCompanyPreference },
+  negotiableGeneralPreference: { ...defaultCompanyPreference },
 };
 
 const CandidateJobPreferenceSection: React.FC<ICandidateJobPreferenceSectionProps> =
