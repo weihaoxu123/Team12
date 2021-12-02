@@ -89,14 +89,18 @@ export const generateRandomMatchedCandidates = (numJobs: number) => {
   let matchedJobs: any[] = [];
   const id: number = parseInt((jobNames.length * Math.random()).toFixed(0), 10);
   for (let i = 0; i < numJobs; i++) {
-    const numCandidates: number = parseInt((10 * Math.random()).toFixed(0), 10);
+    const numCandidates: number =
+      7 + parseInt((10 * Math.random()).toFixed(0), 10);
     let matchedCandidates: any[] = [];
-    for (let i = 0; i < numCandidates; i++) {
+    for (let j = 0; j < numCandidates; j++) {
       matchedCandidates.push({
-        id: `c${i}`,
-        name: `Candidate${i}`,
+        id: `c${j}`,
+        name: `Candidate Name ${j}`,
+        unlocked: false,
+        score: (100 - 20 * Math.random()).toFixed(0),
       });
     }
+    matchedCandidates = matchedCandidates.sort((m1, m2) => m2.score - m1.score);
 
     matchedJobs.push({
       id: `j${i}`,

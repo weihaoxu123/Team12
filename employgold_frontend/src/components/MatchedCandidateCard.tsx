@@ -1,19 +1,19 @@
 import React from 'react';
 import { Button, Box } from '@mui/material';
 //TODO: define response type
-type MatchedJobCardProps = {
-  content: any;
-  index: number;
-  target: any;
-  setTarget: React.Dispatch<React.SetStateAction<any>>;
+type MatchedCandidateCardProps = {
+  candidate?: any;
+  index?: number;
+  targetCandidate: any;
+  setTargetCandidate: React.Dispatch<React.SetStateAction<any>>;
 };
 
-export default function MatchedJobCard({
-  content,
+export default function MatchedCandidateCard({
+  candidate,
   index,
-  target,
-  setTarget,
-}: MatchedJobCardProps) {
+  targetCandidate,
+  setTargetCandidate,
+}: MatchedCandidateCardProps) {
   return (
     <Button
       sx={{
@@ -33,18 +33,17 @@ export default function MatchedJobCard({
           borderTop: index === 0 ? '1px solid silver' : 'none',
           borderBottom: '1px solid silver',
           background:
-            content?.id === target?.id ? 'rgba(247, 127, 0, 0.5)' : 'none',
+            candidate?.id === targetCandidate?.id
+              ? 'rgba(247, 127, 0, 0.5)'
+              : 'none',
           p: 1,
         }}
         onClick={() => {
-          setTarget(content);
+          setTargetCandidate(candidate);
         }}>
-        <Box sx={{ typography: 'h6' }}>{content?.title}</Box>
-        <Box sx={{ typography: 'body2', opacity: 0.5 }}>
-          {content?.company} - {content?.location}
-        </Box>
+        <Box sx={{ typography: 'h6' }}>{candidate.name}</Box>
         <Box sx={{ typography: 'body2', mt: 2 }}>
-          Match Score: {content?.score}
+          Match Score: {candidate.score}
         </Box>
       </Box>
     </Button>

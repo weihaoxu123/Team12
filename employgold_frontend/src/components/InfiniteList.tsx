@@ -1,7 +1,10 @@
 import { CircularProgress } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { generateRandomMatchedCandidates } from 'src/util';
+import {
+  generateRandomMatchedJobs,
+  generateRandomMatchedCandidates,
+} from 'src/util';
 
 import MatchedJobCard from './MatchedJobCard';
 import EmployerJobCard from './EmployerJobCard';
@@ -31,6 +34,9 @@ export default function InfiniteList({
       let resp: any[] = [];
       switch (query[0]) {
         case 'matchedJobs':
+          resp = generateRandomMatchedJobs(30);
+          break;
+        case 'employerJobs':
           resp = generateRandomMatchedCandidates(30);
           break;
         default:

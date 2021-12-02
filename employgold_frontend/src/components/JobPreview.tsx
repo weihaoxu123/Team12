@@ -1,5 +1,6 @@
-import { CircularProgress, Box, Button } from '@material-ui/core';
-import { useTheme } from '@mui/system';
+import { useLocation } from 'react-router';
+import { CircularProgress, Button } from '@mui/material';
+import { Box, useTheme } from '@mui/system';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 
@@ -8,6 +9,9 @@ import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 export default function JobPreview(props: any) {
   const { job } = props;
   const theme = useTheme();
+  const location = useLocation();
+  const isCandidate = location.pathname.split('/')[1] === 'candidate';
+  const isEmployer = location.pathname.split('/')[1] === 'employer';
 
   return job ? (
     <Box
@@ -66,7 +70,7 @@ export default function JobPreview(props: any) {
         ))}
       </Box>
 
-      <Box mt={6}>
+      {isCandidate && (
         <Button
           variant="contained"
           sx={{
@@ -74,13 +78,28 @@ export default function JobPreview(props: any) {
             color: '#fff',
             width: 'fit-content',
             textTransform: 'none',
+            mt: 6,
           }}
           onClick={() => {
             window.open(job.link, '_blank');
           }}>
           Apply Now
         </Button>
-      </Box>
+      )}
+
+      {isEmployer && (
+        <Button
+          variant="contained"
+          sx={{
+            typography: 'body1',
+            color: '#fff',
+            width: 'fit-content',
+            textTransform: 'none',
+            mt: 6,
+          }}>
+          Remove Job
+        </Button>
+      )}
 
       <Box mt={6} sx={{ typography: 'body1' }}>
         <Box sx={{ typography: 'h5' }}>Description</Box>

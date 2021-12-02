@@ -231,14 +231,6 @@ const EmployerInfoSection: React.FC<IEmployerProfileEditPageProps> = (
               required
               label="Legal Last Name"
             />
-
-            <TextField
-              className="textBox"
-              onChange={handlePronounsChange}
-              value={employerInfo.pronouns}
-              sx={{ mt: 2 }}
-              label="Pronouns"
-            />
           </Box>
         </Box>
 
@@ -271,16 +263,7 @@ const EmployerInfoSection: React.FC<IEmployerProfileEditPageProps> = (
               onChange={handleEmailChange}
               value={employerInfo.email}
             />
-            <TextField
-              className="textBox"
-              type={'email'}
-              sx={{ mt: 2 }}
-              required
-              label="Alternative Email"
-              error={alternativeEmailError}
-              onChange={handleAlternativeEmailChange}
-              value={employerInfo.alternativeEmail}
-            />
+
             <TextField
               className="textBox"
               type={'tel'}

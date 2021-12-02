@@ -10,7 +10,7 @@ import { Button } from '@mui/material';
 export default function CandidateProfileViewPage() {
   const navigate = useNavigate();
   const [personalInfo, setPersonalInfo] = useState<IPersonalInfo | null>(null);
-  const [publiProfile, setPublicProfile] = useState<IPublicProfileInfo | null>(
+  const [publicProfile, setPublicProfile] = useState<IPublicProfileInfo | null>(
     null,
   );
   const [educationAndExperienceInfo, setEducationAndExperienceInfo] =
@@ -63,7 +63,7 @@ export default function CandidateProfileViewPage() {
         }}>
         <CandidateProfilePreview
           personalInfo={personalInfo}
-          publiProfile={publiProfile}
+          publicProfile={publicProfile}
           educationAndExperienceInfo={educationAndExperienceInfo}
           jobPreferenceInfo={jobPreferenceInfo}
           careerDevAssessmentInfo={careerDevAssessmentInfo}
