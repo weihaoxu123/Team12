@@ -1,19 +1,13 @@
 import React, { ChangeEvent, KeyboardEventHandler } from 'react';
 import { useState } from 'react';
 
-import {
-  Box,
-  Button,
-  Chip,
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  ListItem,
-  Paper,
-  Radio,
-  RadioGroup,
-  TextField,
-} from '@mui/material';
+import { Box, Button } from '@mui/material';
+import CandidateJobTypeSelection from '../MatchingCandidatePreferenceComponents/CandidateJobTypeSelection';
+import CandidateJobCompensationTypeSelection from '../MatchingCandidatePreferenceComponents/CandidateJobCompensationTypeSelection';
+import CandidateMinimumBaseCompensationInput from '../MatchingCandidatePreferenceComponents/CandidateMinimumBaseCompensationInput';
+import CandidateLowEndHighEndCompensationInput from '../MatchingCandidatePreferenceComponents/CandidateLowEndHighEndCompensationInput';
+import CandidatePreviousCompensationInput from '../MatchingCandidatePreferenceComponents/CandidatePreviousCompensationInput';
+import CandidateRetirementPlanSelection from '../MatchingCandidatePreferenceComponents/CandidateRetirementPlanSelection';
 
 interface ICandidateJobPreferenceSectionProps {
   jobPreferenceInfo: IJobPreferenceInfo | null;
@@ -72,6 +66,62 @@ const CandidateJobPreferenceSection: React.FC<ICandidateJobPreferenceSectionProp
       props.jobPreferenceInfo || defaultJobPreferenceInfo,
     );
 
+    const Divider = () => (
+      <Box
+        sx={{ width: '700px', borderBottom: '1px solid grey', my: '40px' }}
+      />
+    );
+
+    const handleCompensationTypeChange = (compensationType: string) => {
+      setJobPreferenceInfo({
+        ...jobPreferenceInfo,
+        jobCompensationType: compensationType,
+      });
+    };
+
+    const handleCandidateJobTypeChange = (jobType: string) => {
+      setJobPreferenceInfo({
+        ...jobPreferenceInfo,
+        jobType: jobType,
+      });
+    };
+
+    const handleMinimumBaseCompensationChange = (
+      minimumBaseCompensation: ICompensation,
+    ) => {
+      setJobPreferenceInfo({
+        ...jobPreferenceInfo,
+        minimumBaseCompensation: { ...minimumBaseCompensation },
+      });
+    };
+
+    const handleHighEndCompensationChange = (
+      highEndCompensation: ICompensation,
+    ) => {
+      setJobPreferenceInfo({
+        ...jobPreferenceInfo,
+        highEndCompensation: { ...highEndCompensation },
+      });
+    };
+
+    const handleLowEndCompensationChange = (
+      lowEndCompensation: ICompensation,
+    ) => {
+      setJobPreferenceInfo({
+        ...jobPreferenceInfo,
+        lowEndCompensation: { ...lowEndCompensation },
+      });
+    };
+
+    const handleLastCompensationPackageChange = (
+      lastCompensationPackage: ICompensationPackage,
+    ) => {
+      setJobPreferenceInfo({
+        ...jobPreferenceInfo,
+        lastCompensationPackage: { ...lastCompensationPackage },
+      });
+    };
+
     return (
       <Box
         sx={{
@@ -108,12 +158,54 @@ const CandidateJobPreferenceSection: React.FC<ICandidateJobPreferenceSectionProp
           <Box
             sx={{
               mt: '50px',
-              width: '300px',
+              width: '500px',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-            }}></Box>
+            }}>
+            <CandidateJobTypeSelection
+              jobType={jobPreferenceInfo.jobType}
+              handleCandidateJobTypeChange={handleCandidateJobTypeChange}
+            />
+            <Divider />
+            <CandidateJobCompensationTypeSelection
+              compensationType={jobPreferenceInfo.jobCompensationType}
+              handleCompensationTypeChange={handleCompensationTypeChange}
+            />
+            <Divider />
+            <CandidateMinimumBaseCompensationInput
+              minimumBaseCompensation={
+                jobPreferenceInfo.minimumBaseCompensation
+              }
+              handleMinimumBaseCompensationChange={
+                handleMinimumBaseCompensationChange
+              }
+            />
+            <Divider />
+            <CandidateLowEndHighEndCompensationInput
+              highEndCompensation={jobPreferenceInfo.highEndCompensation}
+              lowEndCompensation={jobPreferenceInfo.lowEndCompensation}
+              handleHighEndCompensationChange={handleHighEndCompensationChange}
+              handleLowEndCompensationChange={handleLowEndCompensationChange}
+            />
+            <Divider />
 
+            <CandidatePreviousCompensationInput
+              lastCompensationPackage={
+                jobPreferenceInfo.lastCompensationPackage
+              }
+              handleLastCompensationPackageChange={
+                handleLastCompensationPackageChange
+              }
+            />
+            <Divider />
+
+            <CandidateRetirementPlanSelection
+              retirementPlanPreference={
+                jobPreferenceInfo.retirementPlanPreference
+              }
+            />
+          </Box>
           <Button
             className="button"
             sx={{
