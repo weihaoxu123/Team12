@@ -1,17 +1,13 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Box } from '@mui/system';
-import { Avatar, Button } from '@mui/material';
+import { Avatar, Button, IconButton } from '@mui/material';
 import NavBar from 'src/components/NavBar';
 import InfiniteList from 'src/components/InfiniteList';
 import CandidateProfilePreview from 'src/components/CandidateProfilePreview';
 
-let randomNums: any[] = [];
-for (let i = 0; i < 1000; i++) {
-  randomNums.push((100 - 100 * Math.random()).toFixed(0));
-}
-
 export default function EmployerMatchResults() {
-  const [targetJobIndex, setTargetJobIndex] = useState(0);
+  const [targetJob, setTargetJob] = useState<any>();
+  const [candidateListOpen, setCandidateListOpen] = useState<boolean>(false);
 
   const [unlocked, setUnlocked] = useState<boolean>(false);
   const [personalInfo, setPersonalInfo] = useState<IPersonalInfo | null>(null);
@@ -89,34 +85,11 @@ export default function EmployerMatchResults() {
     setCareerDevAssessmentInfo(cda);
   }, []);
 
-  let data: any[] = [];
-  for (let i = 0; i < 1000; i++) {
-    data.push(
-      <Box
-        onClick={() => {
-          setTargetJobIndex(i);
-          setUnlocked(false);
-        }}
-        p={1}
-        sx={{
-          borderTop: i == 0 ? '1px solid silver' : 'none',
-          borderBottom: '1px solid silver',
-          background: i == targetJobIndex ? 'rgba(247, 127, 0, 0.25)' : 'none',
-          userSelect: 'none',
-          cursor: 'pointer',
-        }}>
-        <Box sx={{ typography: 'h6' }}>Candidate Name {i}</Box>
-        <Box sx={{ typography: 'body1' }}>
-          {`Match Score: ${randomNums[i]}`}
-        </Box>
-      </Box>,
-    );
-  }
-
   return (
     <Box
       sx={{
         height: '100vh',
+        width: '100vw',
         display: 'flex',
         flexDirection: 'column',
       }}>
@@ -132,39 +105,93 @@ export default function EmployerMatchResults() {
           flex={1}
           py={2}
           sx={{
-            height: 'calc(100vh - 96px)',
+            height: 'calc(100vh - 100px)',
             overflow: 'hidden',
             borderRight: '1px solid silver',
             display: 'flex',
             flexDirection: 'column',
           }}>
-          <Box px={1} sx={{ typography: 'h5' }}>
-            Matched Candidates
+          <Box
+            px={1}
+            sx={{
+              typography: 'h5',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}>
+            <Box>Posted Jobs</Box>
+            <Button
+              sx={{
+                typography: 'body1',
+                width: 'fit-content',
+                textTransform: 'none',
+                p: 0,
+              }}
+              disabled={targetJob == null}
+              onClick={() => {
+                setCandidateListOpen((candidateListOpen) => !candidateListOpen);
+              }}>
+              {candidateListOpen ? 'Hide Candidates' : 'Show Candidates'}
+            </Button>
           </Box>
           <Box>
-            <InfiniteList data={data} pageSize={100} />
+            <InfiniteList
+              query={['employerJobs']}
+              target={targetJob}
+              setTarget={setTargetJob}
+            />
           </Box>
         </Box>
-        <Box flex={3} sx={{ height: 'calc(100vh - 80px)', overflow: 'auto' }}>
+
+        {candidateListOpen && (
           <Box
-            px={12}
+            flex={1}
             py={2}
-            sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+            sx={{
+              height: 'calc(100vh - 100px)',
+              overflow: 'hidden',
+              borderRight: '1px solid silver',
+              display: 'flex',
+              flexDirection: 'column',
+            }}>
             <Box
+              px={1}
               sx={{
-                typography: 'h4',
+                typography: 'h5',
                 display: 'flex',
                 alignItems: 'center',
+                justifyContent: 'space-between',
               }}>
-              Candidate name {targetJobIndex}
+              <Box>Matched Candidates</Box>
             </Box>
+            <Box>
+              {targetJob &&
+                targetJob.candidates.map(
+                  (candidate: { id: string; name: string }) => (
+                    <Box key={candidate.id}>{candidate.name}</Box>
+                  ),
+                )}
+            </Box>
+          </Box>
+        )}
+
+        <Box
+          flex={candidateListOpen ? 2 : 3}
+          sx={{
+            height: 'calc(100vh - 80px)',
+            display: 'flex',
+            flexDirection: 'column',
+          }}>
+          <Box
+            px={6}
+            py={2}
+            sx={{
+              flex: 1,
+              height: '100%',
+              overflow: 'auto',
+            }}>
+            <Box sx={{ typography: 'h5' }}>Summary</Box>
             <Box mt={1} sx={{ typography: 'body1' }}>
-              Headline
-            </Box>
-            <Box mt={6} sx={{ typography: 'h5' }}>
-              Summary
-            </Box>
-            <Box mt={2} sx={{ typography: 'body1' }}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -173,31 +200,32 @@ export default function EmployerMatchResults() {
               nulla pariatur. Excepteur sint occaecat cupidatat non proident,
               sunt in culpa qui officia deserunt mollit anim id est laborum.
             </Box>
-            <Box mt={6}>
-              <Button
-                disabled={unlocked}
-                onClick={() => {
-                  setUnlocked(true);
-                }}
-                variant="contained"
-                sx={{
-                  typography: 'body1',
-                  color: '#fff',
-                  width: 'fit-content',
-                  textTransform: 'none',
-                }}>
-                Unlock Full Profile
-              </Button>
+            <Box mt={2}>
+              {!unlocked && (
+                <Button
+                  onClick={() => {
+                    setUnlocked(true);
+                  }}
+                  variant="contained"
+                  sx={{
+                    typography: 'body1',
+                    color: '#fff',
+                    width: 'fit-content',
+                    textTransform: 'none',
+                  }}>
+                  Unlock Full Profile
+                </Button>
+              )}
+              {unlocked && (
+                <CandidateProfilePreview
+                  personalInfo={personalInfo}
+                  publiProfile={publiProfile}
+                  educationAndExperienceInfo={educationAndExperienceInfo}
+                  jobPreferenceInfo={jobPreferenceInfo}
+                  careerDevAssessmentInfo={careerDevAssessmentInfo}
+                />
+              )}
             </Box>
-            {unlocked && (
-              <CandidateProfilePreview
-                personalInfo={personalInfo}
-                publiProfile={publiProfile}
-                educationAndExperienceInfo={educationAndExperienceInfo}
-                jobPreferenceInfo={jobPreferenceInfo}
-                careerDevAssessmentInfo={careerDevAssessmentInfo}
-              />
-            )}
           </Box>
         </Box>
       </Box>

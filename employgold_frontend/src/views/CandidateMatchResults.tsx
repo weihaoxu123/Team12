@@ -5,27 +5,7 @@ import NavBar from 'src/components/NavBar';
 import InfiniteList from 'src/components/InfiniteList';
 
 export default function CandidateMatchResults() {
-  const [targetJobIndex, setTargetJobIndex] = useState(0);
-
-  let data: any[] = [];
-  for (let i = 0; i < 1000; i++) {
-    data.push(
-      <Box
-        onClick={() => setTargetJobIndex(i)}
-        p={1}
-        sx={{
-          borderTop: i === 0 ? '1px solid silver' : 'none',
-          borderBottom: '1px solid silver',
-          background: i === targetJobIndex ? 'rgba(247, 127, 0, 0.25)' : 'none',
-          userSelect: 'none',
-          cursor: 'pointer',
-        }}>
-        <Box sx={{ typography: 'h6' }}>Company name {i}</Box>
-        <Box sx={{ typography: 'body1' }}>Job title</Box>
-        <Box sx={{ typography: 'body1' }}>Job location</Box>
-      </Box>,
-    );
-  }
+  const [targetJob, setTargetJob] = useState<any>();
 
   return (
     <Box
@@ -46,7 +26,7 @@ export default function CandidateMatchResults() {
           flex={1}
           py={2}
           sx={{
-            height: 'calc(100vh - 96px)',
+            height: 'calc(100vh - 100px)',
             overflow: 'hidden',
             borderRight: '1px solid silver',
             display: 'flex',
@@ -56,15 +36,19 @@ export default function CandidateMatchResults() {
             Matched Jobs
           </Box>
           <Box>
-            <InfiniteList data={data} pageSize={100} />
+            <InfiniteList
+              query={['matchedJobs']}
+              target={targetJob}
+              setTarget={setTargetJob}
+            />
           </Box>
         </Box>
         <Box flex={3} sx={{ height: 'calc(100vh - 80px)', overflow: 'auto' }}>
           <Box
-            px={12}
+            px={6}
             py={2}
             sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-            <Box sx={{ typography: 'h4' }}>Job title {targetJobIndex}</Box>
+            <Box sx={{ typography: 'h4' }}>Job title</Box>
             <Box sx={{ typography: 'body1' }}>Company - Location</Box>
             <Box sx={{ typography: 'body1' }}>Industry</Box>
             <Box sx={{ typography: 'body1' }}>Post date</Box>
