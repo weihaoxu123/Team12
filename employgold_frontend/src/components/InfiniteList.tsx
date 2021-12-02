@@ -1,7 +1,10 @@
 import { CircularProgress } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { generateRandomMatchedCandidates } from 'src/util';
+import {
+  generateRandomMatchedJobs,
+  generateRandomMatchedCandidates,
+} from 'src/util';
 
 import MatchedJobCard from './MatchedJobCard';
 import EmployerJobCard from './EmployerJobCard';
@@ -28,7 +31,17 @@ export default function InfiniteList({
   useEffect(() => {
     //TODO: use API call
     setTimeout(() => {
-      let resp: any[] = generateRandomMatchedCandidates(30);
+      let resp: any[] = [];
+      switch (query[0]) {
+        case 'matchedJobs':
+          resp = generateRandomMatchedJobs(30);
+          break;
+        case 'employerJobs':
+          resp = generateRandomMatchedCandidates(30);
+          break;
+        default:
+          resp = generateRandomMatchedCandidates(30);
+      }
       resp.sort((res1, res2) => res2.score - res1.score);
       setResults(resp);
       setLoading(false);
@@ -58,6 +71,9 @@ export default function InfiniteList({
     );
     const newCurrentList = [...currentList, ...nextList];
     setCurrentList(newCurrentList);
+    if (target == null && pageNumber == 0) {
+      setTarget(newCurrentList[0]);
+    }
     setHasMore(newCurrentList.length < results.length);
   }, [loading, results, pageNumber, pageSize]);
 

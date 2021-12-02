@@ -4,7 +4,7 @@ import { Box, useTheme } from '@mui/system';
 
 interface ICandidateProfilePreviewProps {
   personalInfo: IPersonalInfo | null;
-  publiProfile: IPublicProfileInfo | null;
+  publicProfile: IPublicProfileInfo | null;
   educationAndExperienceInfo: IEducationAndExperienceInfo | null;
   jobPreferenceInfo: IJobPreferenceInfo | null;
   careerDevAssessmentInfo: ICareerDevAssessmentsInfo | null;
@@ -12,7 +12,7 @@ interface ICandidateProfilePreviewProps {
 
 export default function CandidateProfilePreview({
   personalInfo,
-  publiProfile,
+  publicProfile,
   educationAndExperienceInfo,
   jobPreferenceInfo,
   careerDevAssessmentInfo,
