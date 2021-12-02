@@ -5,6 +5,7 @@ import { Box } from '@mui/system';
 
 import NavBar from 'src/components/NavBar';
 import CandidateProfilePreview from 'src/components/CandidateProfilePreview';
+import { Button } from '@mui/material';
 
 export default function CandidateProfileViewPage() {
   const navigate = useNavigate();
@@ -57,6 +58,7 @@ export default function CandidateProfileViewPage() {
           width: '80%',
           flex: 1,
           display: 'flex',
+          flexDirection: 'column',
           alignItems: 'center',
         }}>
         <CandidateProfilePreview
@@ -66,6 +68,18 @@ export default function CandidateProfileViewPage() {
           jobPreferenceInfo={jobPreferenceInfo}
           careerDevAssessmentInfo={careerDevAssessmentInfo}
         />
+        <Button
+          variant="contained"
+          className="button"
+          sx={{
+            typography: 'body1',
+            textTransform: 'none',
+            color: 'white',
+            my: 4,
+          }}
+          onClick={() => navigate(-1)}>
+          Go Back
+        </Button>
       </Box>
     </Box>
   );

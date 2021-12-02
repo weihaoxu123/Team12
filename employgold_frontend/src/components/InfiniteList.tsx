@@ -28,7 +28,14 @@ export default function InfiniteList({
   useEffect(() => {
     //TODO: use API call
     setTimeout(() => {
-      let resp: any[] = generateRandomMatchedCandidates(30);
+      let resp: any[] = [];
+      switch (query[0]) {
+        case 'matchedJobs':
+          resp = generateRandomMatchedCandidates(30);
+          break;
+        default:
+          resp = generateRandomMatchedCandidates(30);
+      }
       resp.sort((res1, res2) => res2.score - res1.score);
       setResults(resp);
       setLoading(false);
@@ -58,6 +65,9 @@ export default function InfiniteList({
     );
     const newCurrentList = [...currentList, ...nextList];
     setCurrentList(newCurrentList);
+    if (target == null && pageNumber == 0) {
+      setTarget(newCurrentList[0]);
+    }
     setHasMore(newCurrentList.length < results.length);
   }, [loading, results, pageNumber, pageSize]);
 

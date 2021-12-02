@@ -72,12 +72,14 @@ export const generateRandomMatchedJobs = (numJobs: number) => {
   for (let i = 0; i < numJobs; i++) {
     matchedJobs.push({
       id: `j${i}`,
-      title: jobNames[id],
-      company: `Company Name`,
+      title: `${jobNames[id]} Job`,
+      company: `${jobNames[id]} Co.`,
       location: locations[i % locations.length],
       score: (100 - 20 * Math.random()).toFixed(0),
-      industry: [],
+      industries: [jobNames[id], jobNames[(i + 1) % jobNames.length]],
+      type: 'Full time',
       date: new Date(),
+      link: 'https://careers.google.com/jobs/results/81428638450229958-manager-executive-development/?category=DATA_CENTER_OPERATIONS&category=DEVELOPER_RELATIONS&category=HARDWARE_ENGINEERING&category=INFORMATION_TECHNOLOGY&category=MANUFACTURING_SUPPLY_CHAIN&category=NETWORK_ENGINEERING&category=PRODUCT_MANAGEMENT&category=PROGRAM_MANAGEMENT&category=SOFTWARE_ENGINEERING&category=TECHNICAL_INFRASTRUCTURE_ENGINEERING&category=TECHNICAL_SOLUTIONS&category=TECHNICAL_WRITING&company=Google&company=YouTube&q=',
     });
   }
   return matchedJobs;
@@ -98,13 +100,15 @@ export const generateRandomMatchedCandidates = (numJobs: number) => {
 
     matchedJobs.push({
       id: `j${i}`,
-      title: jobNames[id],
-      company: `Company Name`,
+      title: `${jobNames[id]} Job`,
+      company: `${jobNames[id]} Co.`,
       location: locations[i % locations.length],
       score: (100 - 20 * Math.random()).toFixed(0),
-      industry: [],
+      industries: [jobNames[id], jobNames[(i + 1) % jobNames.length]],
+      type: 'Full time',
       date: new Date(),
       candidates: matchedCandidates,
+      link: 'https://careers.google.com/jobs/results/81428638450229958-manager-executive-development/?category=DATA_CENTER_OPERATIONS&category=DEVELOPER_RELATIONS&category=HARDWARE_ENGINEERING&category=INFORMATION_TECHNOLOGY&category=MANUFACTURING_SUPPLY_CHAIN&category=NETWORK_ENGINEERING&category=PRODUCT_MANAGEMENT&category=PROGRAM_MANAGEMENT&category=SOFTWARE_ENGINEERING&category=TECHNICAL_INFRASTRUCTURE_ENGINEERING&category=TECHNICAL_SOLUTIONS&category=TECHNICAL_WRITING&company=Google&company=YouTube&q=',
     });
   }
   return matchedJobs;
