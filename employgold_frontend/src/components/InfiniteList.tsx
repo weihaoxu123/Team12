@@ -29,7 +29,7 @@ export default function InfiniteList({
   const [hasMore, setHasMore] = useState(false);
 
   useEffect(() => {
-    if (results.length > 0) return;
+    if (results.length) return;
     //TODO: use API call
     setTimeout(() => {
       let resp: any[] = [];
@@ -48,7 +48,7 @@ export default function InfiniteList({
       setHasMore(true);
       setLoading(false);
     }, 1000);
-  }, [query, results]);
+  }, []);
 
   const obserever = useRef<any>();
   const lastElementRef = useCallback(
@@ -77,16 +77,7 @@ export default function InfiniteList({
       setTarget(newCurrentList[0]);
     }
     setHasMore(newCurrentList.length < results.length);
-  }, [
-    loading,
-    hasMore,
-    results,
-    currentList,
-    pageNumber,
-    pageSize,
-    target,
-    setTarget,
-  ]);
+  }, [loading, hasMore, results, pageNumber]);
 
   const getCard = (i: number, content: any) => {
     switch (query[0]) {
