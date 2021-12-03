@@ -4,6 +4,8 @@ import com.example.employgold.Domain.Account;
 import com.example.employgold.Domain.JobSeeker;
 import com.example.employgold.Service.AccountService;
 import com.example.employgold.Service.JobSeekerService;
+import com.example.employgold.Utils.EmployGoldResponse;
+import com.example.employgold.Utils.ResponseCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +22,7 @@ public class AccountController {
 
     @RequestMapping(value = "/api/sign-up", method = RequestMethod.POST)
     @ResponseBody
-    public String createAccount(@RequestParam Map<String,Object> params){
+    public EmployGoldResponse createAccount(@RequestParam Map<String,Object> params){
         Account account = new Account();
         account.setUserType((String) params.get("userGroup"));
         account.setAccountEmail((String) params.get("email"));
@@ -29,17 +31,17 @@ public class AccountController {
         JobSeeker jobSeeker = new JobSeeker();
         jobSeeker.setId(2);
         jobSeekerService.addJobSeeker(jobSeeker);
-        return "success";
+        return new EmployGoldResponse().addCodeMessage(ResponseCode.C200.getCode(),"success", ResponseCode.C200.getDesc());
     }
     @RequestMapping(value = "/api/sign-in", method = RequestMethod.GET)
     @ResponseBody
-    public String signIn(@RequestParam Map<String,String> params) {
+    public EmployGoldResponse signIn(@RequestParam Map<String,String> params) {
         System.out.println(params);
         Account account = accountService.getAccountByEmail(params.get("email"));
 
         if (account.getAccountPassword().equals(params.get("password"))){
-            return "success";
+            return new EmployGoldResponse().addCodeMessage(ResponseCode.C200.getCode(),"Welcome to Employ Gold", ResponseCode.C200.getDesc());
         }
-        else return "fail";
+        else return new EmployGoldResponse().addCodeMessage(ResponseCode.C401.getCode(),"Please Check your Account name and password;", ResponseCode.C401.getDesc());
     }
 }
