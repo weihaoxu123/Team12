@@ -25,7 +25,7 @@ const CandidateRetirementPlanSelection: React.FC<ICandidateRetirementPlanSelecti
 
     const handleHasChange =
       (value: boolean) => (e: ChangeEvent<HTMLInputElement>) => {
-        const updatedState = {
+        const updatedState: IRetirementPlanPreference = {
           ...retirementPlanPreference,
           has: value === e.target.checked,
         };
@@ -35,7 +35,7 @@ const CandidateRetirementPlanSelection: React.FC<ICandidateRetirementPlanSelecti
 
     const handleContributeChange =
       (value: boolean) => (e: ChangeEvent<HTMLInputElement>) => {
-        const updatedState = {
+        const updatedState: IRetirementPlanPreference = {
           ...retirementPlanPreference,
           contributeOrMatch: value === e.target.checked,
         };
@@ -44,7 +44,7 @@ const CandidateRetirementPlanSelection: React.FC<ICandidateRetirementPlanSelecti
       };
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-      const updatedState = {
+      const updatedState: IRetirementPlanPreference = {
         ...retirementPlanPreference,
         retirementMatchContribution: e.target.valueAsNumber,
       };
@@ -53,9 +53,9 @@ const CandidateRetirementPlanSelection: React.FC<ICandidateRetirementPlanSelecti
     };
 
     const handleCommentChange = (e: ChangeEvent<HTMLInputElement>) => {
-      const updatedState = {
+      const updatedState: IRetirementPlanPreference = {
         ...retirementPlanPreference,
-        retirementMatchContribution: e.target.valueAsNumber,
+        comments: e.target.value,
       };
       setRetirementPlanPreference(updatedState);
       props.handleRetirementPlanPreferenceUpdate(updatedState);
@@ -144,6 +144,7 @@ const CandidateRetirementPlanSelection: React.FC<ICandidateRetirementPlanSelecti
         <Box sx={{ mt: '10px' }}>Comments:</Box>
         <TextField
           sx={{ mt: '10px' }}
+          value={retirementPlanPreference.comments}
           fullWidth
           variant="outlined"
           type="text"
