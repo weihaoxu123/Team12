@@ -8,6 +8,9 @@ import CandidateMinimumBaseCompensationInput from '../MatchingCandidatePreferenc
 import CandidateLowEndHighEndCompensationInput from '../MatchingCandidatePreferenceComponents/CandidateLowEndHighEndCompensationInput';
 import CandidatePreviousCompensationInput from '../MatchingCandidatePreferenceComponents/CandidatePreviousCompensationInput';
 import CandidateRetirementPlanSelection from '../MatchingCandidatePreferenceComponents/CandidateRetirementPlanSelection';
+import CandidateMedicalHealthcareBenefitPlanPreferenceSelection from '../MatchingCandidatePreferenceComponents/CandidateMedicalHealthcareBenefitPlanPreferenceSelection';
+import CandidateDentalCareBenefitPlanPreferenceSelection from '../MatchingCandidatePreferenceComponents/CandidateDentalCareBenefitPlanPreferenceSelection';
+import CandidateVisionCareBenefitPlanPreferenceSelection from '../MatchingCandidatePreferenceComponents/CandidateVisionCareBenefitPlanPreferenceSelection';
 
 interface ICandidateJobPreferenceSectionProps {
   jobPreferenceInfo: IJobPreferenceInfo | null;
@@ -131,6 +134,37 @@ const CandidateJobPreferenceSection: React.FC<ICandidateJobPreferenceSectionProp
       });
     };
 
+    const handleMedicalHealthcareBenefitPlanPreferenceUpdate = (
+      medicalHealthcareBenefitPlanPreference: IMedicalHealthcareBenefitPlanPreference,
+    ) => {
+      setJobPreferenceInfo({
+        ...jobPreferenceInfo,
+        medicalHealthcareBenefitPlanPreference: {
+          ...medicalHealthcareBenefitPlanPreference,
+        },
+      });
+    };
+
+    const handleDentalCareBenefitPlanPreferenceUpdate = (
+      dentalCareBenefitPlanPreference: IDentalCareBenefitPlanPreference,
+    ) => {
+      setJobPreferenceInfo({
+        ...jobPreferenceInfo,
+        dentalCareBenefitPlanPreference: {
+          ...dentalCareBenefitPlanPreference,
+        },
+      });
+    };
+
+    const handleVisionCareBenefitPlanPreferenceUpdate = (
+      visionCareBenefitPlanPreference: IVisionCareBenefitPlanPreference,
+    ) => {
+      setJobPreferenceInfo({
+        ...jobPreferenceInfo,
+        visionCareBenefitPlanPreference: { ...visionCareBenefitPlanPreference },
+      });
+    };
+
     return (
       <Box
         sx={{
@@ -215,6 +249,36 @@ const CandidateJobPreferenceSection: React.FC<ICandidateJobPreferenceSectionProp
               }
               handleRetirementPlanPreferenceUpdate={
                 handleRetirementPlanPreferenceUpdate
+              }
+            />
+            <Divider />
+
+            <CandidateMedicalHealthcareBenefitPlanPreferenceSelection
+              medicalHealthcareBenefitPlanPreference={
+                jobPreferenceInfo.medicalHealthcareBenefitPlanPreference
+              }
+              handleMedicalHealthcareBenefitPlanPreferenceUpdate={
+                handleMedicalHealthcareBenefitPlanPreferenceUpdate
+              }
+            />
+            <Divider />
+
+            <CandidateDentalCareBenefitPlanPreferenceSelection
+              dentalCareBenefitPlanPreference={
+                jobPreferenceInfo.dentalCareBenefitPlanPreference
+              }
+              handleDentalCareBenefitPlanPreferenceUpdate={
+                handleDentalCareBenefitPlanPreferenceUpdate
+              }
+            />
+            <Divider />
+
+            <CandidateVisionCareBenefitPlanPreferenceSelection
+              visionCareBenefitPlanPreference={
+                jobPreferenceInfo.visionCareBenefitPlanPreference
+              }
+              handleVisionCareBenefitPlanPreferenceUpdate={
+                handleVisionCareBenefitPlanPreferenceUpdate
               }
             />
           </Box>
