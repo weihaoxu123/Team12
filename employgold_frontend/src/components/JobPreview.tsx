@@ -20,6 +20,9 @@ export default function JobPreview(props: any) {
       sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
       <Box sx={{ typography: 'h4' }}>{job.title}</Box>
       <Box sx={{ typography: 'body1', opacity: 0.5, py: 0.5 }}>
+        id: {job.id}
+      </Box>
+      <Box sx={{ typography: 'body1', opacity: 0.5, py: 0.5 }}>
         {job.company} - {job.location}
       </Box>
 

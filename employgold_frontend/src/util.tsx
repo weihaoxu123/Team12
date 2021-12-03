@@ -71,7 +71,7 @@ export const generateRandomMatchedJobs = (numJobs: number) => {
   const id: number = parseInt((jobNames.length * Math.random()).toFixed(0), 10);
   for (let i = 0; i < numJobs; i++) {
     matchedJobs.push({
-      id: `j${i}`,
+      id: (Math.random() + 1).toString().split('.')[1],
       title: `${jobNames[id]} Job`,
       company: `${jobNames[id]} Co.`,
       location: locations[i % locations.length],
@@ -94,7 +94,7 @@ export const generateRandomMatchedCandidates = (numJobs: number) => {
     let matchedCandidates: any[] = [];
     for (let j = 0; j < numCandidates; j++) {
       matchedCandidates.push({
-        id: `c${j}`,
+        id: (Math.random() + 1).toString().split('.')[1],
         name: `Candidate Name ${j}`,
         unlocked: false,
         score: (100 - 20 * Math.random()).toFixed(0),
@@ -103,7 +103,7 @@ export const generateRandomMatchedCandidates = (numJobs: number) => {
     matchedCandidates = matchedCandidates.sort((m1, m2) => m2.score - m1.score);
 
     matchedJobs.push({
-      id: `j${i}`,
+      id: (Math.random() + 1).toString().split('.')[1],
       title: `${jobNames[id]} Job`,
       company: `${jobNames[id]} Co.`,
       location: locations[i % locations.length],

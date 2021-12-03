@@ -29,6 +29,7 @@ export default function InfiniteList({
   const [hasMore, setHasMore] = useState(false);
 
   useEffect(() => {
+    if (results.length > 0) return;
     //TODO: use API call
     setTimeout(() => {
       let resp: any[] = [];
@@ -44,9 +45,10 @@ export default function InfiniteList({
       }
       resp.sort((res1, res2) => res2.score - res1.score);
       setResults(resp);
+      setHasMore(true);
       setLoading(false);
     }, 1000);
-  }, [query]);
+  }, [query, results]);
 
   const obserever = useRef<any>();
   const lastElementRef = useCallback(
@@ -64,18 +66,27 @@ export default function InfiniteList({
   );
 
   useEffect(() => {
-    if (loading) return;
+    if (loading || !hasMore) return;
     const nextList: any[] = results.slice(
       pageNumber * pageSize,
       (pageNumber + 1) * pageSize,
     );
     const newCurrentList = [...currentList, ...nextList];
     setCurrentList(newCurrentList);
-    if (target == null && pageNumber == 0) {
+    if (target == null && pageNumber === 0) {
       setTarget(newCurrentList[0]);
     }
     setHasMore(newCurrentList.length < results.length);
-  }, [loading, results, pageNumber, pageSize]);
+  }, [
+    loading,
+    hasMore,
+    results,
+    currentList,
+    pageNumber,
+    pageSize,
+    target,
+    setTarget,
+  ]);
 
   const getCard = (i: number, content: any) => {
     switch (query[0]) {
