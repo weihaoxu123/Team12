@@ -5,14 +5,13 @@ import javax.persistence.Id;
 
 @Entity
 public class Preference {
-
+    @Id
     private Integer id;
 
     public void setId(Integer id) {
         this.id = id;
     }
 
-    @Id
     public Integer getId() {
         return id;
     }

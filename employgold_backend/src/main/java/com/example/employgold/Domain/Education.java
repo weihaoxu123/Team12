@@ -1,18 +1,18 @@
 package com.example.employgold.Domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
+import javax.persistence.*;
 import java.sql.Time;
 
 @Entity
 @IdClass(EducationId.class)//组合主键类
+@Table(name = "education")
 public class Education {
     @Id
+    @Column(nullable = false)
     private Integer jobSeekerId;
 
     @Id
+    @Column(nullable = false)
     private String degree;
     @Column
     private String city;
@@ -33,7 +33,6 @@ public class Education {
         this.jobSeekerId = id;
     }
 
-    @Id
     public Integer getId() {
         return jobSeekerId;
     }

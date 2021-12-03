@@ -14,4 +14,9 @@ public class EmployerServiceImpl implements EmployerService{
     public Employer findEmployById(Integer id) {
         return employerDao.getById(id);
     }
+
+    @Override
+    public void addEmployer(Employer employer) {
+        employerDao.save(employer);
+    }
 }

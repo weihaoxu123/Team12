@@ -1,8 +1,10 @@
 package com.example.employgold.Controller;
 
 import com.example.employgold.Domain.Account;
+import com.example.employgold.Domain.Employer;
 import com.example.employgold.Domain.JobSeeker;
 import com.example.employgold.Service.AccountService;
+import com.example.employgold.Service.EmployerService;
 import com.example.employgold.Service.JobSeekerService;
 import com.example.employgold.Utils.EmployGoldResponse;
 import com.example.employgold.Utils.ResponseCode;
@@ -17,6 +19,9 @@ public class AccountController {
 
     @Autowired
     private JobSeekerService jobSeekerService;
+
+    @Autowired
+    private EmployerService employerService;
     @Autowired
     private AccountService accountService;
 
@@ -28,10 +33,21 @@ public class AccountController {
         account.setAccountEmail((String) params.get("email"));
         account.setAccountPassword ((String) params.get("password"));
         accountService.addAccount(account);
-        JobSeeker jobSeeker = new JobSeeker();
-        jobSeeker.setId(2);
-        jobSeekerService.addJobSeeker(jobSeeker);
-        return new EmployGoldResponse().addCodeMessage(ResponseCode.C200.getCode(),"success", ResponseCode.C200.getDesc());
+        if (params.get("userGroup").equals("candidate")){
+            JobSeeker jobSeeker = new JobSeeker();
+            jobSeekerService.addJobSeeker(jobSeeker);
+            account.setUserId(jobSeeker.getId());
+            accountService.addAccount(account);
+            return new EmployGoldResponse().addCodeMessage(ResponseCode.C200.getCode(),"success", ResponseCode.C200.getDesc());
+        }
+        else {
+            Employer employer = new Employer();
+            employerService.addEmployer(employer);
+            account.setUserId(employer.getId());
+            accountService.addAccount(account);
+
+            return new EmployGoldResponse().addCodeMessage(ResponseCode.C200.getCode(),"success", ResponseCode.C200.getDesc());
+        }
     }
     @RequestMapping(value = "/api/sign-in", method = RequestMethod.GET)
     @ResponseBody
