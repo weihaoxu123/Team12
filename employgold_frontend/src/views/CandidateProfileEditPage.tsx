@@ -26,7 +26,7 @@ export default function CandidateProfileEditPage(
   const theme = useTheme();
   const navigate = useNavigate();
   const [personalInfo, setPersonalInfo] = useState<IPersonalInfo | null>(null);
-  const [publiProfile, setPublicProfile] = useState<IPublicProfileInfo | null>(
+  const [publicProfile, setPublicProfile] = useState<IPublicProfileInfo | null>(
     null,
   );
   const [educationAndExperienceInfo, setEducationAndExperienceInfo] =
@@ -106,7 +106,7 @@ export default function CandidateProfileEditPage(
 
   const steps: IStepItem[] = [
     {
-      label: 'Personal Infomation',
+      label: 'Personal Information',
       element: (
         <CandidatePersonalInfoSection
           personalInfo={personalInfo}
@@ -118,7 +118,7 @@ export default function CandidateProfileEditPage(
       label: 'Public Profile',
       element: (
         <CandidatePublicProfileSection
-          publicProfile={publiProfile}
+          publicProfile={publicProfile}
           handleSaveClick={handleSavePublicProfileInfo}
           handleBackClick={handleBackClick}
         />
@@ -145,7 +145,7 @@ export default function CandidateProfileEditPage(
       ),
     },
     {
-      label: 'Career Developement Assessments',
+      label: 'Career Development Assessments',
       element: (
         <CandidateAssessmentSection
           careerDevAssessmentInfo={careerDevAssessmentInfo}
