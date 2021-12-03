@@ -340,7 +340,7 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
                 className="textBox"
                 type={'tel'}
                 sx={{ mt: 2 }}
-                inputProps={{ pattern: '[0-9]{3}[0-9]{3}[0-9]{4}' }}
+                inputProps={{ pattern: '[0-9]{3}-[0-9]{3}-[0-9]{4}' }}
                 placeholder="_ _ _ - _ _ _ - _ _ _ _"
                 required
                 label="Mobile Number"
@@ -353,7 +353,7 @@ const CandaidatePersonalInfoSection: React.FC<ICandidateProfileEditPageProps> =
                 type={'tel'}
                 sx={{ mt: 2 }}
                 placeholder="_ _ _ - _ _ _ - _ _ _ _"
-                inputProps={{ pattern: '[0-9]{3}[0-9]{3}[0-9]{4}' }}
+                inputProps={{ pattern: '[0-9]{3}-[0-9]{3}-[0-9]{4}' }}
                 label="Home Number"
                 error={homePhoneNumberError}
                 onChange={handleHomeNumberChange}

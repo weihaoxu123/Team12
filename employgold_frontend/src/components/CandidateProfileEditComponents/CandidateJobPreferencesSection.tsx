@@ -122,6 +122,15 @@ const CandidateJobPreferenceSection: React.FC<ICandidateJobPreferenceSectionProp
       });
     };
 
+    const handleRetirementPlanPreferenceUpdate = (
+      retirementPlanPreference: IRetirementPlanPreference,
+    ) => {
+      setJobPreferenceInfo({
+        ...jobPreferenceInfo,
+        retirementPlanPreference: { ...retirementPlanPreference },
+      });
+    };
+
     return (
       <Box
         sx={{
@@ -203,6 +212,9 @@ const CandidateJobPreferenceSection: React.FC<ICandidateJobPreferenceSectionProp
             <CandidateRetirementPlanSelection
               retirementPlanPreference={
                 jobPreferenceInfo.retirementPlanPreference
+              }
+              handleRetirementPlanPreferenceUpdate={
+                handleRetirementPlanPreferenceUpdate
               }
             />
           </Box>
