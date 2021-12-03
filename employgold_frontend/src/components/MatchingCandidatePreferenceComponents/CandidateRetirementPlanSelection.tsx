@@ -12,6 +12,9 @@ import {
 
 interface ICandidateRetirementPlanSelectionProps {
   retirementPlanPreference: IRetirementPlanPreference;
+  handleRetirementPlanPreferenceUpdate: (
+    retirementPlanPreference: IRetirementPlanPreference,
+  ) => void;
 }
 
 const CandidateRetirementPlanSelection: React.FC<ICandidateRetirementPlanSelectionProps> =
@@ -25,30 +28,37 @@ const CandidateRetirementPlanSelection: React.FC<ICandidateRetirementPlanSelecti
         const updatedState = {
           ...retirementPlanPreference,
           has: value === e.target.checked,
-        }
+        };
         setRetirementPlanPreference(updatedState);
+        props.handleRetirementPlanPreferenceUpdate(updatedState);
       };
 
     const handleContributeChange =
       (value: boolean) => (e: ChangeEvent<HTMLInputElement>) => {
-        setRetirementPlanPreference({
+        const updatedState = {
           ...retirementPlanPreference,
           contributeOrMatch: value === e.target.checked,
-        });
+        };
+        setRetirementPlanPreference(updatedState);
+        props.handleRetirementPlanPreferenceUpdate(updatedState);
       };
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-      setRetirementPlanPreference({
+      const updatedState = {
         ...retirementPlanPreference,
         retirementMatchContribution: e.target.valueAsNumber,
-      });
+      };
+      setRetirementPlanPreference(updatedState);
+      props.handleRetirementPlanPreferenceUpdate(updatedState);
     };
 
     const handleCommentChange = (e: ChangeEvent<HTMLInputElement>) => {
-      setRetirementPlanPreference({
+      const updatedState = {
         ...retirementPlanPreference,
-        comments: e.target.value,
-      });
+        retirementMatchContribution: e.target.valueAsNumber,
+      };
+      setRetirementPlanPreference(updatedState);
+      props.handleRetirementPlanPreferenceUpdate(updatedState);
     };
 
     return (
@@ -112,21 +122,24 @@ const CandidateRetirementPlanSelection: React.FC<ICandidateRetirementPlanSelecti
           </FormControl>
         )}
 
-        {retirementPlanPreference.contributeOrMatch && (
-          <Box sx={{ mt: '10px' }}>
-            If yes, what % was the employer retirement match contribution?*{' '}
-            <Input
-              sx={{ width: '80px' }}
-              onChange={handleInputChange}
-              type={'number'}
-              value={retirementPlanPreference.retirementMatchContribution || 0}
-            />
-            <Box>
-              (number only, do not include dollar or percentage signs or decimal
-              points)
+        {retirementPlanPreference.has &&
+          retirementPlanPreference.contributeOrMatch && (
+            <Box sx={{ mt: '10px' }}>
+              If yes, what % was the employer retirement match contribution?*{' '}
+              <Input
+                sx={{ width: '80px' }}
+                onChange={handleInputChange}
+                type={'number'}
+                value={
+                  retirementPlanPreference.retirementMatchContribution || 0
+                }
+              />
+              <Box>
+                (number only, do not include dollar or percentage signs or
+                decimal points)
+              </Box>
             </Box>
-          </Box>
-        )}
+          )}
 
         <Box sx={{ mt: '10px' }}>Comments:</Box>
         <TextField
