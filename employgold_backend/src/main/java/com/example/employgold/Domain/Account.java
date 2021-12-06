@@ -12,6 +12,8 @@ public class Account {
     private String userType;
     private String accountEmail;
     private String accountPassword;
+    @Column
+    private Integer userId;
 
 
     public void setId(Integer id) {
@@ -44,5 +46,13 @@ public class Account {
 
     public String getAccountPassword() {
         return accountPassword;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public Integer getUserId() {
+        return userId;
     }
 }

@@ -15,6 +15,11 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public Job getJobById(Integer id) {
-        return jobDao.getById(id);
+        return jobDao.getMatchByCandidate(id);
+    }
+
+    @Override
+    public void addJob(Job job) {
+        jobDao.save(job);
     }
 }

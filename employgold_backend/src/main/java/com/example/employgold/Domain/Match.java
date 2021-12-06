@@ -1,24 +1,26 @@
 package com.example.employgold.Domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
-@Data
-@IdClass(MatchId.class)
-public class Match implements Serializable{
+@Table(name = "job_match")
+@IdClass(MatchId.class)//组合主键类
+public class Match {
     @Id
-    private Integer jobSeekerId;
+    @Column(nullable = false)
+    protected Integer jobSeekerId;
     @Id
-    private Integer jobId;
+    @Column(nullable = false)
+    protected Integer jobId;
+
     @Column
     private String score;
     @Column
     private Integer employerId;
+
+    public Match(){}
+    //不能省略此构造方法
+    //否则在将此类创建为数据库中的表时会出错
 
     public Integer getJobId() {
         return jobId;
@@ -34,10 +36,4 @@ public class Match implements Serializable{
     public String getScore() {
         return score;
     }
-}
-@Data
-@AllArgsConstructor
-class MatchId implements Serializable{
-    private Integer jobSeekerId;
-    private Integer jobId;
 }

@@ -44,7 +44,6 @@ public class Employer {
         this.id = id;
     }
 
-    @Id
     public Integer getId() {
         return id;
     }
