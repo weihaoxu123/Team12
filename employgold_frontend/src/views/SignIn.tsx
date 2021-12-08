@@ -23,11 +23,11 @@ export default function SignIn() {
     // const user = await signIn();
     const userInfo = {
       token: '2easdjin87q1',
-      userGroup: email,
+      userGroup: email.substring(0, email.indexOf('@')),
     };
     window.localStorage.setItem('token', userInfo.token);
     window.localStorage.setItem('userGroup', email);
-    (email === 'candidate' || email === 'employer') &&
+    (email === 'candidate@email.com' || email === 'employer@email.com') &&
       navigate(`/${userInfo.userGroup}/matches`);
   };
 
@@ -55,6 +55,7 @@ export default function SignIn() {
         </Box>
       </Box>
       <Box
+        component="form"
         sx={{
           flex: 1,
           width: '100%',
@@ -92,6 +93,7 @@ export default function SignIn() {
           <Button
             variant="contained"
             className="button"
+            type="submit"
             sx={{
               typography: 'body1',
               color: '#fff',

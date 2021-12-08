@@ -8,22 +8,36 @@ export default function SignUp() {
   const navigate = useNavigate();
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [confirmPassword, setConfirmPassword] = useState<string>('');
   // const [userId, setUserId] = useState<string>('0');
   const [isEmployer, setIsEmployer] = useState<boolean>(false);
   const [agreeTerms, setAgreeTerms] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const nextStepHandler: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-    // const user = await signIn();
-    const userInfo = {
-      token: '2easdjin87q1',
-      userGroup: email,
-    };
-    window.localStorage.setItem('token', userInfo.token);
-    window.localStorage.setItem('userGroup', email);
-    // TODO: use API response
-    // navigate(`/${userInfo.userGroup}/matches`);
-    (email === 'candidate' || email === 'employer') &&
-      navigate(`/${isEmployer ? 'employer' : 'candidate'}/profile/edit`);
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      setErrorMessage('Passwords should be the same.');
+      setTimeout(() => {
+        setErrorMessage('');
+      }, 3000);
+      return;
+    }
+
+    const formEle = e.currentTarget.parentElement as HTMLFormElement;
+    if (formEle.reportValidity()) {
+      // const user = await signIn();
+      const userInfo = {
+        token: '2easdjin87q1',
+        userGroup: email,
+      };
+      window.localStorage.setItem('token', userInfo.token);
+      window.localStorage.setItem('userGroup', email);
+      // TODO: use API response
+      // navigate(`/${userInfo.userGroup}/matches`);
+      (email === 'candidate@email.com' || email === 'employer@email.com') &&
+        navigate(`/${isEmployer ? 'employer' : 'candidate'}/profile/edit`);
+    }
   };
 
   const handleEmailChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -35,6 +49,11 @@ export default function SignUp() {
   ) => {
     setPassword(e.currentTarget.value);
   };
+
+  const handleConfirmPasswordChange: React.ChangeEventHandler<HTMLInputElement> =
+    (e) => {
+      setConfirmPassword(e.currentTarget.value);
+    };
 
   const handleAgreeTerms: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     setAgreeTerms((agreeTerms) => !agreeTerms);
@@ -64,6 +83,7 @@ export default function SignUp() {
         </Box>
       </Box>
       <Box
+        component={'form'}
         sx={{
           flex: 1,
           width: '100%',
@@ -97,12 +117,17 @@ export default function SignUp() {
             type="password"
             value={password}
             onChange={handlePasswordChange}
+            error={Boolean(errorMessage)}
+            helperText={errorMessage}
           />
           <TextField
             className="textBox"
             required
+            type="password"
+            value={confirmPassword}
             id="outlined-required"
             label="Confirm Password"
+            onChange={handleConfirmPasswordChange}
           />
           <Box
             className="checkboxContainer"
@@ -170,6 +195,7 @@ export default function SignUp() {
               textTransform: 'none',
               marginTop: 2,
             }}
+            type={'submit'}
             onClick={nextStepHandler}>
             Next Step
           </Button>
