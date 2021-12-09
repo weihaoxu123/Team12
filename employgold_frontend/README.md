@@ -4,6 +4,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Added packages
 
+Here's the [Figma](https://www.figma.com/file/F1opIfELqfEH1eop2dt944/577UI%2FUX) link to the orginal design (Material Design) of the frontend pages.
+
+## Added packages
+
 [React Router](https://reactrouter.com/docs/en/v6/getting-started/installation)
 
 [Material UI](https://mui.com/)
